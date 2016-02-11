@@ -20,15 +20,17 @@ class Monitor:
         net= model.BasicResNet()
         net.load_state_dict(self.parameter['state_dict'])
         self.net=net.to(self.device)
-    def inference(self,frame):
+    def inference(self,frame,classnum=0):
         self.net.eval()
         inputs=self.transform(frame)
         inputs=inputs.unsqueeze(0).to(self.device)
         with torch.set_grad_enabled(False):
             outputs = self.net(inputs)
             _, predicted = torch.max(outputs, 1)
-        return predicted+976
-
+        if classnum!=3:
+            return predicted+976
+        else:
+            return predicted/2+1250
    
 
 

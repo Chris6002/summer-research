@@ -13,6 +13,7 @@ parser.add_argument('--parameter', type=str)
 parser.add_argument('--verify', type=int, default=0)
 parser.add_argument('--Dagger', type=int, default=0)
 parser.add_argument('--classnum', type=int)
+parser.add_argument('--speed', type=int)
 parser.add_argument('--iter', type=int)
 args = parser.parse_args()
 for arg in vars(args):
@@ -53,7 +54,7 @@ device = '/dev/v4l/by-id/usb-Intel_R__RealSense_TM__415_Intel_R__RealSense_TM__4
 start_time = time.time()
 end_time = time.time()
 iter_num = 0
-speed_range = [1250, 1750]
+speed_range = [1250, args.speed]
 steer_range = [976, 1976]
 ch3_pre = 1000
 ch4_pre = 1960
@@ -67,6 +68,7 @@ buffer_length = 10
 adjust = 0
 count = 0
 save=0
+pre_save=0
 frame_index = 0
 ch1, ch2, ch3 = 1476, 1500, 976
 steer_queue = []
@@ -81,17 +83,17 @@ import csv
 now=time.strftime("%d_%m_%H_%M_%S")
 # Dagger command file:
 if args.Dagger == 1:
-	f = open(Command_file + str(args.classnum)+'_Dagger_'+str(args.iter)+'_command'+'.csv', 'w')
-	fnames = ['name','frame', 'steering', 'speed', 'category', 'stage','useful']
-	writer = csv.DictWriter(f, fieldnames=fnames)
-	writer.writeheader()
-	out = cv2.VideoWriter(Command_file + str(args.classnum)+'_Dagger_'+str(args.iter)+'.avi', FourCC, 10,
-		                  resolution)
+    f = open(Command_file + str(args.classnum)+'_Dagger_'+str(args.iter)+'_command'+'.csv', 'w')
+    fnames = ['name','frame', 'steering', 'speed', 'category', 'stage','useful']
+    writer = csv.DictWriter(f, fieldnames=fnames)
+    writer.writeheader()
+    out = cv2.VideoWriter(Command_file + str(args.classnum)+'_Dagger_'+str(args.iter)+'.avi', FourCC, 10,
+                          resolution)
 # verify time file:
 if args.verify == 1:
-	time_file = open(Command_file + str(args.classnum)+'_Time_'+str(args.iter)+'.csv', 'w')
-	time_fnames = ['end_frame', 'time']
-	time_writer = csv.DictWriter(time_file, fieldnames=time_fnames)
+    time_file = open(Command_file + str(args.classnum)+'_Time_'+str(args.iter)+'.csv', 'w')
+    time_fnames = ['end_frame', 'time']
+    time_writer = csv.DictWriter(time_file, fieldnames=time_fnames)
 
 
 
@@ -116,6 +118,7 @@ try:
             try:
                 ch1, ch2, ch3, ch4 = int(command[0].strip('\x00')), int(command[1].strip(
                     '\x00')), int(command[2].strip('\x00')), int(command[3].strip('\x00'))
+                ch2_real=ch2
                 ch1_real = ch1
                 #print(ch1,ch2,ch3,ch4)
             except:
@@ -134,17 +137,19 @@ try:
                 adjust_flag = 0 if adjust_flag == 1 else 1
 
                 if adjust_flag:
+                    print('Manual Now1: ',end=' ')
                     if args.verify==1:
                         time_without_intervention = time.time()-time_auto_start
-                        print('Manual Now verify auto ends: ',time_without_intervention)
+                        print('verify')
                         if save:
-                            print('verify save')
+                            print('verify save: ',time_without_intervention)
                             data = {'end_frame': 1, 'time': round(time_without_intervention, 3)}
                             time_writer.writerow(data)
                     elif args.Dagger==1:
                         print('Manual Now Dagger auto ends: ',time_without_intervention)
                 else:
-                    print('auto start: ',end=' ')
+
+                    print('Auto   Now1: ',end=' ')
                     if args.verify == 1:
                         print('verify')
                         time_auto_start = time.time()
@@ -154,20 +159,18 @@ try:
                 if abs(ch1_real-1500) > 50:
                     adjust_flag = 1
                     if adjust_flag:
-                        print('Manual Now',end=' ')
+                        print('Manual Now2: ',end=' ')
                         if args.verify == 1:
-
+                            print('verify')
                             time_without_intervention = time.time()-time_auto_start
-                            print('verify auto ends: ',
-                                  time_without_intervention)
                             if save:
-                                print('verify save')
+                                print('verify save: ',time_without_intervention)
                                 data = {'end_frame': 1, 'time': round(time_without_intervention, 3)}
                                 time_writer.writerow(data)
                         elif args.Dagger==1:
                             print('Manual Now Dagger auto ends: ',time_without_intervention)
                     else:
-                        print('auto start',end=' ')
+                        print('Auto   Now2',end=' ')
                         if args.verify == 1:
                             print('verify')
                             time_auto_start = time.time()
@@ -181,8 +184,9 @@ try:
                     if args.classnum != 3:
                         ch1 = monitor.inference(frame).item()
                     else:
-                        ch2out=monitor.inference(frame).item()
-                        ch2 = 1650 if ch2>1600 else 1200
+                        ch2out=monitor.inference(frame,3).item()
+                        #print(ch2out)
+                        ch2 = 1650 if ch2out>1600 else 1200
 
                 else:
                     if args.classnum != 3:
@@ -196,6 +200,11 @@ try:
                 cap.set(4, resolution[1])
             if situation==1 and ch3>1900 :
                 save=1
+                if pre_save==0:
+
+                    print('New Street')
+                    data = {'end_frame': 'x', 'time': 'x'}
+                    time_writer.writerow(data)
                 if time.time()-start_time > 0.1:
 
                     if args.Dagger == 1:
@@ -208,8 +217,13 @@ try:
                                 'speed': ch2, 'category': 0, 'stage': adjust_flag,'useful':adjust_flag}
                         writer.writerow(data)
                         start_time = time.time()
-            else: save=0
-
+            else:
+                save=0
+                time_file.close()
+                time_file = open(Command_file + str(args.classnum)+'_Time_'+str(args.iter)+'.csv', 'a')
+                time_fnames = ['end_frame', 'time']
+                time_writer = csv.DictWriter(time_file, fieldnames=time_fnames)
+            pre_save=save
 
         except UnicodeDecodeError:
             ch1, ch2, ch3,ch4 = 1476, 1500, 976,1960

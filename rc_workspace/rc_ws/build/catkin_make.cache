@@ -1,0 +1,2 @@
+data_recorder
+-DCATKIN_DEVEL_PREFIX=/home/vision/summer-research/rc_workspace/rc_ws/devel -DCMAKE_INSTALL_PREFIX=/home/vision/summer-research/rc_workspace/rc_ws/install -G Unix Makefiles

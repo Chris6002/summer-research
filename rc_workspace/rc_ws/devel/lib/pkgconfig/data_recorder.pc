@@ -1,0 +1,8 @@
+prefix=/home/vision/summer-research/rc_workspace/rc_ws/devel
+
+Name: data_recorder
+Description: Description of data_recorder
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/vision/summer-research/rc_workspace/rc_ws/devel/lib 
+Requires: 

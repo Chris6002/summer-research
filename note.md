@@ -43,3 +43,10 @@
 2. berkely social + hongkong city -- people model
 
 3. berkely rc car -- how to train in real time
+
+
+
+
+
+
+https://arxiv.org/pdf/1710.02543.pdf

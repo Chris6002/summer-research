@@ -23,18 +23,22 @@
 #define MY_PIN  A3
 #define MY_PIN1 A4
 #define MY_PIN2 A5
+#define MY_PIN2 A6
 ///
 
  
 volatile int pwm_value = 0;
 volatile int pwm_value1 = 0;
 volatile int pwm_value2 = 0;
+volatile int pwm_value3 = 0;
 volatile int prev_time = 0;
 volatile int prev_time1 = 0;
 volatile int prev_time2 = 0;
+volatile int prev_time3 = 0;
 uint8_t latest_interrupted_pin;
 uint8_t latest_interrupted_pin1;
 uint8_t latest_interrupted_pin2;
+uint8_t latest_interrupted_pin3;
 void rising()
 {
   latest_interrupted_pin=PCintPort::arduinoPin;
@@ -53,33 +57,35 @@ void rising2()
   PCintPort::attachInterrupt(latest_interrupted_pin2, &falling2, FALLING);
   prev_time2 = micros();
 }
+void rising3()
+{
+  latest_interrupted_pin3=PCintPort::arduinoPin;
+  PCintPort::attachInterrupt(latest_interrupted_pin3, &falling3, FALLING);
+  prev_time3 = micros();
+}
  
 void falling() {
   latest_interrupted_pin=PCintPort::arduinoPin;
   PCintPort::attachInterrupt(latest_interrupted_pin, &rising, RISING);
   pwm_value = micros()-prev_time;
-  Serial.print("3:");
-  Serial.println(pwm_value, DEC);
-  Serial.flush();
+
 }
 void falling1() {
   latest_interrupted_pin1=PCintPort::arduinoPin;
   PCintPort::attachInterrupt(latest_interrupted_pin1, &rising1, RISING);
   pwm_value1 = micros()-prev_time1;
-  Serial.print("4:");
-  Serial.println(pwm_value1, DEC);
-  Serial.flush();
-
 }
 void falling2() {
   latest_interrupted_pin2=PCintPort::arduinoPin;
   PCintPort::attachInterrupt(latest_interrupted_pin2, &rising2, RISING);
   pwm_value2 = micros()-prev_time2;
-  Serial.print("5:");
-  Serial.println(pwm_value2, DEC);
-  Serial.flush();
-
 }
+void falling3() {
+  latest_interrupted_pin3=PCintPort::arduinoPin;
+  PCintPort::attachInterrupt(latest_interrupted_pin3, &rising3, RISING);
+  pwm_value2 = micros()-prev_time3;
+}
+ 
  
 void setup() {
   pinMode(MY_PIN, INPUT); digitalWrite(MY_PIN, HIGH);
@@ -91,5 +97,17 @@ void setup() {
   PCintPort::attachInterrupt(MY_PIN2, &rising2, RISING);
 }
  
-void loop() { delay(100);}
+void loop() { 
+
+  Serial.print(pwm_value, DEC);
+  Serial.print("\t");   
+  Serial.print(pwm_value1, DEC);
+  Serial.print("\t");   
+  Serial.print(pwm_value2, DEC);
+  Serial.print("\t");   
+  Serial.println(pwm_value3, DEC);
+  delay(100);
+
+
+  }
 

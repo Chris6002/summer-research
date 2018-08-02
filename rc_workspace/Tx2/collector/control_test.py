@@ -21,9 +21,10 @@ while True:
     ch4=int(command[3])
     print(ch1,end=',')
     print(ch2,end=',')
+    print(ch3,end='\n')
     servo.setTarget(0,ch1*4)
     servo.setTarget(1,ch2*4)  #set servo to move to center position
-    print(servo.getPosition(0),end='\n') #get the current position of servo 1
+    print('Sending command: ',servo.getPosition(0),end=',') #get the current position of servo 1
     print(servo.getPosition(1))
     #for c in ser.readline():
     #    line=[]

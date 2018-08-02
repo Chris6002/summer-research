@@ -1,4 +1,4 @@
-import pyrealsense2 as rs
+
 import numpy as np
 import time
 import sys
@@ -11,6 +11,7 @@ import cv2
 '''
 '''##############  Realsense  ##############'''
 # Configure depth and color streams
+import pyrealsense2 as rs
 pipeline = rs.pipeline()
 config = rs.config()
 config.enable_stream(rs.stream.color, 1280, 720, rs.format.bgr8, 30)

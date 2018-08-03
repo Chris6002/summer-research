@@ -21,10 +21,14 @@ def limitValue(n, minn, maxn):
 
 
 '''#################  GLOBAL PARAMETER  #################'''
+camera_left='/media/nvidia/Files/Left'
+camera_right='/media/nvidia/Files/Right'
+camera_center='/media/nvidia/Files/Center'
 resolution = [640, 480]
 record_FPS = 10
 speed_range = [1250, 1750]
 steer_range = [1000, 1800]
+
 '''#################  CAMERA SETUP  #################'''
 '''##############  Realsense  ##############'''
 # Configure depth and color streams
@@ -63,6 +67,9 @@ try:
     starttime = time.time()
     iter_num = 0
     ch3_pre = 0
+    createFolder(camera_left)
+    createFolder(camera_right)
+    createFolder(camera_center)
     while True:
         '''##############  Get command  ##############'''
         command = ser.readline().decode('utf-8').rstrip().split('x')
@@ -71,7 +78,11 @@ try:
         ch2 = int(command[1])
         ch3 = int(command[2])
         if abs(ch3 - ch3_pre) > 500:
+            image_index=0
             iter_num = iter_num + 1
+            createFolder(camera_left+str(iter_num))
+            createFolder(camera_right+str(iter_num))
+            createFolder(camera_center+str(iter_num))
         '''##############  Get image  ##############'''
         ret, frame1 = cap1.read()
         ret, frame2 = cap2.read()
@@ -85,18 +96,16 @@ try:
         #！TODO： 添加folder
         ##################################################################################################################################################
         if ch3 > 1500:
-            folder_location = '/media/nvidia/Files/'
-            folder_name = 'left/' + str(iter_num)
-            if not os.path.exists(folder_location + folder_name):
-                os.makedirs(folder_location + folder_name)
-            cv2.imwrite('/media/nvidia/Files/1_' + str(i) + '.png', frame1)
-            cv2.imwrite('/media/nvidia/Files/1_' + str(i) + '.png', frame1)
-            cv2.imwrite('/media/nvidia/Files/1_' + str(i) + '.png', frame1)
+            
+            cv2.imwrite(camera_left+str(image_index)  + '.png', frame1)
+            cv2.imwrite(camera_right + str(image_index) + '.png', frame2)
+            cv2.imwrite(camera_center + str(image_index) + '.png', color_frame)
+            image_index=image_index+1
         ch3_pre = ch3
         # Convert images to numpy arrays
         '''##############  Send command  ##############'''
-        ch1 = limitValue(steer_range[0], steer_range[1])
-        ch2 = limitValue(speed_range[0], speed_range[1])
+        ch1 = limitValue(ch1,steer_range[0], steer_range[1])
+        ch2 = limitValue(ch2,speed_range[0], speed_range[1])
         servo.setTarget(0, ch1 * 4)  #set servo to move to center position
         servo.setTarget(1, ch2 * 4)  #set servo to move to center position
         '''##############  Keep Frequence  ##############'''

@@ -5,12 +5,11 @@
 //RANGES (Min, Mid, Max):
 //Throttle (Ch3, 9): 1096,
 
-const int pinMap[4] = {7, 8, 9, 10};
-const int bPinMap[25] = { 0, 0, 0, 0, 0,
+const int pinMap[4] = {7, 8, 16, 10};
+const int bPinMap[20] = { 0, 0, 0, 0, 0,
                           0, 0, 0, 1, 2,
                           3, 0, 0, 0, 0,
-                          0, 0, 1 ,2, 3,
-                          0, 0, 1, 2, 3
+                          0, 2, 1, 2, 3,
                         };
 volatile unsigned long pwm_value[PIN_COUNT] = {0, 0, 0, 0};
 volatile unsigned long prev_time[PIN_COUNT] = {0, 0, 0, 0};

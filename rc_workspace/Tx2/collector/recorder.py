@@ -81,17 +81,19 @@ try:
     
     while True:
         starttime = time.time()
+        ser.flushInput()
         '''##############  Get command  ##############'''
         command = ser.readline().decode('utf-8').rstrip().split('x')
 
         ch1 = int(command[0])
         ch2 = int(command[1])
         ch3 = int(command[2])
-        print(ch1,ch2)
+        #print(ch1,ch2)
         if ch3 - ch3_pre > 500:
             print(iter_num)
             image_index=0
             iter_num = iter_num + 1
+            out = cv2.VideoWriter('/media/nvidia/Files/'+str(iter_num)+'.avi',cv2.VideoWriter_fourcc('X','V','I','D'), 10, (resolution[0]*3,resolution[1]))
             createFolder(camera_left+str(iter_num))
             createFolder(camera_right+str(iter_num))
             createFolder(camera_center+str(iter_num))
@@ -106,11 +108,17 @@ try:
         ###!!!!!!!!!Read a line which is terminated with end-of-line (eol) character (\n by default) or until timeout.
         '''##############  SAVE  ##############'''
         #！TODO： 添加folder
-        ##################################################################################################################################################
+        images=np.hstack((frame1, color_image,frame2))
+        cv2.imshow('frame',images)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break ##################################################################################################################################################
         if ch3_pre > 1500:
+
            images=np.hstack((frame1, color_image,frame2))
            data={'name':image_index,'steering': ch1, 'speed': ch2, 'category': 0}
-           cv2.imwrite('/media/nvidia/Files/'+str(image_index)  + '.png', images)
+           out.write(images)
+
+           #cv2.imwrite('/media/nvidia/Files/'+str(image_index)  + '.png', images)
            writer.writerow(data)
            #cv2.imwrite(camera_left+'/' +str(iter_num)+'/'+str(image_index)  + '.png', frame1)
            #cv2.imwrite(camera_right+'/' +str(iter_num)+'/'+ str(image_index) + '.png', frame2)
@@ -125,12 +133,12 @@ try:
         servo.setTarget(0, ch1 * 4)  #set servo to move to center position
         servo.setTarget(1, ch2 * 4)  #set servo to move to center position
         '''##############  Keep Frequence  ##############'''
-        #print(time.time() - starttime)
-        #time.sleep(1 / record_FPS - ((time.time() - starttime) % (1 / record_FPS)))
+        print(time.time() - starttime)
+        time.sleep(1 / record_FPS - ((time.time() - starttime) % (1 / record_FPS)))
 finally:
-
     # Stop streaming
     f.close()
+    out.release()
     servo.close()
     ser.close()
     pipeline.stop()

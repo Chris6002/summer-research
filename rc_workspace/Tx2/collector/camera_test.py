@@ -55,7 +55,8 @@ while(True):
     cv2.imshow('frame3',images)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-    time.sleep(1/record_FPS-((time.time() - starttime) % (1/record_FPS)))
+    print((time.time() - starttime))
+    #time.sleep(1/record_FPS-((time.time() - starttime) % (1/record_FPS)))
 
 # When everything done, release the capture
 cap1.release()

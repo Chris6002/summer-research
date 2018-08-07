@@ -42,7 +42,7 @@ void setup() {
 long lastMillis = 0;
 void loop() {
   long currentMillis = millis();
-  if (currentMillis - lastMillis > 100) {
+  if (currentMillis - lastMillis > 50) {
     Serial.print(pwm_value[0]);
     Serial.flush();
     Serial.print("x");

@@ -50,7 +50,7 @@ class ClientStream:
                 self.msg = msg
                 self.read_lock.release()
             except:
-                client.close()
+                self.client.close()
                 return False
 
 

@@ -34,6 +34,7 @@ class WebcamVideoStream :
             self.read_lock.acquire()
             self.grabbed, self.frame = grabbed, frame
             self.read_lock.release()
+            time.sleep(1 / 10)
 
     def read(self) :
         self.read_lock.acquire()
@@ -51,7 +52,6 @@ class WebcamVideoStream :
 if __name__ == "__main__" :
     vs1 = WebcamVideoStream('/dev/v4l/by-id/usb-046d_HD_Webcam_C615_794F2390-video-index0').start()
     vs2 = WebcamVideoStream('/dev/v4l/by-id/usb-046d_HD_Webcam_C615_06D65490-video-index0').start()
-    index=0    
     out1 = cv2.VideoWriter('/media/nvidia/Files/'+'test1'+'.avi',cv2.VideoWriter_fourcc('X','V','I','D'), 10, (1280,720))
     out2 = cv2.VideoWriter('/media/nvidia/Files/'+'test2'+'.avi',cv2.VideoWriter_fourcc('X','V','I','D'), 10, (1280,720))
 
@@ -60,18 +60,21 @@ try:
         starttime = time.time()
         frame1 = vs1.read()
         frame2 = vs2.read()
+        images=np.hstack((frame1,frame2))
         #real_frames = pipeline.wait_for_frames()
         #depth_frame = real_frames.get_depth_frame()
         #color_frame = real_frames.get_color_frame()
         #depth_image = np.asanyarray(depth_frame.get_data())
         #color_image = np.asanyarray(color_frame.get_data())
-        out1.write(frame1)
+        cv2.imshow('frame3',images)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
         out2.write(frame2)
+        out1.write(frame1)
         #out3.write(color_image)
         #frame=np.hstack((frame1, frame2))
 
         #cv2.imwrite('/media/nvidia/Files/'+str(index)+'.png',frame1)
-        index=index+1
         print(time.time() - starttime)
 
 finally:

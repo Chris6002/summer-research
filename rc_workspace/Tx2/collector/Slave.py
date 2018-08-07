@@ -1,12 +1,22 @@
 import time
-
+import sys
+import os
+from threading import Thread, Lock
+sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages')
+import cv2
+import numpy as np
+record_FPS=10
 # =====================================
 # Network Configuration
 # =====================================
 from multiprocessing.connection import Listener
 serv = Listener(('', 25000), authkey=b'peekaboo')
-
-
+def createFolder(folder_name):
+    if not os.path.exists(folder_name):
+        os.makedirs(folder_name)
+createFolder('/media/nvidia/Files/Left')
+createFolder('/media/nvidia/Files/Right')
+createFolder('/media/nvidia/Files/Center')
 # =====================================
 # Camera setup
 # =====================================
@@ -26,6 +36,7 @@ class WebcamVideoStream:
         self.started = True
         self.thread = Thread(target=self.update, args=())
         self.thread.start()
+        
         return self
 
     def update(self):
@@ -34,6 +45,7 @@ class WebcamVideoStream:
             self.read_lock.acquire()
             self.grabbed, self.frame = grabbed, frame
             self.read_lock.release()
+
 
     def read(self):
         self.read_lock.acquire()
@@ -62,15 +74,17 @@ out2 = cv2.VideoWriter('/media/nvidia/Files/Right/' + '0.avi',
 iter_num = 0
 try:
     client = serv.accept()
+    starttime = time.time()
+    endtime= time.time()
     while True:
-        starttime = time.time()
         msg = client.recv().split(':')
+        endtime = time.time()
         if msg[0] == 'Iter':
             print('creating...')
             if iter_num > 0:
                 out1.release()
                 out2.release()
-            iter_num = msg[1]
+            iter_num = int(msg[1])
             out1 = cv2.VideoWriter(
                 '/media/nvidia/Files/Left/' + str(iter_num) + '.avi',
                 cv2.VideoWriter_fourcc('X', 'V', 'I', 'D'), 10, (1280, 720))
@@ -78,11 +92,25 @@ try:
                 '/media/nvidia/Files/Right/' + str(iter_num) + '.avi',
                 cv2.VideoWriter_fourcc('X', 'V', 'I', 'D'), 10, (1280, 720))
         elif msg[0] == 'Save':
-            out1.write(vs1.read())
-            out2.write(vs2.read())
-        print(time.time() - starttime)
+            if endtime-starttime>0.1:
+                out1.write(vs1.read())
+                out2.write(vs2.read())
+                #frame1 = vs1.read()
+                #frame2 = vs2.read()
+                #images=np.hstack((frame1,frame2))
+                #cv2.imshow('frame3',images)
+                #if cv2.waitKey(1) & 0xFF == ord('q'):break
+                print('Saving',end='   ')
+                print(iter_num,end='   ')
+                print(1/(endtime-starttime))
+                starttime = time.time()
+                endtime = time.time()
+        elif msg[0] == 'Waiting':
+            print('Waiting',end='   ')
 finally:
     out1.release()
     out2.release()
     vs1.stop()
+    vs1.__exit__()
     vs2.stop()
+    vs2.__exit__()

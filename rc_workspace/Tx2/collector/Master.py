@@ -16,7 +16,7 @@ c = Client(('localhost', 25000), authkey=b'peekaboo')
 camera_left = '/media/nvidia/Files/Left/'
 camera_right = '/media/nvidia/Files/Right/'
 camera_center = '/media/nvidia/Files/Center/'
-resolution = [640, 480]
+resolution = [1280, 720]
 record_FPS = 10
 speed_range = [1400, 1750]
 steer_range = [1000, 1800]
@@ -72,7 +72,7 @@ createFolder('/media/nvidia/Files/Right')
 createFolder('/media/nvidia/Files/Center')
 f = open('/media/nvidia/Files/data_c.csv', 'w')
 fnames = ['name', 'steering', 'speed', 'category']
-writer = csv.DictWriter(f_c, fieldnames=fnames)
+writer = csv.DictWriter(f, fieldnames=fnames)
 writer.writeheader()
 
 # =====================================
@@ -89,14 +89,11 @@ try:
         ch1, ch2, ch3 = int(command[0]), int(command[1]), int(command[2])
         # =========================== #
         if ch3 - ch3_pre > 100:
-
-            iter_num = iter_num + 1
-            print(iter_num)
-            c.send('Iter:' + str(iter_num))
-            out = cv2.VideoWriter(
-                '/media/nvidia/Files/Center/' + str(iter_num) + '.avi',
-                cv2.VideoWriter_fourcc('X', 'V', 'I', 'D'), 10,
-                (resolution[0], resolution[1]))
+        	c.send('Iter:' + str(iter_num))
+        	
+        	print(iter_num)
+        	out = cv2.VideoWriter('/media/nvidia/Files/Center/' + str(iter_num) + '.avi',cv2.VideoWriter_fourcc('X', 'V', 'I', 'D'), 10,(resolution[0], resolution[1]))
+        	iter_num = iter_num + 1
         if ch3_pre > 1500:
             # ======  Get Image  ====== #
             real_frames = pipeline.wait_for_frames()
@@ -110,21 +107,28 @@ try:
                 'category': 0
             }
             # ======  Save  ====== #
+            print('saving',end="   ")
+            
             c.send('Save')
             out.write(color_image)
             writer.writerow(data)
             # ==================== #
+        else:
+        	c.send('Waiting')
+        	print('Waiting',end='   ')
         # ======  Send command  ====== #
         ch1 = limitValue(ch1, steer_range[0], steer_range[1])
         ch2 = limitValue(ch2, speed_range[0], speed_range[1])
         servo.setTarget(0, ch1 * 4)  #set servo to move to center position
         servo.setTarget(1, ch2 * 4)  #set servo to move to center position
         # ============================ #
-        time.sleep(1 / record_FPS - (
-            (time.time() - starttime) % (1 / record_FPS)))
-        ch3_pre = ch3
+        if round(1/(time.time() - starttime),2)>record_FPS+1:
+        	time.sleep(1 / record_FPS - (
+            	(time.time() - starttime) % (1 / record_FPS)))
+        print(str(round(1/(time.time() - starttime),2)))
+        ch3_pre=ch3
 
-        print(time.time() - starttime)
+        
 
 finally:
     print('finished')

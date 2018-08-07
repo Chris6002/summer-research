@@ -30,9 +30,10 @@ class ClientStream:
         self.server = server
         self.started = False
         self.read_lock = Lock()
-
+        self.msg=['init']
     def start(self):
         self.client = self.server.accept()
+        print("started!!")
         if self.started:
             print("already started!!")
             return None
@@ -110,7 +111,7 @@ out1 = cv2.VideoWriter('/media/nvidia/Files/Left/' + '0.avi',
 out2 = cv2.VideoWriter('/media/nvidia/Files/Right/' + '0.avi',
                        cv2.VideoWriter_fourcc('X', 'V', 'I', 'D'), 10,
                        (1280, 720))
-client = ClientStream(Listener(('', 25000), authkey=b'peekaboo'))
+client = ClientStream(Listener(('', 25000), authkey=b'peekaboo')).start()
 iter_num = 0
 starttime = time.time()
 endtime = time.time()
@@ -119,7 +120,9 @@ try:
     while True:
         endtime = time.time()
         if endtime-starttime > 0.1:
+            
             msg = client.read()
+            print(msg)
             if msg[0] == 'Iter':
                 print('creating...')
                 if iter_num > 0:

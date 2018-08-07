@@ -1,3 +1,5 @@
+from threading import Thread, Lock
+from multiprocessing.connection import Listener
 class ClientStream:
     def __init__(self,server):
         self.server =server
@@ -22,8 +24,9 @@ class ClientStream:
                 self.read_lock.acquire()
                 self.msg = msg
                 self.read_lock.release()
+                print(msg)
             except:
-                client.close()
+                self.client.close()
                 return False
 
 
@@ -36,3 +39,6 @@ class ClientStream:
     def stop(self):
         self.started = False
         self.thread.join()
+
+
+client = ClientStream(Listener(('', 25000), authkey=b'peekaboo')).start()

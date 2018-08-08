@@ -9,7 +9,7 @@ import numpy as np
 # =====================================
 folder_path =  '/media/nvidia/Files/Centre/'
 
-resolution = (1280, 720)
+resolution = (640,480)
 record_FPS = 10
 frequence = 1 / record_FPS
 FourCC = cv2.VideoWriter_fourcc('X', 'V', 'I', 'D')

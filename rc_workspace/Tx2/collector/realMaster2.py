@@ -18,7 +18,7 @@ frequence = 1 / record_FPS
 speed_range = [1250, 1750]
 steer_range = [976, 1976]
 FourCC = cv2.VideoWriter_fourcc('X', 'V', 'I', 'D')
-
+port_num=25002
 
 # =====================================
 # Convenient function
@@ -39,12 +39,9 @@ def limitValue(n, minn, maxn):
 # =====================================
 # Network Configuration
 # =====================================
-from multiprocessing.connection import Listener
-print('Left first, right after')
-server4left = Listener(('', 25000), authkey=b'peekaboo').accept()
-print('Connected to left')
-server4right = Listener(('', 25001), authkey=b'peekaboo').accept()
-print('Connected to left')
+from multiprocessing.connection import Client
+client = Client(('localhost', port_num), authkey=b'peekaboo')
+
 createFolder('/media/nvidia/Files/Left')
 createFolder('/media/nvidia/Files/Right')
 createFolder('/media/nvidia/Files/Center')
@@ -60,22 +57,22 @@ config.enable_stream(rs.stream.color, resolution[0], resolution[1],
 #                     rs.format.z16, 30)
 # Start streaming
 pipeline.start(config)
-# =====================================
-# SERVO & SERIES
-# =====================================
-#  Polotu
-import maestro
-servo = maestro.Controller()
-import maestro
-servo = maestro.Controller('/dev/ttyACM0')
-servo.setRange(0, 1000 * 4, 2000 * 4)
-servo.setSpeed(0, 45)
-servo.setRange(1, 1000 * 4, 2500 * 4)
-#  Arduino
-import serial
-ser = serial.Serial(port='/dev/ttyTHS2', baudrate=115200)  # open serial port
-ser.flushInput()
-ser.flushOutput()
+# # =====================================
+# # SERVO & SERIES
+# # =====================================
+# #  Polotu
+# import maestro
+# servo = maestro.Controller()
+# import maestro
+# servo = maestro.Controller('/dev/ttyACM0')
+# servo.setRange(0, 1000 * 4, 2000 * 4)
+# servo.setSpeed(0, 45)
+# servo.setRange(1, 1000 * 4, 2500 * 4)
+# #  Arduino
+# import serial
+# ser = serial.Serial(port='/dev/ttyTHS2', baudrate=115200)  # open serial port
+# ser.flushInput()
+# ser.flushOutput()
 # =====================================
 # CSV
 # =====================================
@@ -151,16 +148,16 @@ try:
 #              print('Waiting', end='   ')
 #          print(str(round(1 / (time.time() - end_time), 2)))
         
-        # ======  Send command  ====== #
-        ch1 = limitValue(ch1, steer_range[0], steer_range[1])
-        ch2 = limitValue(ch2, speed_range[0], speed_range[1])
-        servo.setTarget(0, ch1 * 4)  #set servo to move to center position
-        servo.setTarget(1, ch2 * 4)  #set servo to move to center position
-        # ============================ #
-        now = time.time()
-        if (now - end_time) < frequence:time.sleep(frequence - ((now - start_time) % frequence))
-        print(str(round(1/(time.time()-end_time),1)))
-        ch3_pre = ch3
+        # # ======  Send command  ====== #
+        # ch1 = limitValue(ch1, steer_range[0], steer_range[1])
+        # ch2 = limitValue(ch2, speed_range[0], speed_range[1])
+        # servo.setTarget(0, ch1 * 4)  #set servo to move to center position
+        # servo.setTarget(1, ch2 * 4)  #set servo to move to center position
+        # # ============================ #
+        # now = time.time()
+        # if (now - end_time) < frequence:time.sleep(frequence - ((now - start_time) % frequence))
+        # print(str(round(1/(time.time()-end_time),1)))
+        # ch3_pre = ch3
 
 finally:
     f.close()

@@ -44,7 +44,7 @@ try:
             if iter_num > 0:
                 out.release()
             iter_num = int(msg[1])
-            out = cv2.VideoWriter(folder_path + msg[1], FourCC, record_FPS,
+            out = cv2.VideoWriter(folder_path + msg[1]+'.avi', FourCC, record_FPS,
                                   resolution)
         elif msg[0] == 'Save':
             _, frame = cap.read()
@@ -53,7 +53,7 @@ try:
             print(iter_num, end='   ')
             print(1 / (end_time - start_time))
         elif msg[0] == 'Waiting':
-            print('Waiting', end='   ')
+            print('Waiting', end='\n')
         if (time.time() - start_time) < (1 / record_FPS):
             time.sleep(1 / record_FPS - (
                 (time.time() - start_time) % (1 / record_FPS)))

@@ -88,13 +88,13 @@ try:
         command = ser.readline().decode('utf-8').rstrip().split('x')
         ch1, ch2, ch3 = int(command[0]), int(command[1]), int(command[2])
         # =========================== #
-        if ch3 - ch3_pre > 100:
+        if ch3 - ch3_pre > 800:
         	c.send('Iter:' + str(iter_num))
         	
         	print(iter_num)
         	out = cv2.VideoWriter('/media/nvidia/Files/Center/' + str(iter_num) + '.avi',cv2.VideoWriter_fourcc('X', 'V', 'I', 'D'), 10,(resolution[0], resolution[1]))
         	iter_num = iter_num + 1
-        if ch3_pre > 1500:
+        if ch3_pre > 1300:
             # ======  Get Image  ====== #
             real_frames = pipeline.wait_for_frames()
             color_frame = real_frames.get_color_frame()

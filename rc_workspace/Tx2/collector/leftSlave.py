@@ -7,7 +7,7 @@ import cv2
 # =====================================
 # Global setting
 # =====================================
-resolution = (1280, 720)
+resolution = (640, 480)
 record_FPS = 10
 frequence = 1 / record_FPS
 FourCC = cv2.VideoWriter_fourcc('X', 'V', 'I', 'D')
@@ -35,11 +35,14 @@ end_time = time.time()
 iter_num = 0
 out = cv2.VideoWriter(folder_path + '0.avi', FourCC, record_FPS,
                       resolution)
+index=0
 try:
     while True:
-
-        msg = client.recv().split(':')
+        index=index+1
         start_time = time.time()
+        msg = client.recv().split(':')
+        _, frame = cap.read()
+
         if msg[0] == 'Iter':
             print('creating...')
             if iter_num > 0:
@@ -49,7 +52,7 @@ try:
                                   resolution)
         elif msg[0] == 'Save':
 
-            _, frame = cap.read()
+
             out.write(frame)
             print('Saving', end='   ')
             print(iter_num, end='   ')

@@ -7,7 +7,7 @@ import numpy as np
 # =====================================
 # Global setting
 # =====================================
-folder_path =  '/media/nvidia/Files/centre/'
+folder_path =  '/media/nvidia/Files/Centre/'
 
 resolution = (1280, 720)
 record_FPS = 10
@@ -43,8 +43,10 @@ end_time = time.time()
 iter_num = 0
 try:
     while True:
-        msg = client.recv().split(':')
         start_time = time.time()
+        msg = client.recv().split(':')
+        real_frames = pipeline.wait_for_frames()
+        color_image = np.asanyarray((real_frames.get_color_frame().get_data()))
         if msg[0] == 'Iter':
             print('creating...')
             if iter_num > 0:
@@ -53,9 +55,7 @@ try:
             out = cv2.VideoWriter(folder_path + msg[1]+'.avi', FourCC, record_FPS,
                                   resolution)
         elif msg[0] == 'Save':
-            real_frames = pipeline.wait_for_frames()
-            color_image = np.asanyarray(
-                (real_frames.get_color_frame().get_data()))
+
             out.write(color_image)
             print('Saving', end='   ')
             print(iter_num, end='   ')

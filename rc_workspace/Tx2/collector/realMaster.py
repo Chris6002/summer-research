@@ -15,8 +15,8 @@ camera_center = '/media/nvidia/Files/Center/'
 resolution = (1280, 720)
 record_FPS = 10
 frequence = 1 / record_FPS
-speed_range = [1400, 1750]
-steer_range = [1000, 1800]
+speed_range = [1250, 1750]
+steer_range = [976, 1976]
 FourCC = cv2.VideoWriter_fourcc('X', 'V', 'I', 'D')
 
 
@@ -108,58 +108,58 @@ try:
             flag=0
 
         # =========  END  =========== #
-        if end_time - start_time > 0.1:
-            # ========  New file   ====== #
-            if situation==1 and flag==0:
-                flag=1
-                print('enter')
-                iter_num = iter_num + 1
-                server4left.send('Iter:' + str(iter_num))
-                server4right.send('Iter:' + str(iter_num))
-                time.sleep(0.1)
-                out = cv2.VideoWriter(camera_center + str(iter_num) + '.avi',
-                                      FourCC, record_FPS, resolution)
-                
 
-            # ==========  END  ========= #
-            # ========  Get + Save data  ======== #
-            if ch3_pre > 1500 and flag==1:
-                
-                # =========  Get  ========== #
-                real_frames = pipeline.wait_for_frames()
-                color_image = np.asanyarray(
-                    (real_frames.get_color_frame().get_data()))
-                data = {
-                    'name': iter_num,
-                    'steering': ch1,
-                    'speed': ch2,
-                    'category': 0
-                }
-                # =========  Save  ========== #
+        # ========  New file   ====== #
+        if situation==1 and flag==0:
+            flag=1
+            print('enter')
+            iter_num = iter_num + 1
+            server4left.send('Iter:' + str(iter_num))
+            server4right.send('Iter:' + str(iter_num))
+            time.sleep(0.1)
+            out = cv2.VideoWriter(camera_center + str(iter_num) + '.avi',
+                                  FourCC, record_FPS, resolution)
+            
 
-                server4left.send('Save')
-                server4right.send('Save')
- #               print('saving   '+ str(iter_num), end="   ")
-                out.write(color_image)
-                writer.writerow(data)
-            # ===============  END  ============== #
+        # ==========  END  ========= #
+        # ========  Get + Save data  ======== #
+        if ch3_pre > 1500 and flag==1:
+            
+            # =========  Get  ========== #
+            real_frames = pipeline.wait_for_frames()
+            color_image = np.asanyarray(
+                (real_frames.get_color_frame().get_data()))
+            data = {
+                'name': iter_num,
+                'steering': ch1,
+                'speed': ch2,
+                'category': 0
+            }
+            # =========  Save  ========== #
 
-            else:
-                server4left.send('Waiting')
-                server4right.send('Waiting')
-  #              print('Waiting', end='   ')
-  #          print(str(round(1 / (time.time() - end_time), 2)))
-            start_time = time.time()
+            server4left.send('Save')
+            server4right.send('Save')
+
+#               print('saving   '+ str(iter_num), end="   ")
+            out.write(color_image)
+            writer.writerow(data)
+        # ===============  END  ============== #
+
+        else:
+            server4left.send('Waiting')
+            server4right.send('Waiting')
+#              print('Waiting', end='   ')
+#          print(str(round(1 / (time.time() - end_time), 2)))
+        
         # ======  Send command  ====== #
         ch1 = limitValue(ch1, steer_range[0], steer_range[1])
         ch2 = limitValue(ch2, speed_range[0], speed_range[1])
         servo.setTarget(0, ch1 * 4)  #set servo to move to center position
         servo.setTarget(1, ch2 * 4)  #set servo to move to center position
         # ============================ #
-        # now = time.time()
-        # if (now - start_time) < frequence:
-        #     time.sleep(frequence - ((now - start_time) % frequence))
-        
+        now = time.time()
+        if (now - end_time) < frequence:time.sleep(frequence - ((now - start_time) % frequence))
+        print(str(round(1/(time.time()-end_time),1)))
         ch3_pre = ch3
 
 finally:

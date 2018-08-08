@@ -9,6 +9,7 @@ import cv2
 # =====================================
 resolution = (1280, 720)
 record_FPS = 10
+frequence = 1 / record_FPS
 FourCC = cv2.VideoWriter_fourcc('X', 'V', 'I', 'D')
 folder_path = '/media/nvidia/Files/Right/'
 device = '/dev/v4l/by-id/usb-046d_HD_Webcam_C615_06D65490-video-index0'
@@ -44,20 +45,19 @@ try:
             if iter_num > 0:
                 out.release()
             iter_num = int(msg[1])
-            print(folder_path + msg[1])
             out = cv2.VideoWriter(folder_path + msg[1]+'.avi', FourCC, record_FPS,
                                   resolution)
         elif msg[0] == 'Save':
+
             _, frame = cap.read()
             out.write(frame)
             print('Saving', end='   ')
             print(iter_num, end='   ')
-            print(1 / (end_time - start_time))
         elif msg[0] == 'Waiting':
-            print('Waiting', end='\n')
-        if (time.time() - start_time) < (1 / record_FPS):
-            time.sleep(1 / record_FPS - (
-                (time.time() - start_time) % (1 / record_FPS)))
+            print('Waiting', end='   ')
+        now=time.time()
+        if (now - start_time) < frequence:time.sleep(frequence - ((now - start_time) % frequence))
+        print(str(round(1/(time.time()-start_time),1)) )
 
 finally:
     out.release()

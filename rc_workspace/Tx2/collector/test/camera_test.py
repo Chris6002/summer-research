@@ -8,7 +8,7 @@ import cv2
 
 
 #640,480
-resolution=[640,480]
+resolution=[1280,720]
 record_FPS=10
 
 import pyrealsense2 as rs
@@ -20,14 +20,15 @@ config.enable_stream(rs.stream.depth, resolution[0], resolution[1], rs.format.z1
 # Start streaming
 pipeline.start(config)
 
+device_name1='/dev/v4l/by-id/usb-046d_HD_Webcam_C615_06D65490-video-index0'
+device_name2='/dev/v4l/by-id/usb-046d_HD_Webcam_C615_794F2390-video-index0'
+device_name3='/dev/v4l/by-id/usb-Intel_R__RealSense_TM__415_Intel_R__RealSense_TM__415_811313022233-video-index0'
+device_name4='/dev/v4l/by-id/usb-Intel_R__RealSense_TM__415_Intel_R__RealSense_TM__415_811313022233-video-index1'
 
 
+cap2 = cv2.VideoCapture(device_name1)
 
-
-
-cap2 = cv2.VideoCapture('/dev/v4l/by-id/usb-046d_HD_Webcam_C615_06D65490-video-index0')
-
-cap1 = cv2.VideoCapture('/dev/v4l/by-id/usb-046d_HD_Webcam_C615_794F2390-video-index0')
+cap1 = cv2.VideoCapture(device_name2)
 cap2.set(3,resolution[0])
 cap2.set(4,resolution[1])
 cap1.set(3,resolution[0])
@@ -36,8 +37,10 @@ i=0
 while(True):
     starttime=time.time()
     # Capture frame-by-frame
-    ret, frame1 = cap1.read()
-    ret, frame2 = cap2.read()
+    bool_retrieve1 = cap1.grab()
+    bool_retrieve2 = cap2.grab()
+    ret, frame1 = cap1.retrieve()
+    ret, frame2 = cap2.retrieve()
     frames = pipeline.wait_for_frames()
     depth_frame = frames.get_depth_frame()
     color_frame = frames.get_color_frame()

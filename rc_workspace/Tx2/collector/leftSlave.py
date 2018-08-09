@@ -7,6 +7,8 @@ import cv2
 # =====================================
 # Global setting
 # =====================================
+name='I AM LEFT'
+print(name)
 resolution = (640, 480)
 record_FPS = 10
 frequence = 1 / record_FPS
@@ -41,8 +43,8 @@ try:
         index=index+1
         start_time = time.time()
         msg = client.recv().split(':')
-        _, frame = cap.read()
-
+        bool_retrieve = cap.grab()
+        ret, frame = cap.retrieve()
         if msg[0] == 'Iter':
             print('creating...')
             if iter_num > 0:
@@ -54,13 +56,18 @@ try:
 
 
             out.write(frame)
-            print('Saving', end='   ')
-            print(iter_num, end='   ')
+            if index>20:
+                index=0
+                print('Saving', end='   ')
+                print(iter_num, end='   ')
+                print(str(round(1/(time.time()-start_time),1)) )
         elif msg[0] == 'Waiting':
-            print('Waiting', end='   ')
-        now=time.time()
+            if index>20:
+                index=0
+                print('Waiting', end='   ')
+                print(str(round(1/(time.time()-start_time),1)) )
         #if (now - start_time) < frequence:time.sleep(frequence - ((now - start_time) % frequence))
-        print(str(round(1/(time.time()-start_time),1)) )
+        
 
 finally:
     out.release()

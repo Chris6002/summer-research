@@ -14,29 +14,40 @@
     - feature vector
 3. __policy__
     - encoder + lstm = $\pi(a,s_t,s_{t-1},s_{t-2},s_{t-3})$ 
-
+4. __dataset structure__
+    - Video
+        - Center
+            - Index_center_time
+        - Left
+            - Index_left_time
+        - Right
+            - Index_right_time
+    - Command
+        - Index
+            - {frame,steering,speed,category}
+5. __Precedure__ 
+    1. ./camera.sh
+    2. go outside and record
+    3. ./archieve
+    4. repeat 1-3 several time
+    5. copy all to dataset/temp && python3 file_arranger.py
+  
 
 
 
 # Architecture
 
+basic policy + refine 
 
 # Training
 
----
----
----
----
----
----
+1. define command from left and right
+1. propregate the error to n sec time
 
 
 # Next
 ## Idea
-1. improve after BC(gail)
 
-2. sample in real world( refer to bekerley training)
-3. change to model-based?
 ## To do
 1. LSTM imitaiton learning paper --  architecture
 

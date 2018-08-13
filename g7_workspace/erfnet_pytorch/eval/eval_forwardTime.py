@@ -60,8 +60,8 @@ def main(args):
 if __name__ == '__main__':
     parser = ArgumentParser()
 
-    parser.add_argument('--width', type=int, default=1024)
-    parser.add_argument('--height', type=int, default=512)
+    parser.add_argument('--width', type=int, default=1280)
+    parser.add_argument('--height', type=int, default=720)
     parser.add_argument('--num-channels', type=int, default=3)
     parser.add_argument('--batch-size', type=int, default=1)
     parser.add_argument('--cpu', action='store_true')

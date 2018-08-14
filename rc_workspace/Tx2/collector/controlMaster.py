@@ -94,30 +94,32 @@ try:
         # ======  Get command  ====== #
         try:
             command =ser.readline().decode('utf-8').rstrip().split('x')
-            ch1, ch2, ch3 = int(command[0].strip('\x00')), int(command[1].strip('\x00')), int(command[2].strip('\x00'))        
-		    dis=ch3-ch3_pre
-		    if dis>500 and situation==0:situation=1
-		    elif dis<-500 and situation==1:situation,flag=0,0
+            try:
+                ch1, ch2, ch3 = int(command[0].strip('\x00')), int(command[1].strip('\x00')), int(command[2].strip('\x00'))
+            except:
+                ch1, ch2, ch3=1476,1500,976        
+            dis=ch3-ch3_pre
+            if dis>500 and situation==0:situation=1
+            elif dis<-500 and situation==1:situation,flag=0,0
 
-		    end_time = time.time()
-		    if end_time-start_time>0.1:
-		        if situation==1 and flag==0:
-		            flag=1
-		            print('enter')
-		            iter_num = iter_num + 1
-		            broadcastMsg('Iter:' + str(iter_num))
-		            time.sleep(0.1)
-		        if ch3_pre > 1500 and flag==1:
-		            data = {'name': iter_num,'steering': ch1,'speed': ch2,'category': 0}
-		            broadcastMsg('Save')
-		            writer.writerow(data)
-		        else:
-		            broadcastMsg('Waiting')
-		        start_time=time.time()
+            end_time = time.time()
+            if end_time-start_time>0.1:
+                if situation==1 and flag==0:
+                    flag=1
+                    print('enter')
+                    iter_num = iter_num + 1
+                    broadcastMsg('Iter:' + str(iter_num))
+                    time.sleep(0.1)
+                if ch3_pre > 1500 and flag==1:
+                    data = {'name': iter_num,'steering': ch1,'speed': ch2,'category': 0}
+                    broadcastMsg('Save')
+                    writer.writerow(data)
+                else:
+                    broadcastMsg('Waiting')
+                start_time=time.time()
         except UnicodeDecodeError:
             ch1, ch2, ch3=1476,1500,976
             print('hehe')
-            pass
 
         # ======  Send command  ====== #
         ch1 = limitValue(ch1, steer_range[0], steer_range[1])

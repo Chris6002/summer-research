@@ -54,14 +54,14 @@ def main(args):
             time_train.append(fwt)
             print ("Forward time per img (b=%d): %.3f (Mean: %.3f)" % (args.batch_size, fwt/args.batch_size, sum(time_train) / len(time_train) / args.batch_size))
         
-        time.sleep(1)   #to avoid overheating the GPU too much
+        #time.sleep(1)   #to avoid overheating the GPU too much
         i+=1
 
 if __name__ == '__main__':
     parser = ArgumentParser()
 
-    parser.add_argument('--width', type=int, default=1024)
-    parser.add_argument('--height', type=int, default=512)
+    parser.add_argument('--width', type=int, default=640)
+    parser.add_argument('--height', type=int, default=480)
     parser.add_argument('--num-channels', type=int, default=3)
     parser.add_argument('--batch-size', type=int, default=1)
     parser.add_argument('--cpu', action='store_true')

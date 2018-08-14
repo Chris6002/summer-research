@@ -35,7 +35,7 @@ cap.set(4, resolution[1])
 start_time = time.time()
 end_time = time.time()
 iter_num = 0
-out = cv2.VideoWriter(folder_path + 'test1.avi', FourCC, record_FPS,
+out = cv2.VideoWriter(folder_path + '0.avi', FourCC, record_FPS,
                       resolution)
 index=0
 try:

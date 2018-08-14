@@ -9,11 +9,11 @@ import cv2
 # =====================================
 name='I AM CENTRE'
 print(name)
-resolution = (1280, 720)
+resolution = (640, 480)
 record_FPS = 10
 frequence = 1 / record_FPS
 FourCC = cv2.VideoWriter_fourcc('X', 'V', 'I', 'D')
-folder_path = '/media/nvidia/Files/Left/'
+folder_path = '/media/nvidia/Files/Centre/'
 device = '/dev/v4l/by-id/usb-Intel_R__RealSense_TM__415_Intel_R__RealSense_TM__415_811313022233-video-index0'
 port_num = 25002
 # =====================================

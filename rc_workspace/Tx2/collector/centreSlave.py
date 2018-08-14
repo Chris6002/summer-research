@@ -45,7 +45,7 @@ try:
         msg = client.recv().split(':')
         bool_retrieve = cap.grab()
         ret, frame = cap.retrieve()
-        if ret:
+        if bool_retrieve:
             if msg[0] == 'Iter':
                 print('creating...')
                 if iter_num > 0:

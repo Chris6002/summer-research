@@ -45,27 +45,33 @@ try:
         msg = client.recv().split(':')
         bool_retrieve = cap.grab()
         ret, frame = cap.retrieve()
-        if msg[0] == 'Iter':
-            print('creating...')
-            if iter_num > 0:
-                out.release()
-            iter_num = int(msg[1])
-            out = cv2.VideoWriter(folder_path + msg[1]+'.avi', FourCC, record_FPS,
-                                  resolution)
-        elif msg[0] == 'Save':
+        if ret:
+            if msg[0] == 'Iter':
+                print('creating...')
+                if iter_num > 0:
+                    out.release()
+                iter_num = int(msg[1])
+                out = cv2.VideoWriter(folder_path + msg[1]+'.avi', FourCC, record_FPS,
+                                    resolution)
+            elif msg[0] == 'Save':
 
 
-            out.write(frame)
-            if index>20:
-                index=0
-                print('Saving', end='   ')
-                print(iter_num, end='   ')
-                print(str(round(1/(time.time()-start_time),1)) )
-        elif msg[0] == 'Waiting':
-            if index>20:
-                index=0
-                print('Waiting', end='   ')
-                print(str(round(1/(time.time()-start_time),1)) )
+                out.write(frame)
+                if index>20:
+                    index=0
+                    print('Saving', end='   ')
+                    print(iter_num, end='   ')
+                    print(str(round(1/(time.time()-start_time),1)) )
+            elif msg[0] == 'Waiting':
+                if index>20:
+                    index=0
+                    print('Waiting', end='   ')
+                    print(str(round(1/(time.time()-start_time),1)) )
+        else:
+            cap = cv2.VideoCapture(device)
+            cap.set(3, resolution[0])
+            cap.set(4, resolution[1])
+            time.sleep(1)
         #if (now - start_time) < frequence:time.sleep(frequence - ((now - start_time) % frequence))
         
 

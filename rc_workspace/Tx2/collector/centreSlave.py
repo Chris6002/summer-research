@@ -69,10 +69,11 @@ try:
                     print(str(round(1/(time.time()-start_time),1)) )
         else:
             print('hehe')
+            cap.release()
             cap = cv2.VideoCapture(device)
             cap.set(3, resolution[0])
             cap.set(4, resolution[1])
-            time.sleep(1)
+            time.sleep(0.4)
         #if (now - start_time) < frequence:time.sleep(frequence - ((now - start_time) % frequence))
         
 

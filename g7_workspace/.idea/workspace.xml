@@ -2,36 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7de7e84c-1c67-445f-9cd8-81e8b8a14d6f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/baseline/sequence_models_tutorial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/eval/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/eval/dataset.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/eval/erfnet.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/eval/erfnet_nobn.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/eval/eval_cityscapes_color.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/eval/eval_cityscapes_server.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/eval/eval_forwardTime.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/eval/eval_iou.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/eval/iouEval.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/eval/paper.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/eval/transform.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/example_segmentation.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/imagenet/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/imagenet/erfnet_imagenet.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/imagenet/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/license.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/train/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/train/dataset.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/train/erfnet.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/train/erfnet_imagenet.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/train/iouEval.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/train/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/train/transform.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/train/visualize.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/trained_models/erfnet_encoder_pretrained.pth.tar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erfnet_pytorch/trained_models/erfnet_pretrained.pth" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rc_workspace/Blank Diagram.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/Screenshot from 2018-08-13 11-28-41.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/archieve.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/camera.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/archieve/ClientStream.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/archieve/Master.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/archieve/Slave.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/archieve/centreSlave_realSDK.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/archieve/ffmpeg_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/archieve/only_realsense.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/archieve/realMaster2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/archieve/recorder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/archieve/single_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/archieve/webcam_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/test/left_single_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/test/right_single_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rc_workspace/hardward_setup.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../share_notes/log.md" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,6 +34,7 @@
     <session id="81841102">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -67,8 +56,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/baseline/sequence_models_tutorial.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="185" selection-start-line="185" selection-end-line="185" />
+            <state relative-caret-position="685">
+              <caret line="182" column="18" selection-start-line="182" selection-start-column="18" selection-end-line="182" selection-end-column="18" />
               <folding>
                 <element signature="e#2045#2057#0" expanded="true" />
               </folding>
@@ -183,6 +172,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1987" y="25" width="2493" height="1415" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13526767" />
@@ -196,7 +186,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -230,8 +220,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/baseline/sequence_models_tutorial.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="185" selection-start-line="185" selection-end-line="185" />
+        <state relative-caret-position="685">
+          <caret line="182" column="18" selection-start-line="182" selection-start-column="18" selection-end-line="182" selection-end-column="18" />
           <folding>
             <element signature="e#2045#2057#0" expanded="true" />
           </folding>

@@ -28,7 +28,8 @@ client = Client(('localhost', port_num), authkey=b'peekaboo')
 cap = cv2.VideoCapture(device)
 cap.set(3, resolution[0])
 cap.set(4, resolution[1])
-
+bool_retrieve = cap.grab()
+ret, frame = cap.retrieve()
 # =====================================
 # Init value
 # =====================================
@@ -44,6 +45,7 @@ try:
         start_time = time.time()
         msg = client.recv().split(':')
         bool_retrieve = cap.grab()
+        previous_frame=frame
         ret, frame = cap.retrieve()
         if bool_retrieve:
             if msg[0] == 'Iter':
@@ -68,15 +70,18 @@ try:
                     print('Waiting', end='   ')
                     print(str(round(1/(time.time()-start_time),1)) )
         else:
-            print('hehe')
+            out.write(previous_frame)
+            out.write(previous_frame)
+            out.write(previous_frame)
+            out.write(previous_frame)
             cap.release()
             cap = cv2.VideoCapture(device)
             cap.set(3, resolution[0])
             cap.set(4, resolution[1])
-            time.sleep(0.4)
         #if (now - start_time) < frequence:time.sleep(frequence - ((now - start_time) % frequence))
         
 
 finally:
     out.release()
     cap.release()
+

@@ -52,17 +52,16 @@ steer_range = [976, 1976]
 camera_left = '/media/nvidia/Files/Left/'
 camera_right = '/media/nvidia/Files/Right/'
 camera_centre = '/media/nvidia/Files/Centre/'
+Command_file='/media/nvidia/Files/Command/'
 createFolder(camera_left)
 createFolder(camera_right)
 createFolder(camera_centre)
+createFolder(Command_file)
 # =====================================
 # CSV
 # =====================================
 import csv
-f = open('/media/nvidia/Files/data_c.csv', 'w')
-fnames = ['name', 'steering', 'speed', 'category']
-writer = csv.DictWriter(f, fieldnames=fnames)
-writer.writeheader()
+f = open(Command_file+ '0_command.csv', 'w')
 # =====================================
 # Init value
 # =====================================
@@ -73,7 +72,7 @@ iter_num = 0
 ch3_pre = 1000
 flag=0
 situation=0
-
+frame_index=0
 # =====================================
 # Network Configuration
 # =====================================
@@ -105,13 +104,20 @@ try:
             end_time = time.time()
             if end_time-start_time>0.1:
                 if situation==1 and flag==0:
+                    frame_index=0
                     flag=1
                     print('enter')
                     iter_num = iter_num + 1
                     broadcastMsg('Iter:' + str(iter_num))
+                    f.close()
+                    f = open(Command_file+ str(iter_num)+'_command.csv', 'w')
+                    fnames = ['frame', 'steering', 'speed', 'category']
+                    writer = csv.DictWriter(f, fieldnames=fnames)
+                    writer.writeheader()
                     time.sleep(0.1)
                 if ch3_pre > 1500 and flag==1:
-                    data = {'name': iter_num,'steering': ch1,'speed': ch2,'category': 0}
+                    frame_index=frame_index+1
+                    data = {'frame': frame_index,'steering': ch1,'speed': ch2,'category': 0}
                     broadcastMsg('Save')
                     writer.writerow(data)
                 else:

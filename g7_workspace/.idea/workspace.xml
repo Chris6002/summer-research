@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7de7e84c-1c67-445f-9cd8-81e8b8a14d6f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../rc_workspace/Blank Diagram.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/Screenshot from 2018-08-13 11-28-41.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/archieve.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/camera.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/archieve/ClientStream.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/archieve/Master.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/archieve/Slave.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/archieve/centreSlave_realSDK.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/archieve/ffmpeg_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/archieve/only_realsense.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/archieve/realMaster2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/archieve/recorder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/archieve/single_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/archieve/webcam_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/test/left_single_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rc_workspace/Tx2/collector/test/right_single_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rc_workspace/hardward_setup.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../share_notes/log.md" beforeDir="false" />
-    </list>
+    <list default="true" id="7de7e84c-1c67-445f-9cd8-81e8b8a14d6f" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +9,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/g7_workspace$sequence_models_tutorial.coverage" NAME="sequence_models_tutorial Coverage Results" MODIFIED="1534189964056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baseline" />
+    <SUITE FILE_PATH="coverage/g7_workspace$sequence_models_tutorial.coverage" NAME="sequence_models_tutorial Coverage Results" MODIFIED="1534350290390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baseline" />
+    <SUITE FILE_PATH="coverage/g7_workspace$generate_sine_wave.coverage" NAME="generate_sine_wave Coverage Results" MODIFIED="1534350672575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baseline/time_sequence_prediction" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="81841102">
@@ -36,30 +18,65 @@
         <counts>
           <entry key="project.closed" value="1" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="1" />
+          <entry key="py" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="1" />
+          <entry key="Python" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="Python Console" value="36" />
+          <entry key="py" value="66" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Python" value="102" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/baseline/sequence_models_tutorial.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="685">
-              <caret line="182" column="18" selection-start-line="182" selection-start-column="18" selection-end-line="182" selection-end-column="18" />
+            <state relative-caret-position="2432">
+              <caret line="155" column="43" selection-start-line="155" selection-start-column="34" selection-end-line="155" selection-end-column="43" />
               <folding>
                 <element signature="e#2045#2057#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/baseline/time_sequence_prediction/train.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/baseline/time_sequence_prediction/generate_sine_wave.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" column="8" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -70,6 +87,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/baseline/time_sequence_prediction/generate_sine_wave.py" />
+      </list>
+    </option>
+  </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
@@ -77,9 +101,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2330" />
+    <option name="x" value="1496" />
     <option name="y" value="27" />
-    <option name="width" value="1390" />
+    <option name="width" value="1380" />
     <option name="height" value="1000" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -102,6 +126,12 @@
               <item name="g7_workspace" type="b2602c69:ProjectViewProjectNode" />
               <item name="g7_workspace" type="462c0819:PsiDirectoryNode" />
               <item name="baseline" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="g7_workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="g7_workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="baseline" type="462c0819:PsiDirectoryNode" />
+              <item name="time_sequence_prediction" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -128,7 +158,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.generate_sine_wave">
+    <configuration name="generate_sine_wave" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="g7_workspace" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/baseline/time_sequence_prediction" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/baseline/time_sequence_prediction/generate_sine_wave.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="sequence_models_tutorial" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="g7_workspace" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -151,8 +203,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.sequence_models_tutorial" />
+      <item itemvalue="Python.generate_sine_wave" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.generate_sine_wave" />
         <item itemvalue="Python.sequence_models_tutorial" />
       </list>
     </recent_temporary>
@@ -174,27 +231,27 @@
     <frame x="1987" y="25" width="2493" height="1415" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13526767" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13649367" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3299611" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="SciView" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.32979158" />
+      <window_info anchor="right" id="Database" order="4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,6 +268,11 @@
           <line>149</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/baseline/time_sequence_prediction/generate_sine_wave.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -220,10 +282,29 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/baseline/sequence_models_tutorial.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="685">
-          <caret line="182" column="18" selection-start-line="182" selection-start-column="18" selection-end-line="182" selection-end-column="18" />
+        <state relative-caret-position="2432">
+          <caret line="155" column="43" selection-start-line="155" selection-start-column="34" selection-end-line="155" selection-end-column="43" />
           <folding>
             <element signature="e#2045#2057#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baseline/time_sequence_prediction/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baseline/time_sequence_prediction/generate_sine_wave.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="8" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>

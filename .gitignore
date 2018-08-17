@@ -1,7 +1,4 @@
 g7_workspace/dataset/*
 g7_workspace/temp/*
-<<<<<<< HEAD
 !*/file_arranger.py
-=======
 */.DS_Store
->>>>>>> 32f33c5ea845533083665478ba45d2df4bb57c2f

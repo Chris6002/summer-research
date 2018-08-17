@@ -10,3 +10,12 @@
 # Refine
 7. hierarchical
 8. Dagger
+
+
+# Network
+0. dataloader
+1. CNN
+2. C3D
+3. Seg+LSTM
+# Dataset
+0. eastman quad

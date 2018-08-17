@@ -1,2 +1,3 @@
 g7_workspace/dataset/*
 g7_workspace/temp/*
+!*/file_arranger.py

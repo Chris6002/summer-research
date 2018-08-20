@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7de7e84c-1c67-445f-9cd8-81e8b8a14d6f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/baseline/time_sequence_prediction/generate_sine_wave.py" beforeDir="false" afterPath="$PROJECT_DIR$/baseline/time_sequence_prediction/generate_sine_wave.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/baseline/time_sequence_prediction/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/baseline/time_sequence_prediction/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file_arrange.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../preprocessing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,72 +23,81 @@
         <counts>
           <entry key="project.closed" value="1" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.6" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="3" />
+          <entry key="py" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="3" />
+          <entry key="Python" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="46" />
-          <entry key="py" value="107" />
+          <entry key="Python Console" value="68" />
+          <entry key="py" value="223" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="153" />
+          <entry key="Python" value="291" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/baseline/sequence_models_tutorial.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1919">
-              <caret line="155" column="43" selection-start-line="155" selection-start-column="34" selection-end-line="155" selection-end-column="43" />
-              <folding>
-                <element signature="e#2045#2057#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/baseline/time_sequence_prediction/train.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1235">
-              <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/baseline/time_sequence_prediction/generate_sine_wave.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/dataset/test.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="171">
+                  <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+                  <folding>
+                    <element signature="e#0#20#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/dataset/preprocessing.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="226">
+                  <caret line="193" column="29" selection-start-line="193" selection-start-column="29" selection-end-line="193" selection-end-column="29" />
+                  <folding>
+                    <element signature="e#0#9#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/dataset/preprocessing.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="456">
+                  <caret line="213" selection-start-line="213" selection-end-line="228" selection-end-column="48" />
+                  <folding>
+                    <element signature="e#0#9#0" expanded="true" />
+                    <marker date="1534781701064" expanded="true" signature="7459:7525" ph="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -98,6 +107,8 @@
       <list>
         <option value="$PROJECT_DIR$/baseline/time_sequence_prediction/generate_sine_wave.py" />
         <option value="$PROJECT_DIR$/baseline/time_sequence_prediction/train.py" />
+        <option value="$PROJECT_DIR$/dataset/test.py" />
+        <option value="$PROJECT_DIR$/dataset/preprocessing.py" />
       </list>
     </option>
   </component>
@@ -107,10 +118,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="y" value="-2" />
-    <option name="width" value="1920" />
-    <option name="height" value="1082" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1987" />
+    <option name="y" value="25" />
+    <option name="width" value="2493" />
+    <option name="height" value="1415" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -120,7 +132,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -131,18 +142,13 @@
             <path>
               <item name="g7_workspace" type="b2602c69:ProjectViewProjectNode" />
               <item name="g7_workspace" type="462c0819:PsiDirectoryNode" />
-              <item name="baseline" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="g7_workspace" type="b2602c69:ProjectViewProjectNode" />
-              <item name="g7_workspace" type="462c0819:PsiDirectoryNode" />
-              <item name="baseline" type="462c0819:PsiDirectoryNode" />
-              <item name="time_sequence_prediction" type="462c0819:PsiDirectoryNode" />
+              <item name="dataset" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -258,9 +264,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="1055" extended-state="7" />
+    <frame x="1987" y="25" width="2493" height="1415" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18483675" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14303228" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -275,11 +281,11 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="bottom" id="Python Console" order="12" visible="true" weight="0.3299611" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.36635306" />
+      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.053943604" />
       <window_info anchor="right" id="Database" order="4" />
     </layout>
   </component>
@@ -293,14 +299,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/baseline/sequence_models_tutorial.py</url>
-          <line>149</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/baseline/time_sequence_prediction/generate_sine_wave.py</url>
           <line>12</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dataset/preprocessing.py</url>
+          <line>205</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -311,7 +317,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/baseline/sequence_models_tutorial.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1919">
+        <state relative-caret-position="862">
           <caret line="155" column="43" selection-start-line="155" selection-start-column="34" selection-end-line="155" selection-end-column="43" />
           <folding>
             <element signature="e#2045#2057#0" expanded="true" />
@@ -331,10 +337,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/baseline/time_sequence_prediction/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1235">
+        <state relative-caret-position="864">
           <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/preprocessing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="213" selection-start-line="213" selection-end-line="228" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <marker date="1534781701064" expanded="true" signature="7459:7525" ph="..." />
           </folding>
         </state>
       </provider>

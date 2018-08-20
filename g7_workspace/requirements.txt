@@ -3,7 +3,7 @@
 # platform: linux-64
 blas=1.0=mkl
 bzip2=1.0.6=h470a237_2
-ca-certificates=2018.8.13=ha4d7672_0
+ca-certificates=2018.03.07=0
 certifi=2018.8.13=py36_0
 cffi=1.11.5=py36h9745a5d_0
 cudatoolkit=9.0=h13b8566_0
@@ -31,12 +31,15 @@ numpy=1.15.0=py36h1b885b7_0
 numpy-base=1.15.0=py36h3dfced4_0
 olefile=0.45.1=py36_0
 openh264=1.7.0=0
-openssl=1.0.2o=h470a237_1
+openssl=1.0.2p=h14c3975_0
+pandas=0.23.4=py36h04863e7_0
 pillow=5.2.0=py36_0
 pip=10.0.1=py36_0
 pycparser=2.18=py36_1
 python=3.6.6=hc3d631a_0
+python-dateutil=2.7.3=py36_0
 pytorch=0.4.1=py36_cuda9.0.176_cudnn7.1.2_1
+pytz=2018.5=py36_0
 readline=7.0=ha6073c6_4
 setuptools=40.0.0=py36_0
 six=1.11.0=py36_1

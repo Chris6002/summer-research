@@ -1,8 +1,9 @@
+__pycache__/
+.DS_Store/
+.idea/
+
 g7_workspace/data/raw_data
 g7_workspace/data/dataset
-__pycache__/
-!g7_workspace/data/Arranger.py
-!g7_workspace/data/preprocessing.py
 g7_workspace/model/baseline/erfnet_pytorch/cityscapes/
-.DS_Store
+
 

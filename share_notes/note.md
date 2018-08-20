@@ -69,3 +69,6 @@ https://arxiv.org/pdf/1710.02543.pdf
 
 
 
+find . -name .DS_Store -print0 | xargs -0 git rm -f --ignore-unmatch
+find . -name .idea -print0 | xargs -0 git rm -rf --ignore-unmatch
+find . -name __pycache__ -print0 | xargs -0 git rm -rf --ignore-unmatch

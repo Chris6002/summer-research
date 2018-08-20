@@ -5,30 +5,23 @@ video_path = current_folder + '/video'
 command_path = current_folder + '/command'
 temp_path = current_folder + '/temp'
 
-
-
-
-
-
 # unzip files
 
 import zipfile
 
 for i in range(2):
     zipfiles = [zipf for zipf in os.listdir(temp_path) if 'zip' in zipf]
-    if len(zipfiles)>0:
+    if len(zipfiles) > 0:
         for name in zipfiles:
-            file_path = temp_path+'/'+name
+            file_path = temp_path + '/' + name
             f = zipfile.ZipFile(file_path)
-            print('extracing:  '+name)
+            print('extracing:  ' + name)
             f.extractall(temp_path)
             f.close()
             os.remove(file_path)
         print('Unzip all zips')
     else:
         print("No zip files")
-
-
 
 
 def read_dir(dirPath):
@@ -52,12 +45,11 @@ def read_dir(dirPath):
 
 # get start index
 
-
 saved_file = read_dir(video_path)
 index_start = max(
     map(int, [name.split('/')[-1].split('_')[0]
               for name in saved_file])) + 1 if saved_file else 1
-print("Already have "+str(index_start-1)+" videos")
+print("Already have " + str(index_start - 1) + " videos")
 temp_file = read_dir(temp_path)
 
 dir_name = {'Left': [], 'Right': [], 'Centre': []}
@@ -67,7 +59,6 @@ dir_name['Centre'] = [
 ]
 for a in dir_name['Centre']:
     print(a)
-
 
 # move files
 for index, name in enumerate(dir_name['Centre']):

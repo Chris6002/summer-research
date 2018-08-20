@@ -67,9 +67,5 @@ https://arxiv.org/pdf/1710.02543.pdf
 
 
 
-# lib
-
-conda install pytorch torchvision -c pytorch
-conda install ffmpeg -c conda-forge
 
 

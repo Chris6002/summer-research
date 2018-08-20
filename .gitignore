@@ -2,7 +2,3 @@ g7_workspace/dataset
 !g7_workspace/dataset/Arranger.py
 !g7_workspace/dataset/preprocessing.py
 g7_workspace/model/baseline/erfnet_pytorch/cityscapes/
-g7_workspace/temp/*
-
-.DS_Store
-

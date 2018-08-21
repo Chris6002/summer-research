@@ -72,3 +72,7 @@ https://arxiv.org/pdf/1710.02543.pdf
 find . -name .DS_Store -print0 | xargs -0 git rm -f --ignore-unmatch
 find . -name .idea -print0 | xargs -0 git rm -rf --ignore-unmatch
 find . -name __pycache__ -print0 | xargs -0 git rm -rf --ignore-unmatch
+
+You can do it in Pycharm -> Preferences -> Project: XYZ -> Project Structure
+
+Select your working folder and mark it as Sources. Then Pycharm recognize the working folder as a Source folder for the project and you will be able to simply add other files within that folder by using

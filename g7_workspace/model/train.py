@@ -21,9 +21,8 @@ dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')
 # train_idx, validation_idx = indices[split:], indices[:split]
 # =============================================
 dataset=URPedestrianDataset(dataset_path, classnum=0)
-valid_idx,train_idx=misc.split_random(len(dataset))
-train_sampler = SubsetRandomSampler(train_idx)
-validation_sampler = SubsetRandomSampler(valid_idx)
+print(len(dataset))
+train_sampler,validation_sampler=misc.split_random(len(dataset))
 
 train_loader = torch.utils.data.DataLoader(dataset,
                 batch_size=4, sampler=train_sampler)
@@ -37,7 +36,7 @@ validation_loader = torch.utils.data.DataLoader(dataset,
 # Load all used net
 # =============================================
 
-net=model.Net()
+net=model.BasicResNet()
 
 
 # =============================================
@@ -46,7 +45,7 @@ net=model.Net()
 
 import torch.optim as optim
 
-criterion = nn.CrossEntropyLoss()
+criterion = nn.KLDivLoss()
 optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
 
 
@@ -57,16 +56,19 @@ optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
 for epoch in range(2):  # loop over the dataset multiple times
 
     running_loss = 0.0
-    for i, data in enumerate(trainloader, 0):
+    for i, data in enumerate(train_loader):
         # get the inputs
-        inputs, labels = data
+        inputs = data['frame']
+        labels=data['steer']-976
+        onehot=misc.one_hot_embedding(labels,1000).double()
+        print(onehot.type())
 
         # zero the parameter gradients
         optimizer.zero_grad()
 
         # forward + backward + optimize
         outputs = net(inputs)
-        loss = criterion(outputs, labels)
+        loss = criterion(outputs, onehot)
         loss.backward()
         optimizer.step()
 
@@ -85,7 +87,7 @@ print('Finished Training')
 correct = 0
 total = 0
 with torch.no_grad():
-    for data in testloader:
+    for data in validation_loader:
         images, labels = data
         outputs = net(images)
         _, predicted = torch.max(outputs.data, 1)

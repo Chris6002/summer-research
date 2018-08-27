@@ -1,5 +1,6 @@
 import torch.nn as nn
 import torch.nn.functional as F
+import torchvision
 
 
 class Net(nn.Module):
@@ -19,4 +20,21 @@ class Net(nn.Module):
         x = F.relu(self.fc1(x))
         x = F.relu(self.fc2(x))
         x = self.fc3(x)
+        return x
+
+
+class BasicResNet(nn.Module):
+    def __init__(self):
+        super(BasicResNet, self).__init__()
+        self.conv1 = nn.Conv2d(3, 64, (15, 20), stride=(4, 5), padding=(4, 6), dilation=(3, 5))
+        self.soft = nn.Softmax()
+        Resnet = torchvision.models.resnet18(pretrained=True)
+        for param in Resnet.parameters():
+            param.requires_grad = False
+        Resnet.conv1 = self.conv1
+        self.Resnet_feature = Resnet
+
+    def forward(self, x):
+        x = self.Resnet_feature(x).double()
+        x = self.soft(x)
         return x

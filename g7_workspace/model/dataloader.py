@@ -1,6 +1,6 @@
 from torch.utils.data import Dataset, DataLoader
 import os
-
+import torchvision.transforms as transforms
 import pandas
 from PIL import Image
 
@@ -16,9 +16,9 @@ class URPedestrianDataset(Dataset):
         self.frame_root = video_folder
         self.command_root = command_folder
         self.frame_list = self._get_sorted_framelist(video_folder)
-        if os.path.exists(join(command_folder, 'all_three.csv')):
-            self.command_list = pandas.read_csv(join(command_folder, 'all_three.csv'))
-
+        if os.path.exists(os.path.join(command_folder, 'all_three.csv')):
+            self.command_list = pandas.read_csv(os.path.join(command_folder, 'all_three.csv'))
+        self.transform = transforms.Compose([transforms.ToTensor()])
     def _get_sorted_framelist(self, path):
         def sort_func(e):
             """video_num,frame,camera"""
@@ -46,7 +46,7 @@ class URPedestrianDataset(Dataset):
         label=self.command_list.iloc[item]['steering']
         path=os.path.join(self.frame_root, f"{name}_{frame:06d}.jpg")
         frame=Image.open(path)
-        sample={'frame':frame,'steer':label}
+        sample={'frame':self.transform(frame),'steer':label}
         return sample
 
 

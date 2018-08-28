@@ -5,7 +5,7 @@ from torch.utils.data.sampler import SubsetRandomSampler
 
 def split_random(num_frame):
     indices = list(range(num_frame))
-    num_train = round(num_frame * 0.7)
+    num_train = round(num_frame * 0.1)
     num_valid = round(num_frame * 0.2)
     valid_idx = np.random.choice(indices, size=num_valid, replace=False)
     train_idx = np.random.choice(list(set(indices) - set(valid_idx)), size=num_train, replace=False)
@@ -13,6 +13,13 @@ def split_random(num_frame):
     validation_sampler = SubsetRandomSampler(valid_idx)
     return train_sampler, validation_sampler
 
+def limit_value(n, minn, maxn):
+    return max(min(maxn, n), minn)
+def limit_value_tensor(n, minn, maxn):
+    buffer=[]
+    for i in n:
+        buffer.append(max(min(maxn, i.item()), minn))
+    return torch.LongTensor(buffer)
 
 def one_hot_embedding(label_list, class_num):
     """Embedding labels to one-hot form.
@@ -27,10 +34,13 @@ def one_hot_embedding(label_list, class_num):
 
     eye_vec = torch.eye(class_num)
     if len(label_list) == 1:
-        onehot = eye_vec[label_list[0]].view(1,-1)
+        index=limit_value(label_list[0],0,999)
+        onehot = eye_vec[index].view(1,-1)
     else:
-        onehot = eye_vec[label_list[0]].view(1,-1)
+        index = limit_value(label_list[0], 0, 999)
+        onehot = eye_vec[index].view(1,-1)
         for i in range(len(label_list)-1):
-            label=eye_vec[label_list[i+1]].view(1,-1)
+            index=limit_value(label_list[0], 0, 999)
+            label=eye_vec[index].view(1,-1)
             onehot=torch.cat((onehot,label),0)
     return onehot.double()

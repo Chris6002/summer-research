@@ -1,7 +1,8 @@
 import torch
 from torchvision import models
 
-# Resnet = models.resnet18(pretrained=True)
+Resnet = models.resnet18(pretrained=True)
+print(Resnet)
 # image = torch.zeros(1, 3, 224, 224)
 # print(Resnet.conv1(image).shape)
 # image = torch.zeros(1, 3, 640, 480)
@@ -21,6 +22,6 @@ from torchvision import models
 # a=torch.empty(3, dtype=torch.long).random_(5)
 # print(loss_ce(input,target))
 
-import misc
-a=[0,1,2]
-print(misc.one_hot_embedding(a,3))
+# import misc
+# a=[0,1,2]
+# print(misc.one_hot_embedding(a,3))

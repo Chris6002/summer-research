@@ -29,13 +29,13 @@ class BasicResNet(nn.Module):
         super(BasicResNet, self).__init__()
         self.conv1 = nn.Conv2d(3, 64, (15, 20), stride=(4, 5), padding=(4, 6), dilation=(3, 5))
         Resnet = torchvision.models.resnet18(pretrained=True)
-        for param in Resnet.parameters():
-            param.requires_grad = False
+        # for param in Resnet.parameters():
+        #     param.requires_grad = False
         Resnet.conv1 = self.conv1
         self.Resnet_feature = Resnet
 
     def forward(self, x):
         x = self.Resnet_feature(x).double()
-        x = F.softmax(x,dim=1)
+        # x = F.log_softmax(x,dim=1)
 
         return x

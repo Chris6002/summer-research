@@ -117,6 +117,8 @@ try:
                     time.sleep(0.1)
                 if ch3_pre > 1500 and flag==1:
                     frame_index=frame_index+1
+                    ch1 = limitValue(ch1, steer_range[0], steer_range[1])
+                    ch2 = limitValue(ch2, speed_range[0], speed_range[1])
                     data = {'frame': frame_index,'steering': ch1,'speed': ch2,'category': 0}
                     broadcastMsg('Save')
                     writer.writerow(data)

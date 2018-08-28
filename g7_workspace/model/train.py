@@ -2,6 +2,7 @@ from os.path import dirname, abspath, join
 from dataloader import URPedestrianDataset
 import numpy as np
 import misc
+import time
 import torch
 import model
 import torch.nn as nn
@@ -17,7 +18,7 @@ dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')
 # train_idx, validation_idx = indices[split:], indices[:split]
 # =============================================
 dataset = URPedestrianDataset(dataset_path, classnum=0)
-print(len(dataset))
+
 train_sampler, validation_sampler = misc.split_random(len(dataset))
 
 train_loader = torch.utils.data.DataLoader(dataset,
@@ -29,8 +30,9 @@ validation_loader = torch.utils.data.DataLoader(dataset,
 # =============================================
 # Load all used net
 # =============================================
-
-net = model.BasicResNet()
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+print("Current using "+str(device))
+net = model.BasicResNet().to(device)
 
 # =============================================
 # Define a Loss function and optimizer
@@ -49,10 +51,11 @@ for epoch in range(2):  # loop over the dataset multiple times
 
     running_loss = 0.0
     for i, data in enumerate(train_loader):
+        start_time=time.time()
         # get the inputs
         inputs = data['frame']
-        labels = data['steer'] - 976
-        onehot = misc.one_hot_embedding(labels, class_num=1000).double()
+        labels = misc.one_hot_embedding(data['steer'] - 976, class_num=1000).double()
+        inputs, labels = inputs.to(device), labels.to(device)
         # print(onehot.type())
 
         # zero the parameter gradients
@@ -60,7 +63,7 @@ for epoch in range(2):  # loop over the dataset multiple times
 
         # forward + backward + optimize
         outputs = net(inputs)
-        loss = criterion(outputs, onehot)
+        loss = criterion(outputs, labels)
         loss.backward()
         optimizer.step()
 
@@ -70,7 +73,7 @@ for epoch in range(2):  # loop over the dataset multiple times
             print('[%d, %5d] loss: %.3f' %
                   (epoch + 1, i + 1, running_loss / 2000))
             running_loss = 0.0
-
+        print(round(1/(time.time()-start_time)))
 print('Finished Training')
 # =============================================
 # 4. Test the network
@@ -84,7 +87,7 @@ with torch.no_grad():
         outputs = net(images)
         _, predicted = torch.max(outputs.data, 1)
         total += labels.size(0)
-        correct += (predicted == labels).sum().item()
+        correct += (abs(predicted - labels)<25).sum().item()
 
 print('Accuracy of the network on the 10000 test images: %d %%' % (
         100 * correct / total))

@@ -5,7 +5,7 @@ from torch.utils.data.sampler import SubsetRandomSampler
 
 def split_random(num_frame):
     indices = list(range(num_frame))
-    num_train = round(num_frame * 0.1)
+    num_train = round(num_frame * 0.7)
     num_valid = round(num_frame * 0.2)
     valid_idx = np.random.choice(indices, size=num_valid, replace=False)
     train_idx = np.random.choice(list(set(indices) - set(valid_idx)), size=num_train, replace=False)
@@ -20,7 +20,9 @@ def limit_value_tensor(n, minn, maxn):
     for i in n:
         buffer.append(max(min(maxn, i.item()), minn))
     return torch.LongTensor(buffer)
-
+def accuracy(predicted,true,batch_size):
+    correct=(abs(predicted - true) < 25).sum().item()
+    return round(correct/batch_size*100,2)
 def one_hot_embedding(label_list, class_num):
     """Embedding labels to one-hot form.
 

@@ -2,7 +2,9 @@ import torch
 from torchvision import models
 
 Resnet = models.resnet18(pretrained=True)
-print(Resnet)
+# print(Resnet)
+for i,child in enumerate(Resnet.children()):
+    print(i,child)
 # image = torch.zeros(1, 3, 224, 224)
 # print(Resnet.conv1(image).shape)
 # image = torch.zeros(1, 3, 640, 480)

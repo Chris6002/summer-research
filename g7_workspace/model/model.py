@@ -29,8 +29,13 @@ class BasicResNet(nn.Module):
         super(BasicResNet, self).__init__()
         self.conv1 = nn.Conv2d(3, 64, (15, 20), stride=(4, 5), padding=(4, 6), dilation=(3, 5))
         Resnet = torchvision.models.resnet18(pretrained=True)
-        # for param in Resnet.parameters():
-        #     param.requires_grad = False
+        for index,child in enumerate(Resnet.children()):
+            if index < 6:
+                print("child ", index, " was frozen")
+                for param in child.parameters():
+                    param.requires_grad = False
+            else:
+                print("child ", index, " was not frozen")
         Resnet.conv1 = self.conv1
         self.Resnet_feature = Resnet
 

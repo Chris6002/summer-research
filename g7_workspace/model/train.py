@@ -24,7 +24,7 @@ dataset = URPedestrianDataset(dataset_path, classnum=0)
 train_sampler, validation_sampler = misc.split_random(len(dataset))
 
 train_loader = torch.utils.data.DataLoader(dataset,
-                                           batch_size=16, sampler=train_sampler)
+                                           batch_size=32, sampler=train_sampler)
 
 validation_loader = torch.utils.data.DataLoader(dataset,
                                                 batch_size=2, sampler=validation_sampler)
@@ -43,7 +43,7 @@ net = model.BasicResNet().to(device)
 import torch.optim as optim
 
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(net.parameters(), lr=0.01, betas=(0.9,0.99))
+optimizer = optim.Adam(net.parameters(), lr=0.001, betas=(0.9,0.99))
 
 # =============================================
 # 4. Train the network
@@ -74,9 +74,11 @@ for epoch in range(2):  # loop over the dataset multiple times
         plt.show()
         _, predicted = torch.max(outputs.data, 1)
         # print(predicted.cpu().numpy()-num.cpu().numpy())
+
+        print("epoch:{0},loss:{1}".format(epoch,misc.accuracy(predicted,num,32)))
         loss = criterion(outputs, num)
         optimizer.zero_grad()
-        print("epoch:{0},loss:{1}".format(epoch,loss))
+        # print("epoch:{0},loss:{1}".format(epoch,loss))
         loss.backward()
 
         optimizer.step()
@@ -105,3 +107,58 @@ with torch.no_grad():
 
 print('Accuracy of the network on the 10000 test images: %d %%' % (
         100 * correct / total))
+def trainer(dataloader,model,criterion,optimizer,epoch_num=10):
+    batch_size=dataloader.batch_size
+    running_acc=0
+    for phase in ['train', 'val']:
+        if phase == 'train':
+            model.train()  # Set model to training mode
+        else:
+            model.eval()  # Set model to evaluate mode
+
+        # Iterate over data.
+        for inputs, labels in dataloaders[phase]:
+            inputs = inputs.to(device)
+            labels = labels.to(device)
+
+            # zero the parameter gradients
+            optimizer.zero_grad()
+
+            # forward
+            # track history if only in train
+            with torch.set_grad_enabled(phase == 'train'):
+                outputs = model(inputs)
+                _, preds = torch.max(outputs, 1)
+                loss = criterion(outputs, labels)
+
+                # backward + optimize only if in training phase
+                if phase == 'train':
+                    loss.backward()
+                    optimizer.step()
+    for epoch in range(epoch_num):
+        # training:
+        start_time=time.time()
+        print('Epoch {}/{}'.format(epoch, epoch_num - 1))
+        print('-' * 10)
+        model.train()
+        for index, data in enumerate(dataloader['train']):
+            inputs = data['frame'].to(device)
+            labels = misc.limit_value_tensor(data['steer'] - 976,0,999).to(device)
+            optimizer.zero_grad()
+            with torch.set_grad_enabled(True):
+                outputs=model(inputs)
+                loss=criterion(outputs,labels)
+                _, predicted = torch.max(outputs, 1)
+                acc=misc.accuracy(predicted,labels,batch_size)
+                loss.backward()
+                optimizer.step()
+                print("epoch:{0},training accuracy:{1}".format(epoch,acc))
+            running_acc+=acc
+        # eval:
+        for index, data in enumerate(dataloader['val']):
+            inputs = data['frame'].to(device)
+            labels = misc.limit_value_tensor(data['steer'] - 976,0,999).to(device)
+        time_elapsed=time.time()-start_time
+        print('NO.{:>2} Epoch complete in {:.0f}m {:.0f}s'.format(
+            time_elapsed // 60, time_elapsed % 60))
+

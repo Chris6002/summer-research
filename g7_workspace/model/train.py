@@ -34,9 +34,14 @@ print(len(loader['train']),len(loader['val']))
 # Load all used net
 # =============================================
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-print("Current using "+str(device))
-net = model.BasicResNet().to(device)
-
+net = model.BasicResNet()
+if torch.cuda.device_count() > 1:
+    print("Let's use", torch.cuda.device_count(), "GPUs!")
+    # dim = 0 [30, xxx] -> [10, ...], [10, ...], [10, ...] on 3 GPUs
+    net = nn.DataParallel(net)
+else:
+    print("Current using "+str(device))
+net=net.to(device)
 # =============================================
 # Define a Loss function and optimizer
 # =============================================

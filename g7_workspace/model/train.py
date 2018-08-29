@@ -59,6 +59,7 @@ def trainer(dataloader,model,criterion,optimizer,epoch_num=10):
             size_batch=dataloader[phase].batch_size
             size_data=len(dataloader[phase])
             running_acc=0
+            iteration_acc=0
             model.train() if phase == 'train' else model.eval()
             # Iterate over data.
             for index, data in enumerate(dataloader[phase]):
@@ -80,8 +81,11 @@ def trainer(dataloader,model,criterion,optimizer,epoch_num=10):
                         loss.backward()
                         optimizer.step()
                 running_acc+=acc
+                iteration_acc+=acc
                 if index % 100 == 99:
-                    print('{} Acc: {:.4f}'.format(phase, running_acc/index))
+                    print('Iteration: {}/{}'.format(index, size_data),end=' ')
+                    print('{} Acc: {:.4f}'.format(phase, iteration_acc/100))
+                    iteration_acc=0
             epoch_acc=running_acc/size_data
             time_elapsed=time.time()-start_time
             print('-' * 10)

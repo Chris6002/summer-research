@@ -49,7 +49,7 @@ else:
 import torch.optim as optim
 
 criterion = nn.CrossEntropyLoss().to(device)
-optimizer = optim.Adam(net.parameters(), lr=0.001, betas=(0.9,0.99)).to(device)
+optimizer = optim.Adam(net.parameters(), lr=0.001, betas=(0.9,0.99))
 
 
 def trainer(dataloader,model,criterion,optimizer,epoch_num=10):

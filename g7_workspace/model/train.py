@@ -80,7 +80,7 @@ def trainer(dataloader,model,criterion,optimizer,epoch_num=10):
                         loss.backward()
                         optimizer.step()
                 running_acc+=acc
-                if index % 500 == 499:
+                if index % 100 == 99:
                     print('{} Acc: {:.4f}'.format(phase, running_acc/index))
             epoch_acc=running_acc/size_data
             time_elapsed=time.time()-start_time

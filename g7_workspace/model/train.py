@@ -28,7 +28,7 @@ loader['train'] = torch.utils.data.DataLoader(dataset,
                                            batch_size=32, sampler=train_sampler)
 
 loader['val'] = torch.utils.data.DataLoader(dataset,
-                                                batch_size=2, sampler=validation_sampler)
+                                                batch_size=16, sampler=validation_sampler)
 print(len(loader['train']),len(loader['val']))
 # =============================================
 # Load all used net

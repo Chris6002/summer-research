@@ -25,8 +25,7 @@ dataset = URPedestrianDataset(dataset_path, classnum=0)
 train_sampler, validation_sampler = misc.split_random(len(dataset))
 loader={}
 loader['train'] = torch.utils.data.DataLoader(dataset,
-                                           batch_size=32, sampler=train_sampler,num_workers=4)
-
+                                           batch_size=2*32, sampler=train_sampler,num_workers=4)
 loader['val'] = torch.utils.data.DataLoader(dataset,
                                                 batch_size=16, sampler=validation_sampler)
 print(len(loader['train']),len(loader['val']))
@@ -70,7 +69,7 @@ def trainer(dataloader,model,criterion,optimizer,epoch_num=10):
             model.train() if phase == 'train' else model.eval()
             # Iterate over data.
             for index, data in enumerate(dataloader[phase]):
-                print(index)
+
                 inputs = data['frame']
                 labels = misc.limit_value_tensor(data['steer'] - 976, 0, 999)
                 # if torch.cuda.device_count() <= 1:

@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/Users/jing/anaconda3/envs/summer/bin/python"
+    "python.pythonPath": "/Users/jing/anaconda3/envs/summer/bin/python",
+    "python.formatting.provider": "black"
 }

@@ -38,10 +38,10 @@ net = model.BasicResNet()
 if torch.cuda.device_count() > 1:
     print("Let's use", torch.cuda.device_count(), "GPUs!")
     # dim = 0 [30, xxx] -> [10, ...], [10, ...], [10, ...] on 3 GPUs
-    net = nn.DataParallel(net)
+    net = nn.DataParallel(net,device_ids=[0,1,2,3])
 else:
     print("Current using "+str(device))
-net=net.to(device)
+    net=net.to(device)
 # =============================================
 # Define a Loss function and optimizer
 # =============================================

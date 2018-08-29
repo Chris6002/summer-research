@@ -69,8 +69,12 @@ def trainer(dataloader,model,criterion,optimizer,epoch_num=10):
             model.train() if phase == 'train' else model.eval()
             # Iterate over data.
             for index, data in enumerate(dataloader[phase]):
-                inputs = data['frame'].to(device)
-                labels = misc.limit_value_tensor(data['steer'] - 976,0,999).to(device)
+                inputs = data['frame']
+                labels = misc.limit_value_tensor(data['steer'] - 976, 0, 999)
+                if torch.cuda.device_count() <= 1:
+                    inputs = inputs.to(device)
+                    labels = labels.to(device)
+
 
                 # zero the parameter gradients
                 optimizer.zero_grad()

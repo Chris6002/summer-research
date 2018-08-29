@@ -3,12 +3,30 @@ import torch
 from torch.utils.data.sampler import SubsetRandomSampler
 
 
-def split_random(num_frame):
-    indices = list(range(num_frame))
-    num_train = round(num_frame * 0.7)
-    num_valid = round(num_frame * 0.2)
-    valid_idx = np.random.choice(indices, size=num_valid, replace=False)
-    train_idx = np.random.choice(list(set(indices) - set(valid_idx)), size=num_train, replace=False)
+def split_random(command_list):
+    train_ratio=0.7
+    valid_ratio=0.2
+    id_list=[[] for i in range(3000)]
+    train_idx=[]
+    valid_idx=[]
+    for index, steer in enumerate(command_list['steering']):
+        id_list[int(steer)].append(index)
+    for index,id_num in enumerate(id_list):
+        if len(id_num)> 0 and index>=976 and index<1976:
+            sample_size=len(id_num)
+            num_train = round(sample_size * 0.7)
+            num_valid = round(sample_size * 0.2)
+            # if num_train:
+            index_list=np.random.choice(id_num,size=num_train,replace=False)
+            if len(index_list)>0:
+                for i in index_list:
+                    train_idx.append(i)
+            # if num_valid > 0:
+
+            if len(list(set(id_num)-set(train_idx)))>0:
+                index_list=np.random.choice(list(set(id_num)-set(train_idx)),size=num_valid,replace=False)
+                for i in index_list:
+                    valid_idx.append(index_list)
     train_sampler = SubsetRandomSampler(train_idx)
     validation_sampler = SubsetRandomSampler(valid_idx)
     return train_sampler, validation_sampler

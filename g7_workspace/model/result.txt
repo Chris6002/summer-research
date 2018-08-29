@@ -1,5 +1,4 @@
-1567 896
-Current using cuda:0
+392 112
 child  0  was frozen
 child  1  was frozen
 child  2  was frozen
@@ -10,243 +9,566 @@ child  6  was not frozen
 child  7  was not frozen
 child  8  was not frozen
 child  9  was not frozen
+Let's use 4 GPUs!
 Epoch 0/40
 ----------
-Iteration:    99/1567  train Acc: 41.8755
-Iteration:   199/1567  train Acc: 54.5314
-Iteration:   299/1567  train Acc: 55.5940
-Iteration:   399/1567  train Acc: 57.5316
-Iteration:   499/1567  train Acc: 59.8121
-Iteration:   599/1567  train Acc: 60.1250
-Iteration:   699/1567  train Acc: 62.1872
-Iteration:   799/1567  train Acc: 64.7500
-Iteration:   899/1567  train Acc: 65.7497
-Iteration:   999/1567  train Acc: 65.8755
-Iteration:  1099/1567  train Acc: 65.0940
-Iteration:  1199/1567  train Acc: 68.3753
-Iteration:  1299/1567  train Acc: 67.9375
-Iteration:  1399/1567  train Acc: 70.2188
-Iteration:  1499/1567  train Acc: 70.0319
+Iteration:    99/392   train Acc: 55.3279
+Iteration:   199/392   train Acc: 66.4064
+Iteration:   299/392   train Acc: 68.6018
 ----------
-train complete in 8m 50s
-Acc: 62.3685
+train complete in 2m 31s
+Acc: 64.9374
 ----------
-Iteration:    99/896   val Acc: 70.3125
-Iteration:   199/896   val Acc: 68.4375
-Iteration:   299/896   val Acc: 69.3750
-Iteration:   399/896   val Acc: 70.0625
-Iteration:   499/896   val Acc: 68.0625
-Iteration:   599/896   val Acc: 69.7500
-Iteration:   699/896   val Acc: 68.7500
-Iteration:   799/896   val Acc: 70.5000
+Iteration:    99/112   val Acc: 69.1567
 ----------
-val complete in 2m 33s
-Acc: 69.6010
+val complete in 0m 37s
+Acc: 69.0296
 ----------
 Epoch 1/40
 ----------
-Iteration:    99/1567  train Acc: 71.5624
-Iteration:   199/1567  train Acc: 69.6561
-Iteration:   299/1567  train Acc: 72.1559
-Iteration:   399/1567  train Acc: 72.6876
-Iteration:   499/1567  train Acc: 72.5316
-Iteration:   599/1567  train Acc: 72.6565
-Iteration:   699/1567  train Acc: 72.1254
-Iteration:   799/1567  train Acc: 72.4373
-Iteration:   899/1567  train Acc: 74.0625
-Iteration:   999/1567  train Acc: 72.3119
-Iteration:  1099/1567  train Acc: 74.9686
-Iteration:  1199/1567  train Acc: 72.4055
-Iteration:  1299/1567  train Acc: 73.1252
-Iteration:  1399/1567  train Acc: 73.6872
-Iteration:  1499/1567  train Acc: 74.7499
+Iteration:    99/392   train Acc: 72.0785
+Iteration:   199/392   train Acc: 73.2655
+Iteration:   299/392   train Acc: 73.3671
 ----------
-train complete in 8m 58s
-Acc: 72.8023
+train complete in 2m 15s
+Acc: 73.2203
 ----------
-Iteration:    99/896   val Acc: 72.8750
-Iteration:   199/896   val Acc: 73.8750
-Iteration:   299/896   val Acc: 72.7500
-Iteration:   399/896   val Acc: 75.8750
-Iteration:   499/896   val Acc: 73.9375
-Iteration:   599/896   val Acc: 74.1250
-Iteration:   699/896   val Acc: 74.6250
-Iteration:   799/896   val Acc: 74.6875
+Iteration:    99/112   val Acc: 72.8746
 ----------
-val complete in 2m 37s
-Acc: 73.9118
+val complete in 0m 37s
+Acc: 72.9279
 ----------
 Epoch 2/40
 ----------
-Iteration:    99/1567  train Acc: 74.2188
-Iteration:   199/1567  train Acc: 74.4686
-Iteration:   299/1567  train Acc: 75.5618
-Iteration:   399/1567  train Acc: 76.5628
-Iteration:   499/1567  train Acc: 75.9379
-Iteration:   599/1567  train Acc: 75.6876
-Iteration:   699/1567  train Acc: 74.7187
-Iteration:   799/1567  train Acc: 75.5316
-Iteration:   899/1567  train Acc: 75.7810
-Iteration:   999/1567  train Acc: 75.9067
-Iteration:  1099/1567  train Acc: 74.8743
-Iteration:  1199/1567  train Acc: 76.0939
-Iteration:  1299/1567  train Acc: 76.6251
-Iteration:  1399/1567  train Acc: 75.4064
-Iteration:  1499/1567  train Acc: 75.4379
+Iteration:    99/392   train Acc: 75.6016
+Iteration:   199/392   train Acc: 75.7187
+Iteration:   299/392   train Acc: 75.7494
 ----------
-train complete in 8m 52s
-Acc: 75.5066
+train complete in 2m 17s
+Acc: 75.7233
 ----------
-Iteration:    99/896   val Acc: 76.2500
-Iteration:   199/896   val Acc: 77.3125
-Iteration:   299/896   val Acc: 76.3750
-Iteration:   399/896   val Acc: 75.0000
-Iteration:   499/896   val Acc: 74.6250
-Iteration:   599/896   val Acc: 75.3125
-Iteration:   699/896   val Acc: 75.3750
-Iteration:   799/896   val Acc: 76.4375
+Iteration:    99/112   val Acc: 74.1562
 ----------
-val complete in 2m 33s
-Acc: 75.8440
+val complete in 0m 37s
+Acc: 73.9118
 ----------
 Epoch 3/40
 ----------
-Iteration:    99/1567  train Acc: 76.9061
-Iteration:   199/1567  train Acc: 77.8437
-Iteration:   299/1567  train Acc: 76.7186
-Iteration:   399/1567  train Acc: 77.6243
-Iteration:   499/1567  train Acc: 76.7499
-Iteration:   599/1567  train Acc: 77.3435
-Iteration:   699/1567  train Acc: 77.6562
-Iteration:   799/1567  train Acc: 78.0308
-Iteration:   899/1567  train Acc: 77.0314
-Iteration:   999/1567  train Acc: 76.3125
-Iteration:  1099/1567  train Acc: 76.9683
-Iteration:  1199/1567  train Acc: 78.3437
-Iteration:  1299/1567  train Acc: 76.4683
-Iteration:  1399/1567  train Acc: 77.4996
-Iteration:  1499/1567  train Acc: 77.3124
+Iteration:    99/392   train Acc: 77.2734
+Iteration:   199/392   train Acc: 78.5149
+Iteration:   299/392   train Acc: 77.7963
 ----------
-train complete in 8m 54s
-Acc: 77.2294
+train complete in 2m 16s
+Acc: 77.7619
 ----------
-Iteration:    99/896   val Acc: 76.1875
-Iteration:   199/896   val Acc: 75.1875
-Iteration:   299/896   val Acc: 76.4375
-Iteration:   399/896   val Acc: 76.0000
-Iteration:   499/896   val Acc: 76.0000
-Iteration:   599/896   val Acc: 75.2500
-Iteration:   699/896   val Acc: 76.2500
-Iteration:   799/896   val Acc: 77.3750
+Iteration:    99/112   val Acc: 75.6025
 ----------
-val complete in 2m 33s
-Acc: 76.0533
+val complete in 0m 38s
+Acc: 75.5031
 ----------
 Epoch 4/40
 ----------
-Iteration:    99/1567  train Acc: 79.6251
-Iteration:   199/1567  train Acc: 80.1251
-Iteration:   299/1567  train Acc: 79.1556
-Iteration:   399/1567  train Acc: 79.9059
-Iteration:   499/1567  train Acc: 79.2179
-Iteration:   599/1567  train Acc: 78.2503
-Iteration:   699/1567  train Acc: 80.0005
-Iteration:   799/1567  train Acc: 80.2491
-Iteration:   899/1567  train Acc: 80.0312
-Iteration:   999/1567  train Acc: 79.1249
-Iteration:  1099/1567  train Acc: 78.7498
-Iteration:  1199/1567  train Acc: 79.6563
-Iteration:  1299/1567  train Acc: 79.7186
-Iteration:  1399/1567  train Acc: 78.9688
-Iteration:  1499/1567  train Acc: 78.6561
+Iteration:    99/392   train Acc: 81.1325
+Iteration:   199/392   train Acc: 79.9448
+Iteration:   299/392   train Acc: 80.2336
 ----------
-train complete in 8m 50s
-Acc: 79.3812
+train complete in 2m 16s
+Acc: 80.2769
 ----------
-Iteration:    99/896   val Acc: 76.5000
-Iteration:   199/896   val Acc: 77.1875
-Iteration:   299/896   val Acc: 75.7500
-Iteration:   399/896   val Acc: 77.1250
-Iteration:   499/896   val Acc: 77.1875
-Iteration:   599/896   val Acc: 77.8750
-Iteration:   699/896   val Acc: 75.6875
-Iteration:   799/896   val Acc: 76.7500
+Iteration:    99/112   val Acc: 75.8903
 ----------
-val complete in 2m 33s
-Acc: 76.5346
+val complete in 0m 37s
+Acc: 75.6414
 ----------
 Epoch 5/40
 ----------
-Iteration:    99/1567  train Acc: 82.5942
-Iteration:   199/1567  train Acc: 81.4372
-Iteration:   299/1567  train Acc: 83.4687
-Iteration:   399/1567  train Acc: 81.7189
-Iteration:   499/1567  train Acc: 81.3120
-Iteration:   599/1567  train Acc: 81.2188
-Iteration:   699/1567  train Acc: 82.0930
-Iteration:   799/1567  train Acc: 82.0622
-Iteration:   899/1567  train Acc: 82.1557
-Iteration:   999/1567  train Acc: 81.5938
-Iteration:  1099/1567  train Acc: 80.6250
-Iteration:  1199/1567  train Acc: 81.0001
-Iteration:  1299/1567  train Acc: 81.6249
-Iteration:  1399/1567  train Acc: 81.1562
-Iteration:  1499/1567  train Acc: 80.9061
+Iteration:    99/392   train Acc: 84.1720
+Iteration:   199/392   train Acc: 83.1097
+Iteration:   299/392   train Acc: 83.3288
 ----------
-train complete in 8m 48s
-Acc: 81.5889
+train complete in 2m 18s
+Acc: 83.0818
 ----------
-Iteration:    99/896   val Acc: 76.2500
-Iteration:   199/896   val Acc: 78.0000
-Iteration:   299/896   val Acc: 76.4375
-Iteration:   399/896   val Acc: 77.1875
-Iteration:   499/896   val Acc: 78.5000
-Iteration:   599/896   val Acc: 76.8750
-Iteration:   699/896   val Acc: 76.6875
-Iteration:   799/896   val Acc: 77.1875
+Iteration:    99/112   val Acc: 76.3437
 ----------
-val complete in 2m 33s
-Acc: 77.1136
+val complete in 0m 37s
+Acc: 76.1929
 ----------
 Epoch 6/40
 ----------
-Iteration:    99/1567  train Acc: 86.2186
-Iteration:   199/1567  train Acc: 85.3439
-Iteration:   299/1567  train Acc: 86.3755
-Iteration:   399/1567  train Acc: 85.4687
-Iteration:   499/1567  train Acc: 85.0936
-Iteration:   599/1567  train Acc: 84.0306
-Iteration:   699/1567  train Acc: 85.1877
-Iteration:   799/1567  train Acc: 84.5625
-Iteration:   899/1567  train Acc: 84.3751
-Iteration:   999/1567  train Acc: 83.6564
-Iteration:  1099/1567  train Acc: 84.0939
-Iteration:  1199/1567  train Acc: 82.8751
-Iteration:  1299/1567  train Acc: 84.8131
-Iteration:  1399/1567  train Acc: 83.4997
-Iteration:  1499/1567  train Acc: 84.4690
+Iteration:    99/392   train Acc: 87.7812
+Iteration:   199/392   train Acc: 86.9851
+Iteration:   299/392   train Acc: 86.8672
 ----------
-train complete in 9m 3s
-Acc: 84.6383
+train complete in 2m 17s
+Acc: 86.6632
 ----------
-Iteration:    99/896   val Acc: 75.8125
-Iteration:   199/896   val Acc: 76.6250
-Iteration:   299/896   val Acc: 76.1250
-Iteration:   399/896   val Acc: 78.0625
-Iteration:   499/896   val Acc: 77.5625
-Iteration:   599/896   val Acc: 76.1875
-Iteration:   699/896   val Acc: 77.2500
-Iteration:   799/896   val Acc: 77.8750
+Iteration:    99/112   val Acc: 75.5466
 ----------
-val complete in 2m 33s
-Acc: 76.9531
+val complete in 0m 38s
+Acc: 75.5856
 ----------
 Epoch 7/40
 ----------
-Iteration:    99/1567  train Acc: 89.6244
-Iteration:   199/1567  train Acc: 88.4996
-Iteration:   299/1567  train Acc: 88.6564
-Iteration:   399/1567  train Acc: 88.5939
-Iteration:   499/1567  train Acc: 87.7812
-Iteration:   599/1567  train Acc: 88.2816
-Iteration:   699/1567  train Acc: 87.9377
+Iteration:    99/392   train Acc: 92.4454
+Iteration:   199/392   train Acc: 90.5774
+Iteration:   299/392   train Acc: 89.2965
+----------
+train complete in 2m 19s
+Acc: 90.3177
+----------
+Iteration:    99/112   val Acc: 74.6718
+----------
+val complete in 0m 38s
+Acc: 74.5671
+----------
+Epoch 8/40
+----------
+Iteration:    99/392   train Acc: 95.0777
+Iteration:   199/392   train Acc: 93.8513
+Iteration:   299/392   train Acc: 92.5394
+----------
+train complete in 1m 53s
+Acc: 93.1659
+----------
+Iteration:    99/112   val Acc: 74.0231
+----------
+val complete in 0m 31s
+Acc: 73.9325
+----------
+Epoch 9/40
+----------
+Iteration:    99/392   train Acc: 96.5560
+Iteration:   199/392   train Acc: 94.9142
+Iteration:   299/392   train Acc: 94.2733
+----------
+train complete in 1m 49s
+Acc: 94.6432
+----------
+Iteration:    99/112   val Acc: 75.0781
+----------
+val complete in 0m 32s
+Acc: 75.0839
+----------
+Epoch 10/40
+----------
+Iteration:    99/392   train Acc: 97.2675
+Iteration:   199/392   train Acc: 96.1808
+Iteration:   299/392   train Acc: 95.3284
+----------
+train complete in 1m 52s
+Acc: 95.7617
+----------
+Iteration:    99/112   val Acc: 73.4694
+----------
+val complete in 0m 37s
+Acc: 73.6543
+----------
+Epoch 11/40
+----------
+Iteration:    99/392   train Acc: 97.3849
+Iteration:   199/392   train Acc: 96.8680
+Iteration:   299/392   train Acc: 95.7579
+----------
+train complete in 1m 52s
+Acc: 96.3596
+----------
+Iteration:    99/112   val Acc: 74.6640
+----------
+val complete in 0m 32s
+Acc: 74.5674
+----------
+Epoch 12/40
+----------
+Iteration:    99/392   train Acc: 97.8851
+Iteration:   199/392   train Acc: 97.1188
+Iteration:   299/392   train Acc: 96.6266
+----------
+train complete in 2m 9s
+Acc: 96.8724
+----------
+Iteration:    99/112   val Acc: 75.3985
+----------
+val complete in 0m 36s
+Acc: 75.0420
+----------
+Epoch 13/40
+----------
+Iteration:    99/392   train Acc: 98.1656
+Iteration:   199/392   train Acc: 97.5566
+Iteration:   299/392   train Acc: 97.0327
+----------
+train complete in 2m 12s
+Acc: 97.2350
+----------
+Iteration:    99/112   val Acc: 73.8984
+----------
+val complete in 0m 37s
+Acc: 73.9676
+----------
+Epoch 14/40
+----------
+Iteration:    99/392   train Acc: 98.1189
+Iteration:   199/392   train Acc: 97.7672
+Iteration:   299/392   train Acc: 97.3227
+----------
+train complete in 2m 12s
+Acc: 97.4146
+----------
+Iteration:    99/112   val Acc: 74.2575
+----------
+val complete in 0m 36s
+Acc: 73.9813
+----------
+Epoch 15/40
+----------
+Iteration:    99/392   train Acc: 97.9630
+Iteration:   199/392   train Acc: 97.9709
+Iteration:   299/392   train Acc: 97.2984
+----------
+train complete in 2m 13s
+Acc: 97.4148
+----------
+Iteration:    99/112   val Acc: 74.5550
+----------
+val complete in 0m 37s
+Acc: 74.4492
+----------
+Epoch 16/40
+----------
+Iteration:    99/392   train Acc: 98.2833
+Iteration:   199/392   train Acc: 98.1037
+Iteration:   299/392   train Acc: 97.3218
+----------
+train complete in 2m 15s
+Acc: 97.6061
+----------
+Iteration:    99/112   val Acc: 74.0156
+----------
+val complete in 0m 37s
+Acc: 74.1629
+----------
+Epoch 17/40
+----------
+Iteration:    99/392   train Acc: 98.3066
+Iteration:   199/392   train Acc: 98.0799
+Iteration:   299/392   train Acc: 97.5958
+----------
+train complete in 2m 12s
+Acc: 97.7197
+----------
+Iteration:    99/112   val Acc: 74.4064
+----------
+val complete in 0m 37s
+Acc: 74.1492
+----------
+Epoch 18/40
+----------
+Iteration:    99/392   train Acc: 98.5407
+Iteration:   199/392   train Acc: 98.2369
+Iteration:   299/392   train Acc: 97.6813
+----------
+train complete in 2m 12s
+Acc: 97.9610
+----------
+Iteration:    99/112   val Acc: 74.7341
+----------
+val complete in 0m 36s
+Acc: 74.5672
+----------
+Epoch 19/40
+----------
+Iteration:    99/392   train Acc: 98.5879
+Iteration:   199/392   train Acc: 98.3223
+Iteration:   299/392   train Acc: 98.0800
+----------
+train complete in 2m 16s
+Acc: 98.0946
+----------
+Iteration:    99/112   val Acc: 73.8521
+----------
+val complete in 0m 37s
+Acc: 73.9260
+----------
+Epoch 20/40
+----------
+Iteration:    99/392   train Acc: 98.7441
+Iteration:   199/392   train Acc: 98.3846
+Iteration:   299/392   train Acc: 97.9863
+----------
+train complete in 2m 15s
+Acc: 98.2003
+----------
+Iteration:    99/112   val Acc: 73.7105
+----------
+val complete in 0m 36s
+Acc: 73.7160
+----------
+Epoch 21/40
+----------
+Iteration:    99/392   train Acc: 98.7752
+Iteration:   199/392   train Acc: 98.3767
+Iteration:   299/392   train Acc: 97.9942
+----------
+train complete in 2m 13s
+Acc: 98.1665
+----------
+Iteration:    99/112   val Acc: 74.6719
+----------
+val complete in 0m 36s
+Acc: 74.4977
+----------
+Epoch 22/40
+----------
+Iteration:    99/392   train Acc: 99.0013
+Iteration:   199/392   train Acc: 98.6660
+Iteration:   299/392   train Acc: 98.3612
+----------
+train complete in 2m 12s
+Acc: 98.4771
+----------
+Iteration:    99/112   val Acc: 73.3989
+----------
+val complete in 0m 36s
+Acc: 73.4450
+----------
+Epoch 23/40
+----------
+Iteration:    99/392   train Acc: 98.6503
+Iteration:   199/392   train Acc: 98.4864
+Iteration:   299/392   train Acc: 98.4394
+----------
+train complete in 2m 12s
+Acc: 98.2940
+----------
+Iteration:    99/112   val Acc: 73.5469
+----------
+val complete in 0m 36s
+Acc: 73.5003
+----------
+Epoch 24/40
+----------
+Iteration:    99/392   train Acc: 98.9468
+Iteration:   199/392   train Acc: 98.5487
+Iteration:   299/392   train Acc: 98.2051
+----------
+train complete in 2m 11s
+Acc: 98.3975
+----------
+Iteration:    99/112   val Acc: 74.5466
+----------
+val complete in 0m 36s
+Acc: 74.3649
+----------
+Epoch 25/40
+----------
+Iteration:    99/392   train Acc: 98.9001
+Iteration:   199/392   train Acc: 98.7830
+Iteration:   299/392   train Acc: 98.3925
+----------
+train complete in 2m 10s
+Acc: 98.4931
+----------
+Iteration:    99/112   val Acc: 73.5466
+----------
+val complete in 0m 36s
+Acc: 73.6046
+----------
+Epoch 26/40
+----------
+Iteration:    99/392   train Acc: 98.8531
+Iteration:   199/392   train Acc: 98.8768
+Iteration:   299/392   train Acc: 98.4473
+----------
+train complete in 2m 11s
+Acc: 98.5669
+----------
+Iteration:    99/112   val Acc: 75.2500
+----------
+val complete in 0m 36s
+Acc: 74.9930
+----------
+Epoch 27/40
+----------
+Iteration:    99/392   train Acc: 98.9623
+Iteration:   199/392   train Acc: 98.7906
+Iteration:   299/392   train Acc: 98.4394
+----------
+train complete in 2m 11s
+Acc: 98.5509
+----------
+Iteration:    99/112   val Acc: 74.7108
+----------
+val complete in 0m 36s
+Acc: 74.6650
+----------
+Epoch 28/40
+----------
+Iteration:    99/392   train Acc: 99.0327
+Iteration:   199/392   train Acc: 99.0248
+Iteration:   299/392   train Acc: 98.4081
+----------
+train complete in 2m 12s
+Acc: 98.6822
+----------
+Iteration:    99/112   val Acc: 74.2341
+----------
+val complete in 0m 36s
+Acc: 74.2674
+----------
+Epoch 29/40
+----------
+Iteration:    99/392   train Acc: 98.9937
+Iteration:   199/392   train Acc: 99.0015
+Iteration:   299/392   train Acc: 98.9157
+----------
+train complete in 2m 10s
+Acc: 98.7581
+----------
+Iteration:    99/112   val Acc: 74.4843
+----------
+val complete in 0m 36s
+Acc: 74.3024
+----------
+Epoch 30/40
+----------
+Iteration:    99/392   train Acc: 98.8765
+Iteration:   199/392   train Acc: 98.9156
+Iteration:   299/392   train Acc: 98.6815
+----------
+train complete in 2m 11s
+Acc: 98.7221
+----------
+Iteration:    99/112   val Acc: 73.7185
+----------
+val complete in 0m 36s
+Acc: 73.5908
+----------
+Epoch 31/40
+----------
+Iteration:    99/392   train Acc: 99.0873
+Iteration:   199/392   train Acc: 98.9392
+Iteration:   299/392   train Acc: 98.6813
+----------
+train complete in 2m 12s
+Acc: 98.7161
+----------
+Iteration:    99/112   val Acc: 74.1561
+----------
+val complete in 0m 36s
+Acc: 74.0233
+----------
+Epoch 32/40
+----------
+Iteration:    99/392   train Acc: 99.0016
+Iteration:   199/392   train Acc: 99.0404
+Iteration:   299/392   train Acc: 98.6896
+----------
+train complete in 2m 11s
+Acc: 98.7779
+----------
+Iteration:    99/112   val Acc: 74.2187
+----------
+val complete in 0m 37s
+Acc: 74.1001
+----------
+Epoch 33/40
+----------
+Iteration:    99/392   train Acc: 99.2044
+Iteration:   199/392   train Acc: 99.0016
+Iteration:   299/392   train Acc: 98.8065
+----------
+train complete in 2m 10s
+Acc: 98.8377
+----------
+Iteration:    99/112   val Acc: 73.4296
+----------
+val complete in 0m 36s
+Acc: 73.1443
+----------
+Epoch 34/40
+----------
+Iteration:    99/392   train Acc: 99.2356
+Iteration:   199/392   train Acc: 98.9001
+Iteration:   299/392   train Acc: 98.6504
+----------
+train complete in 2m 11s
+Acc: 98.8118
+----------
+Iteration:    99/112   val Acc: 74.8049
+----------
+val complete in 0m 36s
+Acc: 74.4841
+----------
+Epoch 35/40
+----------
+Iteration:    99/392   train Acc: 99.1575
+Iteration:   199/392   train Acc: 99.0406
+Iteration:   299/392   train Acc: 99.0094
+----------
+train complete in 2m 10s
+Acc: 98.9512
+----------
+Iteration:    99/112   val Acc: 74.7340
+----------
+val complete in 0m 36s
+Acc: 74.4487
+----------
+Epoch 36/40
+----------
+Iteration:    99/392   train Acc: 99.1498
+Iteration:   199/392   train Acc: 98.9858
+Iteration:   299/392   train Acc: 98.8767
+----------
+train complete in 2m 12s
+Acc: 98.7998
+----------
+Iteration:    99/112   val Acc: 74.1015
+----------
+val complete in 0m 36s
+Acc: 74.0096
+----------
+Epoch 37/40
+----------
+Iteration:    99/392   train Acc: 99.1731
+Iteration:   199/392   train Acc: 99.1342
+Iteration:   299/392   train Acc: 98.9314
+----------
+train complete in 2m 11s
+Acc: 98.9731
+----------
+Iteration:    99/112   val Acc: 74.1248
+----------
+val complete in 0m 36s
+Acc: 74.1906
+----------
+Epoch 38/40
+----------
+Iteration:    99/392   train Acc: 99.0560
+Iteration:   199/392   train Acc: 99.0796
+Iteration:   299/392   train Acc: 98.8690
+----------
+train complete in 2m 11s
+Acc: 98.8815
+----------
+Iteration:    99/112   val Acc: 74.0081
+----------
+val complete in 0m 36s
+Acc: 73.8633
+----------
+Epoch 39/40
+----------
+Iteration:    99/392   train Acc: 99.2200
+Iteration:   199/392   train Acc: 99.1653
+Iteration:   299/392   train Acc: 98.8766
+----------
+train complete in 2m 11s
+Acc: 98.9770
+----------
+Iteration:    99/112   val Acc: 73.4768
+----------
+val complete in 0m 36s
+Acc: 73.4446
+----------
+(summer)
+distribution has problem...

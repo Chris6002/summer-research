@@ -17,6 +17,8 @@ batch_size=4*32
 worker_num=16
 
 dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')
+# dataset_path = join(dirname(dirname(abspath(__file__))), 'data/Dagger')
+
 
 # =============================================
 # Split dataset
@@ -26,7 +28,7 @@ dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')
 # =============================================
 dataset = URPedestrianDataset(dataset_path, classnum=0)
 
-train_sampler, validation_sampler = misc.split_random(len(dataset))
+train_sampler, validation_sampler = misc.split_random(dataset.command_list)
 loader={}
 loader['train'] = torch.utils.data.DataLoader(dataset,
                                            batch_size=batch_size, sampler=train_sampler,num_workers=worker_num)

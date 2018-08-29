@@ -29,7 +29,7 @@ loader['train'] = torch.utils.data.DataLoader(dataset,
 
 loader['val'] = torch.utils.data.DataLoader(dataset,
                                                 batch_size=2, sampler=validation_sampler)
-
+print(len(loader['train']),len(loader['val']))
 # =============================================
 # Load all used net
 # =============================================
@@ -83,7 +83,7 @@ def trainer(dataloader,model,criterion,optimizer,epoch_num=10):
                 running_acc+=acc
                 iteration_acc+=acc
                 if index % 100 == 99:
-                    print('Iteration: {}/{}'.format(index, size_data),end=' ')
+                    print('Iteration: {:>5}/{:<5}'.format(index, size_data),end=' ')
                     print('{} Acc: {:.4f}'.format(phase, iteration_acc/100))
                     iteration_acc=0
             epoch_acc=running_acc/size_data

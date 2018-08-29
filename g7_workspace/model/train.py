@@ -51,11 +51,12 @@ def trainer(dataloader,model,criterion,optimizer,epoch_num=10):
     best_model_wts = copy.deepcopy(model.state_dict())
     best_acc=0.0
     for epoch in range(epoch_num):
-        start_time=time.time()
+
         print('Epoch {}/{}'.format(epoch, epoch_num))
         print('-' * 10)
         for phase in ['train', 'val']:
             # init
+            start_time = time.time()
             size_batch=dataloader[phase].batch_size
             size_data=len(dataloader[phase])
             running_acc=0
@@ -104,7 +105,7 @@ def trainer(dataloader,model,criterion,optimizer,epoch_num=10):
 # =============================================
 
 
-model_best=trainer(loader,net,criterion,optimizer,epoch_num=10)
+model_best=trainer(loader,net,criterion,optimizer,epoch_num=40)
 
 
 

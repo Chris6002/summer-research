@@ -33,7 +33,7 @@ print(len(loader['train']),len(loader['val']))
 # =============================================
 # Load all used net
 # =============================================
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 net = model.BasicResNet()
 if torch.cuda.device_count() > 1:
     print("Let's use", torch.cuda.device_count(), "GPUs!")
@@ -71,9 +71,11 @@ def trainer(dataloader,model,criterion,optimizer,epoch_num=10):
             for index, data in enumerate(dataloader[phase]):
                 inputs = data['frame']
                 labels = misc.limit_value_tensor(data['steer'] - 976, 0, 999)
-                if torch.cuda.device_count() <= 1:
-                    inputs = inputs.to(device)
-                    labels = labels.to(device)
+                # if torch.cuda.device_count() <= 1:
+                #     inputs = inputs.to(device)
+                #     labels = labels.to(device)
+                inputs = inputs.to(device)
+                labels = labels.to(device)
 
 
                 # zero the parameter gradients

@@ -12,6 +12,10 @@ from torch.utils.data.sampler import SubsetRandomSampler
 import copy
 import torch.nn.functional as F
 
+
+batch_size=4*32
+worker_num=16
+
 dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')
 
 # =============================================
@@ -25,9 +29,9 @@ dataset = URPedestrianDataset(dataset_path, classnum=0)
 train_sampler, validation_sampler = misc.split_random(len(dataset))
 loader={}
 loader['train'] = torch.utils.data.DataLoader(dataset,
-                                           batch_size=2*32, sampler=train_sampler,num_workers=4)
+                                           batch_size=batch_size, sampler=train_sampler,num_workers=worker_num)
 loader['val'] = torch.utils.data.DataLoader(dataset,
-                                                batch_size=16, sampler=validation_sampler)
+                                                batch_size=batch_size, sampler=validation_sampler,num_workers=worker_num)
 print(len(loader['train']),len(loader['val']))
 # =============================================
 # Load all used net

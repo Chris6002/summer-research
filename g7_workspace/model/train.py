@@ -25,7 +25,7 @@ dataset = URPedestrianDataset(dataset_path, classnum=0)
 train_sampler, validation_sampler = misc.split_random(len(dataset))
 loader={}
 loader['train'] = torch.utils.data.DataLoader(dataset,
-                                           batch_size=32, sampler=train_sampler,num_workers=0)
+                                           batch_size=32, sampler=train_sampler,num_workers=4)
 
 loader['val'] = torch.utils.data.DataLoader(dataset,
                                                 batch_size=16, sampler=validation_sampler)

@@ -74,8 +74,8 @@ def trainer(dataloader,model,criterion,optimizer,epoch_num=10):
                 # if torch.cuda.device_count() <= 1:
                 #     inputs = inputs.to(device)
                 #     labels = labels.to(device)
-                inputs = inputs.to(device)
-                labels = labels.to(device)
+                inputs = inputs.cuda()
+                labels = labels.cuda()
 
 
                 # zero the parameter gradients

@@ -60,6 +60,7 @@ def trainer(dataloader,model,criterion,optimizer,epoch_num=10):
         print('Epoch {}/{}'.format(epoch, epoch_num))
         print('-' * 10)
         for phase in ['train', 'val']:
+
             # init
             start_time = time.time()
             size_batch=dataloader[phase].batch_size
@@ -69,6 +70,7 @@ def trainer(dataloader,model,criterion,optimizer,epoch_num=10):
             model.train() if phase == 'train' else model.eval()
             # Iterate over data.
             for index, data in enumerate(dataloader[phase]):
+                print(index)
                 inputs = data['frame']
                 labels = misc.limit_value_tensor(data['steer'] - 976, 0, 999)
                 # if torch.cuda.device_count() <= 1:

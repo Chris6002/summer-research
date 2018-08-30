@@ -26,7 +26,7 @@ def split_random(command_list):
             if len(list(set(id_num)-set(train_idx)))>0:
                 index_list=np.random.choice(list(set(id_num)-set(train_idx)),size=num_valid,replace=False)
                 for i in index_list:
-                    valid_idx.append(index_list)
+                    valid_idx.append(i)
     train_sampler = SubsetRandomSampler(train_idx)
     validation_sampler = SubsetRandomSampler(valid_idx)
     return train_sampler, validation_sampler

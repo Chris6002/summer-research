@@ -30,7 +30,7 @@ dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')
 # Contiguous split
 # train_idx, validation_idx = indices[split:], indices[:split]
 # =============================================
-dataset = URPedestrianDataset(dataset_path, classnum=0)
+dataset = URPedestrianDataset(dataset_path, classnum=1)
 
 train_sampler, validation_sampler = misc.split_random(dataset.command_list)
 loader = {}

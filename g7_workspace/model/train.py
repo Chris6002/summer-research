@@ -15,7 +15,7 @@ import torch.nn.functional as F
 
 batch_size=4*32
 worker_num=16
-
+using_muiltpleGPU=0
 dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')
 # dataset_path = join(dirname(dirname(abspath(__file__))), 'data/Dagger')
 
@@ -38,9 +38,9 @@ print(len(loader['train']),len(loader['val']))
 # =============================================
 # Load all used net
 # =============================================
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:3" if torch.cuda.is_available() else "cpu")
 net = model.BasicResNet()
-if torch.cuda.device_count() > 1:
+if using_muiltpleGPU==1 and torch.cuda.device_count() > 1:
     print("Let's use", torch.cuda.device_count(), "GPUs!")
     # dim = 0 [30, xxx] -> [10, ...], [10, ...], [10, ...] on 3 GPUs
     net = nn.DataParallel(net).cuda()

@@ -1,4 +1,5 @@
 from os.path import dirname, abspath, join
+import argparse
 from dataloader import URPedestrianDataset
 import matplotlib.pyplot as plt
 import torch.nn.functional as F
@@ -12,16 +13,22 @@ from torch.utils.data.sampler import SubsetRandomSampler
 import copy
 import torch.nn.functional as F
 
-using_muiltpleGPU = 0
-if using_muiltpleGPU:
+parser = argparse.ArgumentParser()
+parser.add_argument('--muiltpleGPU', type=int,default=0, help='display an integer')
+parser.add_argument('--cuda', type=int,default=0, help='display an integer')
+args = parser.parse_args()
+
+
+
+if parser.muiltpleGPU:
     batch_size = 4 * 32
     worker_num = 16
 else:
+    device = torch.device(f"cuda:{parser.cuda}" if torch.cuda.is_available() else "cpu")
     batch_size = 16
     worker_num = 4
 
-dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')
-# dataset_path = join(dirname(dirname(abspath(__file__))), 'data/Dagger')
+
 
 
 # =============================================
@@ -30,10 +37,12 @@ dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')
 # Contiguous split
 # train_idx, validation_idx = indices[split:], indices[:split]
 # =============================================
+dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')
 dataset = URPedestrianDataset(dataset_path, classnum=1)
 
-train_sampler, validation_sampler = misc.split_random(dataset.command_list)
+sampler = misc.split_random(dataset.command_list)
 loader = {}
+# TODO:samplify
 loader['train'] = torch.utils.data.DataLoader(dataset,
                                               batch_size=batch_size, sampler=train_sampler, num_workers=worker_num)
 loader['val'] = torch.utils.data.DataLoader(dataset,
@@ -42,7 +51,7 @@ print(len(loader['train']), len(loader['val']))
 # =============================================
 # Load all used net
 # =============================================
-device = torch.device("cuda:3" if torch.cuda.is_available() else "cpu")
+
 net = model.BasicResNet()
 if using_muiltpleGPU == 1 and torch.cuda.device_count() > 1:
     print("Let's use", torch.cuda.device_count(), "GPUs!")

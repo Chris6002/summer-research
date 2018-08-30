@@ -29,7 +29,10 @@ def split_random(command_list):
                     valid_idx.append(i)
     train_sampler = SubsetRandomSampler(train_idx)
     validation_sampler = SubsetRandomSampler(valid_idx)
-    return train_sampler, validation_sampler
+    sampler={}
+    sampler['train']=train_sampler
+    sampler['val']=validation_sampler
+    return sampler
 
 def limit_value(n, minn, maxn):
     return max(min(maxn, n), minn)

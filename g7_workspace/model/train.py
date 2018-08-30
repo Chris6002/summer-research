@@ -12,10 +12,14 @@ from torch.utils.data.sampler import SubsetRandomSampler
 import copy
 import torch.nn.functional as F
 
-
-batch_size=4*32
-worker_num=16
 using_muiltpleGPU=0
+if using_muiltpleGPU:
+    batch_size=4*32
+    worker_num=16
+else:
+    batch_size = 32
+    worker_num = 4
+
 dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')
 # dataset_path = join(dirname(dirname(abspath(__file__))), 'data/Dagger')
 

@@ -12,10 +12,10 @@ from torch.utils.data.sampler import SubsetRandomSampler
 import copy
 import torch.nn.functional as F
 
-using_muiltpleGPU=0
+using_muiltpleGPU = 0
 if using_muiltpleGPU:
-    batch_size=4*32
-    worker_num=16
+    batch_size = 4 * 32
+    worker_num = 16
 else:
     batch_size = 16
     worker_num = 4
@@ -33,24 +33,24 @@ dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')
 dataset = URPedestrianDataset(dataset_path, classnum=0)
 
 train_sampler, validation_sampler = misc.split_random(dataset.command_list)
-loader={}
+loader = {}
 loader['train'] = torch.utils.data.DataLoader(dataset,
-                                           batch_size=batch_size, sampler=train_sampler,num_workers=worker_num)
+                                              batch_size=batch_size, sampler=train_sampler, num_workers=worker_num)
 loader['val'] = torch.utils.data.DataLoader(dataset,
-                                                batch_size=batch_size, sampler=validation_sampler,num_workers=worker_num)
-print(len(loader['train']),len(loader['val']))
+                                            batch_size=batch_size, sampler=validation_sampler, num_workers=worker_num)
+print(len(loader['train']), len(loader['val']))
 # =============================================
 # Load all used net
 # =============================================
 device = torch.device("cuda:3" if torch.cuda.is_available() else "cpu")
 net = model.BasicResNet()
-if using_muiltpleGPU==1 and torch.cuda.device_count() > 1:
+if using_muiltpleGPU == 1 and torch.cuda.device_count() > 1:
     print("Let's use", torch.cuda.device_count(), "GPUs!")
     # dim = 0 [30, xxx] -> [10, ...], [10, ...], [10, ...] on 3 GPUs
     net = nn.DataParallel(net).cuda()
 else:
-    print("Current using "+str(device))
-    net=net.to(device)
+    print("Current using " + str(device))
+    net = net.to(device)
 # =============================================
 # Define a Loss function and optimizer
 # =============================================
@@ -58,12 +58,12 @@ else:
 import torch.optim as optim
 
 criterion = nn.CrossEntropyLoss().to(device)
-optimizer = optim.Adam(net.parameters(), lr=0.001, betas=(0.9,0.99))
+optimizer = optim.Adam(net.parameters(), lr=0.001, betas=(0.9, 0.99))
 
 
-def trainer(dataloader,model,criterion,optimizer,epoch_num=10):
+def trainer(dataloader, model, criterion, optimizer, epoch_num=10):
     best_model_wts = copy.deepcopy(model.state_dict())
-    best_acc=0.0
+    best_acc = 0.0
     for epoch in range(epoch_num):
 
         print('Epoch {}/{}'.format(epoch, epoch_num))
@@ -72,10 +72,10 @@ def trainer(dataloader,model,criterion,optimizer,epoch_num=10):
 
             # init
             start_time = time.time()
-            size_batch=dataloader[phase].batch_size
-            size_data=len(dataloader[phase])
-            running_acc=0
-            iteration_acc=0
+            size_batch = dataloader[phase].batch_size
+            size_data = len(dataloader[phase])
+            running_acc = 0
+            iteration_acc = 0
             model.train() if phase == 'train' else model.eval()
             # Iterate over data.
             for index, data in enumerate(dataloader[phase]):
@@ -85,9 +85,12 @@ def trainer(dataloader,model,criterion,optimizer,epoch_num=10):
                 # if torch.cuda.device_count() <= 1:
                 #     inputs = inputs.to(device)
                 #     labels = labels.to(device)
-                inputs = inputs.cuda()
-                labels = labels.cuda()
-
+                if using_muiltpleGPU:
+                    inputs = inputs.cuda()
+                    labels = labels.cuda()
+                else:
+                    inputs = inputs.to(device)
+                    labels = labels.to(device)
 
                 # zero the parameter gradients
                 optimizer.zero_grad()
@@ -98,21 +101,21 @@ def trainer(dataloader,model,criterion,optimizer,epoch_num=10):
                     outputs = model(inputs)
                     _, predicted = torch.max(outputs, 1)
                     loss = criterion(outputs, labels)
-                    acc=misc.accuracy(predicted,labels,size_batch)
+                    acc = misc.accuracy(predicted, labels, size_batch)
                     # backward + optimize only if in training phase
                     if phase == 'train':
                         loss.backward()
                         optimizer.step()
-                running_acc+=acc
-                iteration_acc+=acc
+                running_acc += acc
+                iteration_acc += acc
                 if index % 100 == 99:
-                    print('Iteration: {:>5}/{:<5}'.format(index, size_data),end=' ')
-                    print('{} Acc: {:.4f}'.format(phase, iteration_acc/100))
-                    iteration_acc=0
-            epoch_acc=running_acc/size_data
-            time_elapsed=time.time()-start_time
+                    print('Iteration: {:>5}/{:<5}'.format(index, size_data), end=' ')
+                    print('{} Acc: {:.4f}'.format(phase, iteration_acc / 100))
+                    iteration_acc = 0
+            epoch_acc = running_acc / size_data
+            time_elapsed = time.time() - start_time
             print('-' * 10)
-            print('{} complete in {:.0f}m {:.0f}s'.format(phase,time_elapsed // 60, time_elapsed % 60))
+            print('{} complete in {:.0f}m {:.0f}s'.format(phase, time_elapsed // 60, time_elapsed % 60))
             print('Acc: {:.4f}'.format(epoch_acc))
             print('-' * 10)
             if phase == 'val' and epoch_acc > best_acc:
@@ -120,18 +123,14 @@ def trainer(dataloader,model,criterion,optimizer,epoch_num=10):
                 best_model_wts = copy.deepcopy(model.state_dict())
     model.load_state_dict(best_model_wts)
     return model
-        
-    
+
+
 # =============================================
 # 4. Train the network
 # =============================================
 
 
-model_best=trainer(loader,net,criterion,optimizer,epoch_num=40)
-
-
-
-
+model_best = trainer(loader, net, criterion, optimizer, epoch_num=40)
 
 # for epoch in range(2):  # loop over the dataset multiple times
 #     running_loss = 0.0

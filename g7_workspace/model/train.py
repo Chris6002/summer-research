@@ -17,7 +17,7 @@ if using_muiltpleGPU:
     batch_size=4*32
     worker_num=16
 else:
-    batch_size = 32
+    batch_size = 16
     worker_num = 4
 
 dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')

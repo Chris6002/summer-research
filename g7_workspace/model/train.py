@@ -32,9 +32,9 @@ else:
     device = torch.device(
         f"cuda:{args.cuda}" if torch.cuda.is_available() else "cpu")
     print(f"Current using {device}")
-    batch_size = 16
+    batch_size = 8
     worker_num = 4
-    print(f"batch size{batch_size}, worker number{worker_num}")
+    print(f"batch size: {batch_size}, worker number: {worker_num}")
     net = net.to(device)
 # =============================================
 # Split dataset

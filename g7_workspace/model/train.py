@@ -14,7 +14,10 @@ from dataloader import URPedestrianDataset
 parser = argparse.ArgumentParser()
 parser.add_argument('--muiltpleGPU', type=int, default=0)
 parser.add_argument('--cuda', type=int, default=0)
+parser.add_argument('--classnum',type=int,default=0)
 args = parser.parse_args()
+for arg in vars(args):
+    print ("Argu:{:>10}:{:<10}".format(arg,getattr(args, arg)))
 # =============================================
 # Load all used net
 # =============================================
@@ -42,7 +45,7 @@ else:
 # train_idx, validation_idx = indices[split:], indices[:split]
 # =============================================
 dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')
-dataset = URPedestrianDataset(dataset_path, classnum=1)
+dataset = URPedestrianDataset(dataset_path, classnum=args.classnum)
 sampler = misc.split_random(dataset.command_list)
 loader = {}
 

@@ -4,6 +4,7 @@ import shutil
 import zipfile
 import csv
 import zipfile
+from shutil import copy
 
 
 class DataPath:
@@ -213,23 +214,33 @@ def sync_frame(path):
                 sync[camera] = [path for path in frame if index == get_index(path) ]
 
                 print("{:>2}_{:8} frame:{:>8}".format(num,camera,len(sync[camera])))
-            if len(sync['center']) != len(sync['left']):
-                dis = len(sync['left']) - len(sync['center'])
-                print(num,end='  ')
-                print('left  is more: ' + str(dis))
-                for file in sync['left'][-dis:]:
-                    print('Sync files: ',path + '/' + file)
-                    os.remove(path + '/' + file)
+            if max([len(sync['center']),len(sync['left']),len(sync['right'])])!=len(sync['center']):
+                for camera in ['left', 'right']:
+                    if len(sync['center']) != len(sync[camera]):
+                        dis = len(sync[camera]) - len(sync['center'])
+                        print(num,end='  ')
+                        print(f'{camera}  is more: ' + str(dis))
+                        for file in sync[camera][-dis:]:
 
-            if len(sync['center']) != len(sync['right']):
+                            print('Sync files: ',path + '/' + file)
 
-                dis = len(sync['right']) - len(sync['center'])
-                print(num,end='  ')
-                print('right is more: ' + str(dis))
-                for file in sync['right'][-dis:]:
-                    print('Sync files: ',path + '/' + file)
-                    os.remove(path + '/' + file)
-                
+                            os.remove(path + '/' + file)
+            else:
+                # center is more
+                for camera in ['left','right']:
+                    if len(sync['center']) != len(sync[camera]):
+                        dis = len(sync['center'])-len(sync[camera])
+                        print(num,end='  ')
+                        print(f'{camera}  is less: ' + str(dis))
+                        for file in sync[camera][-dis:]:
+                            print('Copy files: ',path + '/' + file)
+                            old_num=file.split('.')[0].split('_')[-1]
+                            new_num="{:06}".format(int(old_num)+dis)
+                            new_name=file.replace(old_num,new_num)
+                            old_path=os.path.join(path,file)
+                            new_path=os.path.join(path,new_name)
+                            copy(old_path,new_path)
+
     else:
         print("No frame in {0}".format(path))
 
@@ -270,3 +281,6 @@ def csv_addlr(inputcsv, outputcsv, shift_angel):
             csv_writer.writerow(row)
             csv_writer.writerow(new_right)
             csv_writer.writerow(new_left)
+
+a='/home/vision/summer-research/g7_workspace/data/dataset/video/1/1_center_000013.jpg'
+print()

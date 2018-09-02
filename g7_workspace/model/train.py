@@ -34,6 +34,7 @@ else:
     print(f"Current using {device}")
     batch_size = 16
     worker_num = 4
+    print(f"batch size{batch_size}, worker number{worker_num}")
     net = net.to(device)
 # =============================================
 # Split dataset

@@ -34,7 +34,7 @@ else:
     batch_size = 8
     worker_num = 4
     print(f"batch size: {batch_size}, worker number: {worker_num}")
-    # net = net.to(device)
+    net = net.to(device)
 # =============================================
 # Split dataset
 # ^^^^^^^^^^^^^
@@ -64,7 +64,7 @@ optimizer = optim.Adam(net.parameters(), lr=0.001, betas=(0.9, 0.99))
 
 def trainer(dataloader, model, criterion, optimizer, epoch_num=10, checkpoint=0):
     
-    best_model_wts = copy.deepcopy(model.state_dict())
+    best_model_wts = 0
     best_acc = 0.0
     recorder = open('acc_result.txt', 'w')
     for epoch in range(epoch_num):

@@ -12,12 +12,12 @@ import model
 from dataloader import URPedestrianDataset
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--muiltpleGPU', type=int, default=0)
+parser.add_argument('--muiltpleGPU', type=list, default=[0,1,2,3])
 parser.add_argument('--cuda', type=int, default=0)
 parser.add_argument('--classnum',type=int,default=0)
 args = parser.parse_args()
 for arg in vars(args):
-    print ("Argu:{:>10}:{:<10}".format(arg,getattr(args, arg)))
+    print ("Argu:{:>15}:{:<10}".format(arg,getattr(args, arg)))
 # =============================================
 # Load all used net
 # =============================================
@@ -29,7 +29,7 @@ if args.muiltpleGPU == 1 and torch.cuda.device_count() > 1:
     print("Let's use", torch.cuda.device_count(), "GPUs!")
     batch_size = 4 * 32
     worker_num = 16
-    net = nn.DataParallel(net).cuda()
+    net = nn.DataParallel(net,device_ids=args.muiltpleGPU).cuda()
 else:
     device = torch.device(
         f"cuda:{args.cuda}" if torch.cuda.is_available() else "cpu")
@@ -67,7 +67,7 @@ optimizer = optim.Adam(net.parameters(), lr=0.001, betas=(0.9, 0.99))
 
 def trainer(dataloader, model, criterion, optimizer, epoch_num=10, checkpoint=0):
     print('======= Start Training =======')
-    best_model_wts = copy.deepcopy(model.state_dict())
+    best_model_wts = copy.deepcopy(model.state_dict()).to(device)
     best_acc = 0.0
     recorder = open('acc_result.txt', 'w')
     for epoch in range(epoch_num):

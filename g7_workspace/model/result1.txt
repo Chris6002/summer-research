@@ -1,0 +1,1975 @@
+ $ python3 train.py                                                                                                                         [23:15:16]
+3133 895
+child  0  was frozen
+child  1  was frozen
+child  2  was frozen
+child  3  was frozen
+child  4  was frozen
+child  5  was frozen
+child  6  was not frozen
+child  7  was not frozen
+child  8  was not frozen
+child  9  was not frozen
+Current using cuda:3
+Epoch 0/40
+----------
+Iteration:    99/3133  train Acc: 39.6250
+Iteration:   199/3133  train Acc: 45.8750
+Iteration:   299/3133  train Acc: 47.4375
+Iteration:   399/3133  train Acc: 48.8750
+Iteration:   499/3133  train Acc: 47.7500
+Iteration:   599/3133  train Acc: 52.9375
+Iteration:   699/3133  train Acc: 51.8750
+Iteration:   799/3133  train Acc: 53.4375
+Iteration:   899/3133  train Acc: 56.0625
+Iteration:   999/3133  train Acc: 58.1250
+Iteration:  1099/3133  train Acc: 58.0625
+Iteration:  1199/3133  train Acc: 60.4375
+Iteration:  1299/3133  train Acc: 60.5625
+Iteration:  1399/3133  train Acc: 63.2500
+Iteration:  1499/3133  train Acc: 61.0625
+Iteration:  1599/3133  train Acc: 63.4375
+Iteration:  1699/3133  train Acc: 61.5000
+Iteration:  1799/3133  train Acc: 64.3125
+Iteration:  1899/3133  train Acc: 66.3125
+Iteration:  1999/3133  train Acc: 65.2500
+Iteration:  2099/3133  train Acc: 68.1875
+Iteration:  2199/3133  train Acc: 66.1250
+Iteration:  2299/3133  train Acc: 66.1875
+Iteration:  2399/3133  train Acc: 68.6250
+Iteration:  2499/3133  train Acc: 67.8750
+Iteration:  2599/3133  train Acc: 68.3750
+Iteration:  2699/3133  train Acc: 67.8750
+Iteration:  2799/3133  train Acc: 68.6250
+Iteration:  2899/3133  train Acc: 68.1875
+Iteration:  2999/3133  train Acc: 67.5625
+Iteration:  3099/3133  train Acc: 69.4375
+----------
+train complete in 2m 41s
+Acc: 60.5031
+----------
+Iteration:    99/895   val Acc: 69.4375
+Iteration:   199/895   val Acc: 71.9375
+Iteration:   299/895   val Acc: 71.3750
+Iteration:   399/895   val Acc: 71.6250
+Iteration:   499/895   val Acc: 72.5000
+Iteration:   599/895   val Acc: 72.2500
+Iteration:   699/895   val Acc: 70.2500
+Iteration:   799/895   val Acc: 70.7500
+----------
+val complete in 0m 47s
+Acc: 71.1103
+----------
+Epoch 1/40
+----------
+Iteration:    99/3133  train Acc: 71.1875
+Iteration:   199/3133  train Acc: 73.0000
+Iteration:   299/3133  train Acc: 69.7500
+Iteration:   399/3133  train Acc: 69.6250
+Iteration:   499/3133  train Acc: 70.6875
+Iteration:   599/3133  train Acc: 72.8125
+Iteration:   699/3133  train Acc: 73.2500
+Iteration:   799/3133  train Acc: 71.6250
+Iteration:   899/3133  train Acc: 70.3125
+Iteration:   999/3133  train Acc: 70.8125
+Iteration:  1099/3133  train Acc: 71.6875
+Iteration:  1199/3133  train Acc: 72.1250
+Iteration:  1299/3133  train Acc: 71.6875
+Iteration:  1399/3133  train Acc: 73.5625
+Iteration:  1499/3133  train Acc: 72.6250
+Iteration:  1599/3133  train Acc: 74.6250
+Iteration:  1699/3133  train Acc: 72.8750
+Iteration:  1799/3133  train Acc: 72.6250
+Iteration:  1899/3133  train Acc: 72.6250
+Iteration:  1999/3133  train Acc: 72.8125
+Iteration:  2099/3133  train Acc: 71.3750
+Iteration:  2199/3133  train Acc: 71.5625
+Iteration:  2299/3133  train Acc: 74.2500
+Iteration:  2399/3133  train Acc: 74.1875
+Iteration:  2499/3133  train Acc: 71.8750
+Iteration:  2599/3133  train Acc: 73.3750
+Iteration:  2699/3133  train Acc: 71.8125
+Iteration:  2799/3133  train Acc: 73.9375
+Iteration:  2899/3133  train Acc: 73.8750
+Iteration:  2999/3133  train Acc: 72.3125
+Iteration:  3099/3133  train Acc: 72.9375
+----------
+train complete in 2m 40s
+Acc: 72.3368
+----------
+Iteration:    99/895   val Acc: 73.9375
+Iteration:   199/895   val Acc: 75.5000
+Iteration:   299/895   val Acc: 75.8750
+Iteration:   399/895   val Acc: 73.4375
+Iteration:   499/895   val Acc: 73.3125
+Iteration:   599/895   val Acc: 74.6875
+Iteration:   699/895   val Acc: 73.0625
+Iteration:   799/895   val Acc: 73.6250
+----------
+val complete in 0m 45s
+Acc: 74.0363
+----------
+Epoch 2/40
+----------
+Iteration:    99/3133  train Acc: 73.3750
+Iteration:   199/3133  train Acc: 74.8125
+Iteration:   299/3133  train Acc: 74.5000
+Iteration:   399/3133  train Acc: 73.6250
+Iteration:   499/3133  train Acc: 76.8750
+Iteration:   599/3133  train Acc: 76.6875
+Iteration:   699/3133  train Acc: 75.7500
+Iteration:   799/3133  train Acc: 73.9375
+Iteration:   899/3133  train Acc: 74.8750
+Iteration:   999/3133  train Acc: 75.7500
+Iteration:  1099/3133  train Acc: 75.0000
+Iteration:  1199/3133  train Acc: 73.8125
+Iteration:  1299/3133  train Acc: 74.5625
+Iteration:  1399/3133  train Acc: 74.9375
+Iteration:  1499/3133  train Acc: 74.0625
+Iteration:  1599/3133  train Acc: 75.0625
+Iteration:  1699/3133  train Acc: 73.4375
+Iteration:  1799/3133  train Acc: 74.3750
+Iteration:  1899/3133  train Acc: 73.1875
+Iteration:  1999/3133  train Acc: 76.5000
+Iteration:  2099/3133  train Acc: 72.3750
+Iteration:  2199/3133  train Acc: 74.5000
+Iteration:  2299/3133  train Acc: 75.0625
+Iteration:  2399/3133  train Acc: 74.6875
+Iteration:  2499/3133  train Acc: 76.6250
+Iteration:  2599/3133  train Acc: 73.9375
+Iteration:  2699/3133  train Acc: 74.6875
+Iteration:  2799/3133  train Acc: 76.0000
+Iteration:  2899/3133  train Acc: 76.0625
+Iteration:  2999/3133  train Acc: 75.6875
+Iteration:  3099/3133  train Acc: 75.3750
+----------
+train complete in 2m 45s
+Acc: 74.8564
+----------
+Iteration:    99/895   val Acc: 73.7500
+Iteration:   199/895   val Acc: 74.8750
+Iteration:   299/895   val Acc: 75.1875
+Iteration:   399/895   val Acc: 75.0000
+Iteration:   499/895   val Acc: 74.8125
+Iteration:   599/895   val Acc: 77.3750
+Iteration:   699/895   val Acc: 75.2500
+Iteration:   799/895   val Acc: 74.0625
+----------
+val complete in 0m 46s
+Acc: 75.0698
+----------
+Epoch 3/40
+----------
+Iteration:    99/3133  train Acc: 77.3125
+Iteration:   199/3133  train Acc: 76.0625
+Iteration:   299/3133  train Acc: 77.1250
+Iteration:   399/3133  train Acc: 76.4375
+Iteration:   499/3133  train Acc: 75.0625
+Iteration:   599/3133  train Acc: 77.7500
+Iteration:   699/3133  train Acc: 76.6250
+Iteration:   799/3133  train Acc: 77.1875
+Iteration:   899/3133  train Acc: 75.5625
+Iteration:   999/3133  train Acc: 74.2500
+Iteration:  1099/3133  train Acc: 75.6875
+Iteration:  1199/3133  train Acc: 73.6875
+Iteration:  1299/3133  train Acc: 76.8125
+Iteration:  1399/3133  train Acc: 76.8750
+Iteration:  1499/3133  train Acc: 76.1875
+Iteration:  1599/3133  train Acc: 75.1875
+Iteration:  1699/3133  train Acc: 77.2500
+Iteration:  1799/3133  train Acc: 76.1875
+Iteration:  1899/3133  train Acc: 79.0625
+Iteration:  1999/3133  train Acc: 74.8750
+Iteration:  2099/3133  train Acc: 75.6875
+Iteration:  2199/3133  train Acc: 78.6250
+Iteration:  2299/3133  train Acc: 76.6250
+Iteration:  2399/3133  train Acc: 75.3750
+Iteration:  2499/3133  train Acc: 74.6875
+Iteration:  2599/3133  train Acc: 76.3125
+Iteration:  2699/3133  train Acc: 75.7500
+Iteration:  2799/3133  train Acc: 75.8750
+Iteration:  2899/3133  train Acc: 74.6250
+Iteration:  2999/3133  train Acc: 75.5000
+Iteration:  3099/3133  train Acc: 76.5000
+----------
+train complete in 2m 44s
+Acc: 76.1910
+----------
+Iteration:    99/895   val Acc: 75.3125
+Iteration:   199/895   val Acc: 77.0000
+Iteration:   299/895   val Acc: 78.1250
+Iteration:   399/895   val Acc: 75.9375
+Iteration:   499/895   val Acc: 74.8125
+Iteration:   599/895   val Acc: 76.5625
+Iteration:   699/895   val Acc: 76.3750
+Iteration:   799/895   val Acc: 75.8125
+----------
+val complete in 0m 47s
+Acc: 76.0545
+----------
+Epoch 4/40
+----------
+Iteration:    99/3133  train Acc: 76.4375
+Iteration:   199/3133  train Acc: 77.1250
+Iteration:   299/3133  train Acc: 76.9375
+Iteration:   399/3133  train Acc: 78.5625
+Iteration:   499/3133  train Acc: 77.6250
+Iteration:   599/3133  train Acc: 77.8750
+Iteration:   699/3133  train Acc: 77.5625
+Iteration:   799/3133  train Acc: 75.8750
+Iteration:   899/3133  train Acc: 76.6250
+Iteration:   999/3133  train Acc: 78.6250
+Iteration:  1099/3133  train Acc: 76.9375
+Iteration:  1199/3133  train Acc: 76.1250
+Iteration:  1299/3133  train Acc: 76.8750
+Iteration:  1399/3133  train Acc: 77.6250
+Iteration:  1499/3133  train Acc: 77.6250
+Iteration:  1599/3133  train Acc: 77.4375
+Iteration:  1699/3133  train Acc: 78.0625
+Iteration:  1799/3133  train Acc: 77.6875
+Iteration:  1899/3133  train Acc: 78.4375
+Iteration:  1999/3133  train Acc: 77.0625
+Iteration:  2099/3133  train Acc: 78.6875
+Iteration:  2199/3133  train Acc: 76.0000
+Iteration:  2299/3133  train Acc: 77.7500
+Iteration:  2399/3133  train Acc: 76.8125
+Iteration:  2499/3133  train Acc: 76.8125
+Iteration:  2599/3133  train Acc: 77.7500
+Iteration:  2699/3133  train Acc: 77.5000
+Iteration:  2799/3133  train Acc: 77.6250
+Iteration:  2899/3133  train Acc: 77.2500
+Iteration:  2999/3133  train Acc: 76.3750
+Iteration:  3099/3133  train Acc: 79.2500
+----------
+train complete in 2m 41s
+Acc: 77.3799
+----------
+Iteration:    99/895   val Acc: 75.8750
+Iteration:   199/895   val Acc: 76.3750
+Iteration:   299/895   val Acc: 76.9375
+Iteration:   399/895   val Acc: 76.0000
+Iteration:   499/895   val Acc: 74.8750
+Iteration:   599/895   val Acc: 77.6875
+Iteration:   699/895   val Acc: 77.0625
+Iteration:   799/895   val Acc: 76.3125
+----------
+val complete in 0m 45s
+Acc: 76.3966
+----------
+Epoch 5/40
+----------
+Iteration:    99/3133  train Acc: 79.5000
+Iteration:   199/3133  train Acc: 79.8125
+Iteration:   299/3133  train Acc: 80.8125
+Iteration:   399/3133  train Acc: 79.5000
+Iteration:   499/3133  train Acc: 77.6875
+Iteration:   599/3133  train Acc: 78.6250
+Iteration:   699/3133  train Acc: 80.1875
+Iteration:   799/3133  train Acc: 79.5625
+Iteration:   899/3133  train Acc: 77.5000
+Iteration:   999/3133  train Acc: 78.2500
+Iteration:  1099/3133  train Acc: 80.4375
+Iteration:  1199/3133  train Acc: 77.2500
+Iteration:  1299/3133  train Acc: 79.1250
+Iteration:  1399/3133  train Acc: 77.8750
+Iteration:  1499/3133  train Acc: 78.7500
+Iteration:  1599/3133  train Acc: 76.2500
+Iteration:  1699/3133  train Acc: 78.6875
+Iteration:  1799/3133  train Acc: 77.7500
+Iteration:  1899/3133  train Acc: 78.3750
+Iteration:  1999/3133  train Acc: 79.8750
+Iteration:  2099/3133  train Acc: 78.9375
+Iteration:  2199/3133  train Acc: 77.8125
+Iteration:  2299/3133  train Acc: 78.3750
+Iteration:  2399/3133  train Acc: 77.8125
+Iteration:  2499/3133  train Acc: 80.1875
+Iteration:  2599/3133  train Acc: 78.3750
+Iteration:  2699/3133  train Acc: 78.0625
+Iteration:  2799/3133  train Acc: 78.6250
+Iteration:  2899/3133  train Acc: 78.9375
+Iteration:  2999/3133  train Acc: 80.6875
+Iteration:  3099/3133  train Acc: 79.4375
+----------
+train complete in 2m 45s
+Acc: 78.8063
+----------
+Iteration:    99/895   val Acc: 77.5000
+Iteration:   199/895   val Acc: 78.8750
+Iteration:   299/895   val Acc: 76.5625
+Iteration:   399/895   val Acc: 76.8750
+Iteration:   499/895   val Acc: 77.3125
+Iteration:   599/895   val Acc: 77.7500
+Iteration:   699/895   val Acc: 76.0000
+Iteration:   799/895   val Acc: 76.3750
+----------
+val complete in 0m 46s
+Acc: 76.9134
+----------
+Epoch 6/40
+----------
+Iteration:    99/3133  train Acc: 81.9375
+Iteration:   199/3133  train Acc: 82.3125
+Iteration:   299/3133  train Acc: 80.1250
+Iteration:   399/3133  train Acc: 80.0625
+Iteration:   499/3133  train Acc: 81.0625
+Iteration:   599/3133  train Acc: 79.2500
+Iteration:   699/3133  train Acc: 80.2500
+Iteration:   799/3133  train Acc: 80.6875
+Iteration:   899/3133  train Acc: 82.0625
+Iteration:   999/3133  train Acc: 80.2500
+Iteration:  1099/3133  train Acc: 82.0000
+Iteration:  1199/3133  train Acc: 82.8125
+Iteration:  1299/3133  train Acc: 80.2500
+Iteration:  1399/3133  train Acc: 80.7500
+Iteration:  1499/3133  train Acc: 78.5625
+Iteration:  1599/3133  train Acc: 81.3125
+Iteration:  1699/3133  train Acc: 81.2500
+Iteration:  1799/3133  train Acc: 79.9375
+Iteration:  1899/3133  train Acc: 80.6875
+Iteration:  1999/3133  train Acc: 79.5000
+Iteration:  2099/3133  train Acc: 81.3125
+Iteration:  2199/3133  train Acc: 81.0625
+Iteration:  2299/3133  train Acc: 79.8750
+Iteration:  2399/3133  train Acc: 79.9375
+Iteration:  2499/3133  train Acc: 81.1250
+Iteration:  2599/3133  train Acc: 80.5000
+Iteration:  2699/3133  train Acc: 79.5625
+Iteration:  2799/3133  train Acc: 82.5625
+Iteration:  2899/3133  train Acc: 81.3125
+Iteration:  2999/3133  train Acc: 79.6875
+Iteration:  3099/3133  train Acc: 81.3750
+----------
+train complete in 2m 47s
+Acc: 80.7253
+----------
+Iteration:    99/895   val Acc: 75.2500
+Iteration:   199/895   val Acc: 75.6250
+Iteration:   299/895   val Acc: 75.2500
+Iteration:   399/895   val Acc: 75.9375
+Iteration:   499/895   val Acc: 77.5625
+Iteration:   599/895   val Acc: 77.9375
+Iteration:   699/895   val Acc: 77.5000
+Iteration:   799/895   val Acc: 76.0625
+----------
+val complete in 0m 47s
+Acc: 76.2919
+----------
+Epoch 7/40
+----------
+Iteration:    99/3133  train Acc: 82.7500
+Iteration:   199/3133  train Acc: 82.8750
+Iteration:   299/3133  train Acc: 83.6250
+Iteration:   399/3133  train Acc: 83.9375
+Iteration:   499/3133  train Acc: 84.3750
+Iteration:   599/3133  train Acc: 82.3750
+Iteration:   699/3133  train Acc: 83.2500
+Iteration:   799/3133  train Acc: 82.0000
+Iteration:   899/3133  train Acc: 83.6250
+Iteration:   999/3133  train Acc: 81.6250
+Iteration:  1099/3133  train Acc: 83.6875
+Iteration:  1199/3133  train Acc: 82.6875
+Iteration:  1299/3133  train Acc: 83.1250
+Iteration:  1399/3133  train Acc: 82.0000
+Iteration:  1499/3133  train Acc: 82.5625
+Iteration:  1599/3133  train Acc: 82.6875
+Iteration:  1699/3133  train Acc: 81.8125
+Iteration:  1799/3133  train Acc: 83.0000
+Iteration:  1899/3133  train Acc: 82.6875
+Iteration:  1999/3133  train Acc: 81.4375
+Iteration:  2099/3133  train Acc: 82.5625
+Iteration:  2199/3133  train Acc: 81.0000
+Iteration:  2299/3133  train Acc: 82.2500
+Iteration:  2399/3133  train Acc: 81.0000
+Iteration:  2499/3133  train Acc: 82.5625
+Iteration:  2599/3133  train Acc: 81.9375
+Iteration:  2699/3133  train Acc: 82.6875
+Iteration:  2799/3133  train Acc: 82.0000
+Iteration:  2899/3133  train Acc: 82.7500
+Iteration:  2999/3133  train Acc: 80.0625
+Iteration:  3099/3133  train Acc: 81.9375
+----------
+train complete in 2m 42s
+Acc: 82.4729
+----------
+Iteration:    99/895   val Acc: 76.9375
+Iteration:   199/895   val Acc: 74.5625
+Iteration:   299/895   val Acc: 77.6250
+Iteration:   399/895   val Acc: 74.6875
+Iteration:   499/895   val Acc: 74.7500
+Iteration:   599/895   val Acc: 76.1875
+Iteration:   699/895   val Acc: 77.6250
+Iteration:   799/895   val Acc: 77.1250
+----------
+val complete in 0m 47s
+Acc: 76.0265
+----------
+Epoch 8/40
+----------
+Iteration:    99/3133  train Acc: 85.2500
+Iteration:   199/3133  train Acc: 84.7500
+Iteration:   299/3133  train Acc: 84.9375
+Iteration:   399/3133  train Acc: 85.0000
+Iteration:   499/3133  train Acc: 85.0000
+Iteration:   599/3133  train Acc: 84.0625
+Iteration:   699/3133  train Acc: 83.2500
+Iteration:   799/3133  train Acc: 84.6250
+Iteration:   899/3133  train Acc: 85.3750
+Iteration:   999/3133  train Acc: 83.1250
+Iteration:  1099/3133  train Acc: 84.2500
+Iteration:  1199/3133  train Acc: 84.5000
+Iteration:  1299/3133  train Acc: 83.8125
+Iteration:  1399/3133  train Acc: 84.1875
+Iteration:  1499/3133  train Acc: 85.0000
+Iteration:  1599/3133  train Acc: 85.2500
+Iteration:  1699/3133  train Acc: 85.0625
+Iteration:  1799/3133  train Acc: 83.1875
+Iteration:  1899/3133  train Acc: 83.8125
+Iteration:  1999/3133  train Acc: 84.6875
+Iteration:  2099/3133  train Acc: 85.0000
+Iteration:  2199/3133  train Acc: 85.0000
+Iteration:  2299/3133  train Acc: 84.1875
+Iteration:  2399/3133  train Acc: 84.6875
+Iteration:  2499/3133  train Acc: 81.7500
+Iteration:  2599/3133  train Acc: 85.0625
+Iteration:  2699/3133  train Acc: 85.1250
+Iteration:  2799/3133  train Acc: 85.1250
+Iteration:  2899/3133  train Acc: 83.8125
+Iteration:  2999/3133  train Acc: 82.7500
+Iteration:  3099/3133  train Acc: 83.4375
+----------
+train complete in 2m 40s
+Acc: 84.3680
+----------
+Iteration:    99/895   val Acc: 76.6875
+Iteration:   199/895   val Acc: 75.7500
+Iteration:   299/895   val Acc: 75.0000
+Iteration:   399/895   val Acc: 76.1250
+Iteration:   499/895   val Acc: 75.3750
+Iteration:   599/895   val Acc: 76.6250
+Iteration:   699/895   val Acc: 75.6875
+Iteration:   799/895   val Acc: 76.1875
+----------
+val complete in 0m 47s
+Acc: 75.8589
+----------
+Epoch 9/40
+----------
+Iteration:    99/3133  train Acc: 87.6875
+Iteration:   199/3133  train Acc: 88.0625
+Iteration:   299/3133  train Acc: 87.2500
+Iteration:   399/3133  train Acc: 87.1875
+Iteration:   499/3133  train Acc: 85.3125
+Iteration:   599/3133  train Acc: 87.5625
+Iteration:   699/3133  train Acc: 88.4375
+Iteration:   799/3133  train Acc: 86.8750
+Iteration:   899/3133  train Acc: 86.4375
+Iteration:   999/3133  train Acc: 87.1875
+Iteration:  1099/3133  train Acc: 85.4375
+Iteration:  1199/3133  train Acc: 87.1250
+Iteration:  1299/3133  train Acc: 85.3125
+Iteration:  1399/3133  train Acc: 86.6250
+Iteration:  1499/3133  train Acc: 85.9375
+Iteration:  1599/3133  train Acc: 87.1250
+Iteration:  1699/3133  train Acc: 85.6250
+Iteration:  1799/3133  train Acc: 84.8750
+Iteration:  1899/3133  train Acc: 86.4375
+Iteration:  1999/3133  train Acc: 85.8125
+Iteration:  2099/3133  train Acc: 87.5000
+Iteration:  2199/3133  train Acc: 85.9375
+Iteration:  2299/3133  train Acc: 84.3125
+Iteration:  2399/3133  train Acc: 85.7500
+Iteration:  2499/3133  train Acc: 85.4375
+Iteration:  2599/3133  train Acc: 87.8125
+Iteration:  2699/3133  train Acc: 86.1250
+Iteration:  2799/3133  train Acc: 86.7500
+Iteration:  2899/3133  train Acc: 85.7500
+Iteration:  2999/3133  train Acc: 85.6250
+Iteration:  3099/3133  train Acc: 85.1250
+----------
+train complete in 2m 41s
+Acc: 86.3709
+----------
+Iteration:    99/895   val Acc: 75.8125
+Iteration:   199/895   val Acc: 75.9375
+Iteration:   299/895   val Acc: 74.0625
+Iteration:   399/895   val Acc: 76.6875
+Iteration:   499/895   val Acc: 74.5625
+Iteration:   599/895   val Acc: 76.9375
+Iteration:   699/895   val Acc: 76.8125
+Iteration:   799/895   val Acc: 75.6250
+----------
+val complete in 0m 47s
+Acc: 75.8031
+----------
+Epoch 10/40
+----------
+Iteration:    99/3133  train Acc: 88.5625
+Iteration:   199/3133  train Acc: 89.6250
+Iteration:   299/3133  train Acc: 90.3750
+Iteration:   399/3133  train Acc: 88.5000
+Iteration:   499/3133  train Acc: 89.0000
+Iteration:   599/3133  train Acc: 88.5625
+Iteration:   699/3133  train Acc: 89.1250
+Iteration:   799/3133  train Acc: 89.1250
+Iteration:   899/3133  train Acc: 89.1875
+Iteration:   999/3133  train Acc: 88.0625
+Iteration:  1099/3133  train Acc: 88.6250
+Iteration:  1199/3133  train Acc: 87.8125
+Iteration:  1299/3133  train Acc: 88.1875
+Iteration:  1399/3133  train Acc: 88.8125
+Iteration:  1499/3133  train Acc: 87.6875
+Iteration:  1599/3133  train Acc: 86.6250
+Iteration:  1699/3133  train Acc: 88.6250
+Iteration:  1799/3133  train Acc: 88.2500
+Iteration:  1899/3133  train Acc: 87.2500
+Iteration:  1999/3133  train Acc: 87.9375
+Iteration:  2099/3133  train Acc: 88.3750
+Iteration:  2199/3133  train Acc: 86.1875
+Iteration:  2299/3133  train Acc: 89.3125
+Iteration:  2399/3133  train Acc: 87.5000
+Iteration:  2499/3133  train Acc: 87.7500
+Iteration:  2599/3133  train Acc: 86.0000
+Iteration:  2699/3133  train Acc: 87.1250
+Iteration:  2799/3133  train Acc: 88.2500
+Iteration:  2899/3133  train Acc: 88.7500
+Iteration:  2999/3133  train Acc: 88.0625
+Iteration:  3099/3133  train Acc: 87.9375
+----------
+train complete in 2m 44s
+Acc: 88.2082
+----------
+Iteration:    99/895   val Acc: 75.6250
+Iteration:   199/895   val Acc: 76.6250
+Iteration:   299/895   val Acc: 75.0625
+Iteration:   399/895   val Acc: 77.1875
+Iteration:   499/895   val Acc: 75.3750
+Iteration:   599/895   val Acc: 75.7500
+Iteration:   699/895   val Acc: 76.4375
+Iteration:   799/895   val Acc: 73.6875
+----------
+val complete in 0m 46s
+Acc: 75.6704
+----------
+Epoch 11/40
+----------
+Iteration:    99/3133  train Acc: 90.3125
+Iteration:   199/3133  train Acc: 90.2500
+Iteration:   299/3133  train Acc: 91.3750
+Iteration:   399/3133  train Acc: 91.3750
+Iteration:   499/3133  train Acc: 91.3125
+Iteration:   599/3133  train Acc: 90.6250
+Iteration:   699/3133  train Acc: 89.1250
+Iteration:   799/3133  train Acc: 89.8750
+Iteration:   899/3133  train Acc: 90.3750
+Iteration:   999/3133  train Acc: 90.0000
+Iteration:  1099/3133  train Acc: 90.6875
+Iteration:  1199/3133  train Acc: 90.1250
+Iteration:  1299/3133  train Acc: 90.1875
+Iteration:  1399/3133  train Acc: 90.3750
+Iteration:  1499/3133  train Acc: 89.9375
+Iteration:  1599/3133  train Acc: 89.4375
+Iteration:  1699/3133  train Acc: 89.6250
+Iteration:  1799/3133  train Acc: 89.9375
+Iteration:  1899/3133  train Acc: 89.1250
+Iteration:  1999/3133  train Acc: 89.5625
+Iteration:  2099/3133  train Acc: 90.5000
+Iteration:  2199/3133  train Acc: 90.6250
+Iteration:  2299/3133  train Acc: 90.2500
+Iteration:  2399/3133  train Acc: 88.1875
+Iteration:  2499/3133  train Acc: 88.8750
+Iteration:  2599/3133  train Acc: 88.6875
+Iteration:  2699/3133  train Acc: 89.2500
+Iteration:  2799/3133  train Acc: 88.0000
+Iteration:  2899/3133  train Acc: 88.6875
+Iteration:  2999/3133  train Acc: 89.4375
+Iteration:  3099/3133  train Acc: 89.8750
+----------
+train complete in 2m 41s
+Acc: 89.8400
+----------
+Iteration:    99/895   val Acc: 74.7500
+Iteration:   199/895   val Acc: 77.1875
+Iteration:   299/895   val Acc: 77.3750
+Iteration:   399/895   val Acc: 75.6250
+Iteration:   499/895   val Acc: 73.9375
+Iteration:   599/895   val Acc: 75.6250
+Iteration:   699/895   val Acc: 74.7500
+Iteration:   799/895   val Acc: 75.8125
+----------
+val complete in 0m 46s
+Acc: 75.5726
+----------
+Epoch 12/40
+----------
+Iteration:    99/3133  train Acc: 92.5000
+Iteration:   199/3133  train Acc: 91.8750
+Iteration:   299/3133  train Acc: 92.0625
+Iteration:   399/3133  train Acc: 92.7500
+Iteration:   499/3133  train Acc: 92.9375
+Iteration:   599/3133  train Acc: 90.7500
+Iteration:   699/3133  train Acc: 92.5000
+Iteration:   799/3133  train Acc: 91.1250
+Iteration:   899/3133  train Acc: 91.0000
+Iteration:   999/3133  train Acc: 92.1875
+Iteration:  1099/3133  train Acc: 91.4375
+Iteration:  1199/3133  train Acc: 90.3125
+Iteration:  1299/3133  train Acc: 90.6875
+Iteration:  1399/3133  train Acc: 91.4375
+Iteration:  1499/3133  train Acc: 90.6250
+Iteration:  1599/3133  train Acc: 90.7500
+Iteration:  1699/3133  train Acc: 91.1250
+Iteration:  1799/3133  train Acc: 91.5000
+Iteration:  1899/3133  train Acc: 90.8750
+Iteration:  1999/3133  train Acc: 91.8125
+Iteration:  2099/3133  train Acc: 91.3125
+Iteration:  2199/3133  train Acc: 90.8125
+Iteration:  2299/3133  train Acc: 90.4375
+Iteration:  2399/3133  train Acc: 89.2500
+Iteration:  2499/3133  train Acc: 90.7500
+Iteration:  2599/3133  train Acc: 90.2500
+Iteration:  2699/3133  train Acc: 90.8750
+Iteration:  2799/3133  train Acc: 90.4375
+Iteration:  2899/3133  train Acc: 91.1875
+Iteration:  2999/3133  train Acc: 91.5000
+Iteration:  3099/3133  train Acc: 89.5625
+----------
+train complete in 2m 41s
+Acc: 91.1726
+----------
+Iteration:    99/895   val Acc: 74.7500
+Iteration:   199/895   val Acc: 75.9375
+Iteration:   299/895   val Acc: 74.4375
+Iteration:   399/895   val Acc: 74.8750
+Iteration:   499/895   val Acc: 76.1250
+Iteration:   599/895   val Acc: 76.8750
+Iteration:   699/895   val Acc: 73.8125
+Iteration:   799/895   val Acc: 75.4375
+----------
+val complete in 0m 47s
+Acc: 75.1676
+----------
+Epoch 13/40
+----------
+Iteration:    99/3133  train Acc: 93.5625
+Iteration:   199/3133  train Acc: 94.3750
+Iteration:   299/3133  train Acc: 93.5000
+Iteration:   399/3133  train Acc: 93.3125
+Iteration:   499/3133  train Acc: 93.1250
+Iteration:   599/3133  train Acc: 93.9375
+Iteration:   699/3133  train Acc: 93.8750
+Iteration:   799/3133  train Acc: 92.6250
+Iteration:   899/3133  train Acc: 92.2500
+Iteration:   999/3133  train Acc: 92.2500
+Iteration:  1099/3133  train Acc: 92.6875
+Iteration:  1199/3133  train Acc: 92.8750
+Iteration:  1299/3133  train Acc: 93.0000
+Iteration:  1399/3133  train Acc: 93.7500
+Iteration:  1499/3133  train Acc: 91.1250
+Iteration:  1599/3133  train Acc: 91.0625
+Iteration:  1699/3133  train Acc: 90.8125
+Iteration:  1799/3133  train Acc: 91.9375
+Iteration:  1899/3133  train Acc: 90.5000
+Iteration:  1999/3133  train Acc: 91.5000
+Iteration:  2099/3133  train Acc: 92.5625
+Iteration:  2199/3133  train Acc: 92.3750
+Iteration:  2299/3133  train Acc: 91.0625
+Iteration:  2399/3133  train Acc: 92.9375
+Iteration:  2499/3133  train Acc: 90.8125
+Iteration:  2599/3133  train Acc: 90.5000
+Iteration:  2699/3133  train Acc: 91.5000
+Iteration:  2799/3133  train Acc: 92.1875
+Iteration:  2899/3133  train Acc: 91.1250
+Iteration:  2999/3133  train Acc: 91.1250
+Iteration:  3099/3133  train Acc: 90.3750
+----------
+train complete in 2m 40s
+Acc: 92.2139
+----------
+Iteration:    99/895   val Acc: 73.6250
+Iteration:   199/895   val Acc: 75.5000
+Iteration:   299/895   val Acc: 74.7500
+Iteration:   399/895   val Acc: 77.8750
+Iteration:   499/895   val Acc: 74.3750
+Iteration:   599/895   val Acc: 74.1875
+Iteration:   699/895   val Acc: 76.0625
+Iteration:   799/895   val Acc: 74.0000
+----------
+val complete in 0m 46s
+Acc: 75.0698
+----------
+Epoch 14/40
+----------
+Iteration:    99/3133  train Acc: 93.6875
+Iteration:   199/3133  train Acc: 94.5625
+Iteration:   299/3133  train Acc: 94.3125
+Iteration:   399/3133  train Acc: 93.8750
+Iteration:   499/3133  train Acc: 93.1250
+Iteration:   599/3133  train Acc: 94.6250
+Iteration:   699/3133  train Acc: 93.1875
+Iteration:   799/3133  train Acc: 92.9375
+Iteration:   899/3133  train Acc: 94.0000
+Iteration:   999/3133  train Acc: 92.6250
+Iteration:  1099/3133  train Acc: 93.3125
+Iteration:  1199/3133  train Acc: 93.4375
+Iteration:  1299/3133  train Acc: 93.0625
+Iteration:  1399/3133  train Acc: 92.8750
+Iteration:  1499/3133  train Acc: 93.1250
+Iteration:  1599/3133  train Acc: 93.0625
+Iteration:  1699/3133  train Acc: 92.8125
+Iteration:  1799/3133  train Acc: 93.6875
+Iteration:  1899/3133  train Acc: 92.6250
+Iteration:  1999/3133  train Acc: 93.3750
+Iteration:  2099/3133  train Acc: 93.1875
+Iteration:  2199/3133  train Acc: 92.9375
+Iteration:  2299/3133  train Acc: 92.5000
+Iteration:  2399/3133  train Acc: 91.7500
+Iteration:  2499/3133  train Acc: 92.9375
+Iteration:  2599/3133  train Acc: 92.6875
+Iteration:  2699/3133  train Acc: 92.8750
+Iteration:  2799/3133  train Acc: 92.2500
+Iteration:  2899/3133  train Acc: 93.0000
+Iteration:  2999/3133  train Acc: 92.0625
+Iteration:  3099/3133  train Acc: 92.8125
+----------
+train complete in 2m 40s
+Acc: 93.1216
+----------
+Iteration:    99/895   val Acc: 73.8125
+Iteration:   199/895   val Acc: 75.3125
+Iteration:   299/895   val Acc: 75.7500
+Iteration:   399/895   val Acc: 76.6875
+Iteration:   499/895   val Acc: 76.5000
+Iteration:   599/895   val Acc: 74.6875
+Iteration:   699/895   val Acc: 73.6250
+Iteration:   799/895   val Acc: 75.8125
+----------
+val complete in 0m 46s
+Acc: 75.4050
+----------
+Epoch 15/40
+----------
+Iteration:    99/3133  train Acc: 94.7500
+Iteration:   199/3133  train Acc: 94.6250
+Iteration:   299/3133  train Acc: 95.2500
+Iteration:   399/3133  train Acc: 95.3750
+Iteration:   499/3133  train Acc: 94.1875
+Iteration:   599/3133  train Acc: 94.3125
+Iteration:   699/3133  train Acc: 94.7500
+Iteration:   799/3133  train Acc: 95.1875
+Iteration:   899/3133  train Acc: 95.0625
+Iteration:   999/3133  train Acc: 94.1875
+Iteration:  1099/3133  train Acc: 94.6250
+Iteration:  1199/3133  train Acc: 94.6250
+Iteration:  1299/3133  train Acc: 93.6875
+Iteration:  1399/3133  train Acc: 93.8125
+Iteration:  1499/3133  train Acc: 94.1875
+Iteration:  1599/3133  train Acc: 92.3750
+Iteration:  1699/3133  train Acc: 95.0625
+Iteration:  1799/3133  train Acc: 94.0625
+Iteration:  1899/3133  train Acc: 94.5625
+Iteration:  1999/3133  train Acc: 93.5625
+Iteration:  2099/3133  train Acc: 92.2500
+Iteration:  2199/3133  train Acc: 92.5625
+Iteration:  2299/3133  train Acc: 93.8125
+Iteration:  2399/3133  train Acc: 93.8125
+Iteration:  2499/3133  train Acc: 93.5625
+Iteration:  2599/3133  train Acc: 93.9375
+Iteration:  2699/3133  train Acc: 93.3125
+Iteration:  2799/3133  train Acc: 93.8125
+Iteration:  2899/3133  train Acc: 93.7500
+Iteration:  2999/3133  train Acc: 92.8750
+Iteration:  3099/3133  train Acc: 92.8750
+----------
+train complete in 2m 44s
+Acc: 94.0073
+----------
+Iteration:    99/895   val Acc: 75.2500
+Iteration:   199/895   val Acc: 74.4375
+Iteration:   299/895   val Acc: 73.3750
+Iteration:   399/895   val Acc: 74.7500
+Iteration:   499/895   val Acc: 74.6875
+Iteration:   599/895   val Acc: 75.0625
+Iteration:   699/895   val Acc: 74.2500
+Iteration:   799/895   val Acc: 74.6875
+----------
+val complete in 0m 46s
+Acc: 74.6508
+----------
+Epoch 16/40
+----------
+Iteration:    99/3133  train Acc: 95.5625
+Iteration:   199/3133  train Acc: 95.3125
+Iteration:   299/3133  train Acc: 95.5625
+Iteration:   399/3133  train Acc: 95.8750
+Iteration:   499/3133  train Acc: 95.5625
+Iteration:   599/3133  train Acc: 95.2500
+Iteration:   699/3133  train Acc: 96.1250
+Iteration:   799/3133  train Acc: 95.6250
+Iteration:   899/3133  train Acc: 94.7500
+Iteration:   999/3133  train Acc: 95.5000
+Iteration:  1099/3133  train Acc: 94.5625
+Iteration:  1199/3133  train Acc: 95.8125
+Iteration:  1299/3133  train Acc: 94.8750
+Iteration:  1399/3133  train Acc: 95.6250
+Iteration:  1499/3133  train Acc: 94.8125
+Iteration:  1599/3133  train Acc: 93.8750
+Iteration:  1699/3133  train Acc: 93.8750
+Iteration:  1799/3133  train Acc: 93.8750
+Iteration:  1899/3133  train Acc: 93.5000
+Iteration:  1999/3133  train Acc: 94.5000
+Iteration:  2099/3133  train Acc: 94.1250
+Iteration:  2199/3133  train Acc: 93.9375
+Iteration:  2299/3133  train Acc: 93.2500
+Iteration:  2399/3133  train Acc: 94.9375
+Iteration:  2499/3133  train Acc: 94.9375
+Iteration:  2599/3133  train Acc: 94.0000
+Iteration:  2699/3133  train Acc: 94.7500
+Iteration:  2799/3133  train Acc: 94.1250
+Iteration:  2899/3133  train Acc: 93.4375
+Iteration:  2999/3133  train Acc: 94.6250
+Iteration:  3099/3133  train Acc: 93.6875
+----------
+train complete in 2m 45s
+Acc: 94.7036
+----------
+Iteration:    99/895   val Acc: 73.7500
+Iteration:   199/895   val Acc: 75.8125
+Iteration:   299/895   val Acc: 73.0625
+Iteration:   399/895   val Acc: 76.4375
+Iteration:   499/895   val Acc: 73.0625
+Iteration:   599/895   val Acc: 75.9375
+Iteration:   699/895   val Acc: 76.6250
+Iteration:   799/895   val Acc: 74.6250
+----------
+val complete in 0m 46s
+Acc: 74.8464
+----------
+Epoch 17/40
+----------
+Iteration:    99/3133  train Acc: 96.9375
+Iteration:   199/3133  train Acc: 96.7500
+Iteration:   299/3133  train Acc: 96.1875
+Iteration:   399/3133  train Acc: 95.5625
+Iteration:   499/3133  train Acc: 95.7500
+Iteration:   599/3133  train Acc: 95.8750
+Iteration:   699/3133  train Acc: 95.0000
+Iteration:   799/3133  train Acc: 95.2500
+Iteration:   899/3133  train Acc: 93.9375
+Iteration:   999/3133  train Acc: 96.1875
+Iteration:  1099/3133  train Acc: 95.1875
+Iteration:  1199/3133  train Acc: 94.8750
+Iteration:  1299/3133  train Acc: 95.5625
+Iteration:  1399/3133  train Acc: 95.0625
+Iteration:  1499/3133  train Acc: 95.7500
+Iteration:  1599/3133  train Acc: 94.0000
+Iteration:  1699/3133  train Acc: 95.6875
+Iteration:  1799/3133  train Acc: 95.0000
+Iteration:  1899/3133  train Acc: 94.8750
+Iteration:  1999/3133  train Acc: 94.8750
+Iteration:  2099/3133  train Acc: 94.8125
+Iteration:  2199/3133  train Acc: 94.4375
+Iteration:  2299/3133  train Acc: 94.3125
+Iteration:  2399/3133  train Acc: 94.5000
+Iteration:  2499/3133  train Acc: 94.6875
+Iteration:  2599/3133  train Acc: 95.3750
+Iteration:  2699/3133  train Acc: 93.3750
+Iteration:  2799/3133  train Acc: 94.2500
+Iteration:  2899/3133  train Acc: 95.8125
+Iteration:  2999/3133  train Acc: 93.3750
+Iteration:  3099/3133  train Acc: 94.4375
+----------
+train complete in 2m 41s
+Acc: 95.0846
+----------
+Iteration:    99/895   val Acc: 76.1875
+Iteration:   199/895   val Acc: 75.8125
+Iteration:   299/895   val Acc: 74.4375
+Iteration:   399/895   val Acc: 75.3125
+Iteration:   499/895   val Acc: 75.0625
+Iteration:   599/895   val Acc: 74.6250
+Iteration:   699/895   val Acc: 74.6875
+Iteration:   799/895   val Acc: 77.1875
+----------
+val complete in 0m 46s
+Acc: 75.3701
+----------
+Epoch 18/40
+----------
+Iteration:    99/3133  train Acc: 96.1250
+Iteration:   199/3133  train Acc: 96.1250
+Iteration:   299/3133  train Acc: 96.1875
+Iteration:   399/3133  train Acc: 95.8750
+Iteration:   499/3133  train Acc: 95.9375
+Iteration:   599/3133  train Acc: 95.0625
+Iteration:   699/3133  train Acc: 96.5625
+Iteration:   799/3133  train Acc: 95.7500
+Iteration:   899/3133  train Acc: 95.4375
+Iteration:   999/3133  train Acc: 96.8750
+Iteration:  1099/3133  train Acc: 94.5625
+Iteration:  1199/3133  train Acc: 95.5625
+Iteration:  1299/3133  train Acc: 96.1875
+Iteration:  1399/3133  train Acc: 95.9375
+Iteration:  1499/3133  train Acc: 95.6250
+Iteration:  1599/3133  train Acc: 94.0625
+Iteration:  1699/3133  train Acc: 95.4375
+Iteration:  1799/3133  train Acc: 96.3750
+Iteration:  1899/3133  train Acc: 96.1250
+Iteration:  1999/3133  train Acc: 95.8125
+Iteration:  2099/3133  train Acc: 95.0625
+Iteration:  2199/3133  train Acc: 94.9375
+Iteration:  2299/3133  train Acc: 95.0000
+Iteration:  2399/3133  train Acc: 94.8750
+Iteration:  2499/3133  train Acc: 94.2500
+Iteration:  2599/3133  train Acc: 96.6250
+Iteration:  2699/3133  train Acc: 94.6875
+Iteration:  2799/3133  train Acc: 94.7500
+Iteration:  2899/3133  train Acc: 95.8750
+Iteration:  2999/3133  train Acc: 94.1250
+Iteration:  3099/3133  train Acc: 94.8125
+----------
+train complete in 2m 40s
+Acc: 95.4716
+----------
+Iteration:    99/895   val Acc: 75.3750
+Iteration:   199/895   val Acc: 72.1875
+Iteration:   299/895   val Acc: 73.2500
+Iteration:   399/895   val Acc: 74.1875
+Iteration:   499/895   val Acc: 74.3125
+Iteration:   599/895   val Acc: 74.3750
+Iteration:   699/895   val Acc: 74.6875
+Iteration:   799/895   val Acc: 76.0625
+----------
+val complete in 0m 45s
+Acc: 74.3087
+----------
+Epoch 19/40
+----------
+Iteration:    99/3133  train Acc: 96.6875
+Iteration:   199/3133  train Acc: 97.7500
+Iteration:   299/3133  train Acc: 97.1875
+Iteration:   399/3133  train Acc: 97.8750
+Iteration:   499/3133  train Acc: 96.4375
+Iteration:   599/3133  train Acc: 97.1875
+Iteration:   699/3133  train Acc: 96.5625
+Iteration:   799/3133  train Acc: 96.5625
+Iteration:   899/3133  train Acc: 95.7500
+Iteration:   999/3133  train Acc: 96.4375
+Iteration:  1099/3133  train Acc: 96.3750
+Iteration:  1199/3133  train Acc: 95.8125
+Iteration:  1299/3133  train Acc: 96.4375
+Iteration:  1399/3133  train Acc: 95.1875
+Iteration:  1499/3133  train Acc: 95.4375
+Iteration:  1599/3133  train Acc: 95.5000
+Iteration:  1699/3133  train Acc: 94.9375
+Iteration:  1799/3133  train Acc: 95.3750
+Iteration:  1899/3133  train Acc: 96.0000
+Iteration:  1999/3133  train Acc: 96.0625
+Iteration:  2099/3133  train Acc: 95.8125
+Iteration:  2199/3133  train Acc: 95.8125
+Iteration:  2299/3133  train Acc: 94.8750
+Iteration:  2399/3133  train Acc: 95.9375
+Iteration:  2499/3133  train Acc: 95.2500
+Iteration:  2599/3133  train Acc: 96.3125
+Iteration:  2699/3133  train Acc: 93.8125
+Iteration:  2799/3133  train Acc: 95.1875
+Iteration:  2899/3133  train Acc: 95.4375
+Iteration:  2999/3133  train Acc: 95.8750
+Iteration:  3099/3133  train Acc: 95.8750
+----------
+train complete in 3m 2s
+Acc: 95.9683
+----------
+Iteration:    99/895   val Acc: 73.6250
+Iteration:   199/895   val Acc: 74.3750
+Iteration:   299/895   val Acc: 75.0625
+Iteration:   399/895   val Acc: 76.8125
+Iteration:   499/895   val Acc: 73.9375
+Iteration:   599/895   val Acc: 76.5000
+Iteration:   699/895   val Acc: 73.8750
+Iteration:   799/895   val Acc: 73.5000
+----------
+val complete in 0m 52s
+Acc: 74.9022
+----------
+Epoch 20/40
+----------
+Iteration:    99/3133  train Acc: 97.3750
+Iteration:   199/3133  train Acc: 96.9375
+Iteration:   299/3133  train Acc: 97.0000
+Iteration:   399/3133  train Acc: 97.5000
+Iteration:   499/3133  train Acc: 96.6875
+Iteration:   599/3133  train Acc: 97.2500
+Iteration:   699/3133  train Acc: 97.0625
+Iteration:   799/3133  train Acc: 96.2500
+Iteration:   899/3133  train Acc: 96.4375
+Iteration:   999/3133  train Acc: 97.0625
+Iteration:  1099/3133  train Acc: 96.0625
+Iteration:  1199/3133  train Acc: 96.2500
+Iteration:  1299/3133  train Acc: 96.1875
+Iteration:  1399/3133  train Acc: 95.1250
+Iteration:  1499/3133  train Acc: 96.0000
+Iteration:  1599/3133  train Acc: 95.2500
+Iteration:  1699/3133  train Acc: 96.3750
+Iteration:  1799/3133  train Acc: 95.8125
+Iteration:  1899/3133  train Acc: 96.2500
+Iteration:  1999/3133  train Acc: 95.8750
+Iteration:  2099/3133  train Acc: 95.8125
+Iteration:  2199/3133  train Acc: 96.2500
+Iteration:  2299/3133  train Acc: 96.0000
+Iteration:  2399/3133  train Acc: 95.1250
+Iteration:  2499/3133  train Acc: 95.7500
+Iteration:  2599/3133  train Acc: 96.1875
+Iteration:  2699/3133  train Acc: 95.6250
+Iteration:  2799/3133  train Acc: 94.8750
+Iteration:  2899/3133  train Acc: 95.9375
+Iteration:  2999/3133  train Acc: 95.5000
+Iteration:  3099/3133  train Acc: 95.5625
+----------
+train complete in 3m 17s
+Acc: 96.1479
+----------
+Iteration:    99/895   val Acc: 76.9375
+Iteration:   199/895   val Acc: 74.8750
+Iteration:   299/895   val Acc: 75.1250
+Iteration:   399/895   val Acc: 75.1875
+Iteration:   499/895   val Acc: 75.1875
+Iteration:   599/895   val Acc: 74.9375
+Iteration:   699/895   val Acc: 75.0000
+Iteration:   799/895   val Acc: 73.5000
+----------
+val complete in 0m 54s
+Acc: 75.0628
+----------
+Epoch 21/40
+----------
+Iteration:    99/3133  train Acc: 96.5625
+Iteration:   199/3133  train Acc: 97.1250
+Iteration:   299/3133  train Acc: 97.2500
+Iteration:   399/3133  train Acc: 97.5625
+Iteration:   499/3133  train Acc: 96.8125
+Iteration:   599/3133  train Acc: 96.6875
+Iteration:   699/3133  train Acc: 96.2500
+Iteration:   799/3133  train Acc: 96.7500
+Iteration:   899/3133  train Acc: 97.1250
+Iteration:   999/3133  train Acc: 96.8125
+Iteration:  1099/3133  train Acc: 96.3750
+Iteration:  1199/3133  train Acc: 96.9375
+Iteration:  1299/3133  train Acc: 95.8125
+Iteration:  1399/3133  train Acc: 97.1250
+Iteration:  1499/3133  train Acc: 96.0625
+Iteration:  1599/3133  train Acc: 96.6875
+Iteration:  1699/3133  train Acc: 96.4375
+Iteration:  1799/3133  train Acc: 96.3750
+Iteration:  1899/3133  train Acc: 96.1875
+Iteration:  1999/3133  train Acc: 96.3125
+Iteration:  2099/3133  train Acc: 97.3125
+Iteration:  2199/3133  train Acc: 95.8750
+Iteration:  2299/3133  train Acc: 96.2500
+Iteration:  2399/3133  train Acc: 95.6250
+Iteration:  2499/3133  train Acc: 95.8750
+Iteration:  2599/3133  train Acc: 95.8750
+Iteration:  2699/3133  train Acc: 95.4375
+Iteration:  2799/3133  train Acc: 96.7500
+Iteration:  2899/3133  train Acc: 96.5000
+Iteration:  2999/3133  train Acc: 95.8125
+Iteration:  3099/3133  train Acc: 96.3125
+----------
+train complete in 2m 41s
+Acc: 96.4451
+----------
+Iteration:    99/895   val Acc: 76.0000
+Iteration:   199/895   val Acc: 78.0000
+Iteration:   299/895   val Acc: 75.2500
+Iteration:   399/895   val Acc: 75.4375
+Iteration:   499/895   val Acc: 75.1250
+Iteration:   599/895   val Acc: 76.2500
+Iteration:   699/895   val Acc: 75.3125
+Iteration:   799/895   val Acc: 74.9375
+----------
+val complete in 0m 55s
+Acc: 75.6564
+----------
+Epoch 22/40
+----------
+Iteration:    99/3133  train Acc: 98.0625
+Iteration:   199/3133  train Acc: 97.0000
+Iteration:   299/3133  train Acc: 97.8750
+Iteration:   399/3133  train Acc: 97.2500
+Iteration:   499/3133  train Acc: 97.3125
+Iteration:   599/3133  train Acc: 97.3125
+Iteration:   699/3133  train Acc: 96.6250
+Iteration:   799/3133  train Acc: 96.5000
+Iteration:   899/3133  train Acc: 97.9375
+Iteration:   999/3133  train Acc: 97.0000
+Iteration:  1099/3133  train Acc: 96.6875
+Iteration:  1199/3133  train Acc: 97.1875
+Iteration:  1299/3133  train Acc: 95.8750
+Iteration:  1399/3133  train Acc: 96.3125
+Iteration:  1499/3133  train Acc: 97.1875
+Iteration:  1599/3133  train Acc: 96.6875
+Iteration:  1699/3133  train Acc: 97.4375
+Iteration:  1799/3133  train Acc: 97.1250
+Iteration:  1899/3133  train Acc: 96.3125
+Iteration:  1999/3133  train Acc: 96.6875
+Iteration:  2099/3133  train Acc: 96.7500
+Iteration:  2199/3133  train Acc: 96.6250
+Iteration:  2299/3133  train Acc: 96.1250
+Iteration:  2399/3133  train Acc: 96.5000
+Iteration:  2499/3133  train Acc: 97.2500
+Iteration:  2599/3133  train Acc: 95.3750
+Iteration:  2699/3133  train Acc: 95.6875
+Iteration:  2799/3133  train Acc: 96.6875
+Iteration:  2899/3133  train Acc: 96.2500
+Iteration:  2999/3133  train Acc: 96.2500
+Iteration:  3099/3133  train Acc: 96.0000
+----------
+train complete in 2m 36s
+Acc: 96.7583
+----------
+Iteration:    99/895   val Acc: 74.1875
+Iteration:   199/895   val Acc: 74.8750
+Iteration:   299/895   val Acc: 73.8125
+Iteration:   399/895   val Acc: 77.3125
+Iteration:   499/895   val Acc: 76.5000
+Iteration:   599/895   val Acc: 74.3125
+Iteration:   699/895   val Acc: 74.1250
+Iteration:   799/895   val Acc: 74.2500
+----------
+val complete in 0m 41s
+Acc: 74.9721
+----------
+Epoch 23/40
+----------
+Iteration:    99/3133  train Acc: 97.8750
+Iteration:   199/3133  train Acc: 97.4375
+Iteration:   299/3133  train Acc: 97.1250
+Iteration:   399/3133  train Acc: 97.9375
+Iteration:   499/3133  train Acc: 96.9375
+Iteration:   599/3133  train Acc: 97.3750
+Iteration:   699/3133  train Acc: 96.7500
+Iteration:   799/3133  train Acc: 97.1250
+Iteration:   899/3133  train Acc: 96.8750
+Iteration:   999/3133  train Acc: 97.3125
+Iteration:  1099/3133  train Acc: 97.0000
+Iteration:  1199/3133  train Acc: 97.5000
+Iteration:  1299/3133  train Acc: 97.1250
+Iteration:  1399/3133  train Acc: 96.9375
+Iteration:  1499/3133  train Acc: 97.3750
+Iteration:  1599/3133  train Acc: 96.4375
+Iteration:  1699/3133  train Acc: 97.6250
+Iteration:  1799/3133  train Acc: 97.0000
+Iteration:  1899/3133  train Acc: 97.1875
+Iteration:  1999/3133  train Acc: 96.1250
+Iteration:  2099/3133  train Acc: 97.0625
+Iteration:  2199/3133  train Acc: 96.3750
+Iteration:  2299/3133  train Acc: 96.6875
+Iteration:  2399/3133  train Acc: 96.1250
+Iteration:  2499/3133  train Acc: 96.3125
+Iteration:  2599/3133  train Acc: 96.9375
+Iteration:  2699/3133  train Acc: 97.3750
+Iteration:  2799/3133  train Acc: 96.5000
+Iteration:  2899/3133  train Acc: 97.1875
+Iteration:  2999/3133  train Acc: 95.8750
+Iteration:  3099/3133  train Acc: 96.4375
+----------
+train complete in 2m 33s
+Acc: 96.9458
+----------
+Iteration:    99/895   val Acc: 73.6250
+Iteration:   199/895   val Acc: 74.2500
+Iteration:   299/895   val Acc: 74.5000
+Iteration:   399/895   val Acc: 75.6250
+Iteration:   499/895   val Acc: 74.3125
+Iteration:   599/895   val Acc: 75.7500
+Iteration:   699/895   val Acc: 74.3750
+Iteration:   799/895   val Acc: 74.3750
+----------
+val complete in 0m 40s
+Acc: 74.5601
+----------
+Epoch 24/40
+----------
+Iteration:    99/3133  train Acc: 97.6875
+Iteration:   199/3133  train Acc: 97.8750
+Iteration:   299/3133  train Acc: 97.7500
+Iteration:   399/3133  train Acc: 97.9375
+Iteration:   499/3133  train Acc: 97.5000
+Iteration:   599/3133  train Acc: 97.1875
+Iteration:   699/3133  train Acc: 97.4375
+Iteration:   799/3133  train Acc: 96.8750
+Iteration:   899/3133  train Acc: 97.9375
+Iteration:   999/3133  train Acc: 97.2500
+Iteration:  1099/3133  train Acc: 97.0625
+Iteration:  1199/3133  train Acc: 97.1875
+Iteration:  1299/3133  train Acc: 96.6250
+Iteration:  1399/3133  train Acc: 97.0625
+Iteration:  1499/3133  train Acc: 97.3750
+Iteration:  1599/3133  train Acc: 96.8750
+Iteration:  1699/3133  train Acc: 96.9375
+Iteration:  1799/3133  train Acc: 97.1250
+Iteration:  1899/3133  train Acc: 97.0000
+Iteration:  1999/3133  train Acc: 97.1875
+Iteration:  2099/3133  train Acc: 97.1250
+Iteration:  2199/3133  train Acc: 96.7500
+Iteration:  2299/3133  train Acc: 97.3750
+Iteration:  2399/3133  train Acc: 96.5000
+Iteration:  2499/3133  train Acc: 96.9375
+Iteration:  2599/3133  train Acc: 96.3125
+Iteration:  2699/3133  train Acc: 96.5625
+Iteration:  2799/3133  train Acc: 97.0000
+Iteration:  2899/3133  train Acc: 96.3750
+Iteration:  2999/3133  train Acc: 95.8125
+Iteration:  3099/3133  train Acc: 96.5000
+----------
+train complete in 2m 34s
+Acc: 97.0575
+----------
+Iteration:    99/895   val Acc: 74.5000
+Iteration:   199/895   val Acc: 73.3125
+Iteration:   299/895   val Acc: 73.8125
+Iteration:   399/895   val Acc: 75.0625
+Iteration:   499/895   val Acc: 74.0000
+Iteration:   599/895   val Acc: 75.0000
+Iteration:   699/895   val Acc: 73.8750
+Iteration:   799/895   val Acc: 75.4375
+----------
+val complete in 0m 40s
+Acc: 74.2737
+----------
+Epoch 25/40
+----------
+Iteration:    99/3133  train Acc: 98.3750
+Iteration:   199/3133  train Acc: 97.2500
+Iteration:   299/3133  train Acc: 98.1250
+Iteration:   399/3133  train Acc: 98.1250
+Iteration:   499/3133  train Acc: 98.2500
+Iteration:   599/3133  train Acc: 98.1250
+Iteration:   699/3133  train Acc: 97.0000
+Iteration:   799/3133  train Acc: 97.8125
+Iteration:   899/3133  train Acc: 97.7500
+Iteration:   999/3133  train Acc: 97.1875
+Iteration:  1099/3133  train Acc: 97.6250
+Iteration:  1199/3133  train Acc: 97.7500
+Iteration:  1299/3133  train Acc: 97.0000
+Iteration:  1399/3133  train Acc: 97.5000
+Iteration:  1499/3133  train Acc: 97.1250
+Iteration:  1599/3133  train Acc: 97.5000
+Iteration:  1699/3133  train Acc: 97.5625
+Iteration:  1799/3133  train Acc: 97.3125
+Iteration:  1899/3133  train Acc: 96.6875
+Iteration:  1999/3133  train Acc: 97.2500
+Iteration:  2099/3133  train Acc: 97.3750
+Iteration:  2199/3133  train Acc: 96.8125
+Iteration:  2299/3133  train Acc: 96.5000
+Iteration:  2399/3133  train Acc: 97.1250
+Iteration:  2499/3133  train Acc: 97.5625
+Iteration:  2599/3133  train Acc: 96.8125
+Iteration:  2699/3133  train Acc: 97.1250
+Iteration:  2799/3133  train Acc: 97.0000
+Iteration:  2899/3133  train Acc: 96.7500
+Iteration:  2999/3133  train Acc: 96.6875
+Iteration:  3099/3133  train Acc: 96.3750
+----------
+train complete in 2m 33s
+Acc: 97.3069
+----------
+Iteration:    99/895   val Acc: 73.6875
+Iteration:   199/895   val Acc: 73.8750
+Iteration:   299/895   val Acc: 75.3125
+Iteration:   399/895   val Acc: 75.1250
+Iteration:   499/895   val Acc: 75.7500
+Iteration:   599/895   val Acc: 73.8750
+Iteration:   699/895   val Acc: 74.0000
+Iteration:   799/895   val Acc: 75.1875
+----------
+val complete in 0m 40s
+Acc: 74.5321
+----------
+Epoch 26/40
+----------
+Iteration:    99/3133  train Acc: 98.5625
+Iteration:   199/3133  train Acc: 98.4375
+Iteration:   299/3133  train Acc: 98.0625
+Iteration:   399/3133  train Acc: 98.4375
+Iteration:   499/3133  train Acc: 97.9375
+Iteration:   599/3133  train Acc: 97.5000
+Iteration:   699/3133  train Acc: 97.9375
+Iteration:   799/3133  train Acc: 97.5625
+Iteration:   899/3133  train Acc: 97.6250
+Iteration:   999/3133  train Acc: 97.0000
+Iteration:  1099/3133  train Acc: 97.0625
+Iteration:  1199/3133  train Acc: 97.1250
+Iteration:  1299/3133  train Acc: 97.4375
+Iteration:  1399/3133  train Acc: 96.7500
+Iteration:  1499/3133  train Acc: 97.5625
+Iteration:  1599/3133  train Acc: 96.7500
+Iteration:  1699/3133  train Acc: 96.7500
+Iteration:  1799/3133  train Acc: 96.8750
+Iteration:  1899/3133  train Acc: 97.5000
+Iteration:  1999/3133  train Acc: 97.1875
+Iteration:  2099/3133  train Acc: 97.3125
+Iteration:  2199/3133  train Acc: 97.6250
+Iteration:  2299/3133  train Acc: 96.9375
+Iteration:  2399/3133  train Acc: 97.1250
+Iteration:  2499/3133  train Acc: 97.6250
+Iteration:  2599/3133  train Acc: 96.3125
+Iteration:  2699/3133  train Acc: 97.7500
+Iteration:  2799/3133  train Acc: 97.6250
+Iteration:  2899/3133  train Acc: 96.7500
+Iteration:  2999/3133  train Acc: 97.5000
+Iteration:  3099/3133  train Acc: 97.1875
+----------
+train complete in 2m 33s
+Acc: 97.3887
+----------
+Iteration:    99/895   val Acc: 75.0625
+Iteration:   199/895   val Acc: 73.9375
+Iteration:   299/895   val Acc: 74.0000
+Iteration:   399/895   val Acc: 76.0000
+Iteration:   499/895   val Acc: 74.3125
+Iteration:   599/895   val Acc: 75.0000
+Iteration:   699/895   val Acc: 75.2500
+Iteration:   799/895   val Acc: 74.4375
+----------
+val complete in 0m 40s
+Acc: 74.6578
+----------
+Epoch 27/40
+----------
+Iteration:    99/3133  train Acc: 97.9375
+Iteration:   199/3133  train Acc: 98.3125
+Iteration:   299/3133  train Acc: 97.6250
+Iteration:   399/3133  train Acc: 98.5000
+Iteration:   499/3133  train Acc: 98.1250
+Iteration:   599/3133  train Acc: 97.7500
+Iteration:   699/3133  train Acc: 97.3750
+Iteration:   799/3133  train Acc: 97.0625
+Iteration:   899/3133  train Acc: 97.9375
+Iteration:   999/3133  train Acc: 97.2500
+Iteration:  1099/3133  train Acc: 97.8750
+Iteration:  1199/3133  train Acc: 97.5000
+Iteration:  1299/3133  train Acc: 98.3750
+Iteration:  1399/3133  train Acc: 98.4375
+Iteration:  1499/3133  train Acc: 97.4375
+Iteration:  1599/3133  train Acc: 98.0000
+Iteration:  1699/3133  train Acc: 97.3750
+Iteration:  1799/3133  train Acc: 96.8750
+Iteration:  1899/3133  train Acc: 97.3750
+Iteration:  1999/3133  train Acc: 97.9375
+Iteration:  2099/3133  train Acc: 97.4375
+Iteration:  2199/3133  train Acc: 97.1875
+Iteration:  2299/3133  train Acc: 97.9375
+Iteration:  2399/3133  train Acc: 97.4375
+Iteration:  2499/3133  train Acc: 97.1250
+Iteration:  2599/3133  train Acc: 97.8750
+Iteration:  2699/3133  train Acc: 96.9375
+Iteration:  2799/3133  train Acc: 97.6250
+Iteration:  2899/3133  train Acc: 97.3125
+Iteration:  2999/3133  train Acc: 97.0000
+Iteration:  3099/3133  train Acc: 96.8750
+----------
+train complete in 2m 33s
+Acc: 97.5922
+----------
+Iteration:    99/895   val Acc: 75.4375
+Iteration:   199/895   val Acc: 74.3750
+Iteration:   299/895   val Acc: 73.6250
+Iteration:   399/895   val Acc: 73.8125
+Iteration:   499/895   val Acc: 74.8750
+Iteration:   599/895   val Acc: 75.2500
+Iteration:   699/895   val Acc: 75.6250
+Iteration:   799/895   val Acc: 73.6250
+----------
+val complete in 0m 41s
+Acc: 74.6648
+----------
+Epoch 28/40
+----------
+Iteration:    99/3133  train Acc: 98.5625
+Iteration:   199/3133  train Acc: 97.8750
+Iteration:   299/3133  train Acc: 97.8125
+Iteration:   399/3133  train Acc: 98.0000
+Iteration:   499/3133  train Acc: 97.3125
+Iteration:   599/3133  train Acc: 97.7500
+Iteration:   699/3133  train Acc: 97.8125
+Iteration:   799/3133  train Acc: 97.3750
+Iteration:   899/3133  train Acc: 98.0000
+Iteration:   999/3133  train Acc: 97.6250
+Iteration:  1099/3133  train Acc: 97.5625
+Iteration:  1199/3133  train Acc: 97.4375
+Iteration:  1299/3133  train Acc: 98.0625
+Iteration:  1399/3133  train Acc: 97.7500
+Iteration:  1499/3133  train Acc: 97.5000
+Iteration:  1599/3133  train Acc: 97.8125
+Iteration:  1699/3133  train Acc: 96.4375
+Iteration:  1799/3133  train Acc: 96.8750
+Iteration:  1899/3133  train Acc: 97.8750
+Iteration:  1999/3133  train Acc: 97.5000
+Iteration:  2099/3133  train Acc: 96.7500
+Iteration:  2199/3133  train Acc: 96.5625
+Iteration:  2299/3133  train Acc: 97.7500
+Iteration:  2399/3133  train Acc: 97.1250
+Iteration:  2499/3133  train Acc: 97.6250
+Iteration:  2599/3133  train Acc: 98.2500
+Iteration:  2699/3133  train Acc: 98.1875
+Iteration:  2799/3133  train Acc: 96.6250
+Iteration:  2899/3133  train Acc: 97.1875
+Iteration:  2999/3133  train Acc: 97.1250
+Iteration:  3099/3133  train Acc: 97.5625
+----------
+train complete in 2m 33s
+Acc: 97.5203
+----------
+Iteration:    99/895   val Acc: 75.9375
+Iteration:   199/895   val Acc: 75.2500
+Iteration:   299/895   val Acc: 74.3125
+Iteration:   399/895   val Acc: 75.1250
+Iteration:   499/895   val Acc: 74.3125
+Iteration:   599/895   val Acc: 76.3750
+Iteration:   699/895   val Acc: 72.3125
+Iteration:   799/895   val Acc: 72.5000
+----------
+val complete in 0m 41s
+Acc: 74.2737
+----------
+Epoch 29/40
+----------
+Iteration:    99/3133  train Acc: 98.6875
+Iteration:   199/3133  train Acc: 98.1250
+Iteration:   299/3133  train Acc: 97.6250
+Iteration:   399/3133  train Acc: 98.6875
+Iteration:   499/3133  train Acc: 97.6250
+Iteration:   599/3133  train Acc: 98.4375
+Iteration:   699/3133  train Acc: 97.7500
+Iteration:   799/3133  train Acc: 97.6250
+Iteration:   899/3133  train Acc: 98.1875
+Iteration:   999/3133  train Acc: 97.9375
+Iteration:  1099/3133  train Acc: 97.6875
+Iteration:  1199/3133  train Acc: 98.0625
+Iteration:  1299/3133  train Acc: 98.4375
+Iteration:  1399/3133  train Acc: 97.7500
+Iteration:  1499/3133  train Acc: 97.0625
+Iteration:  1599/3133  train Acc: 97.2500
+Iteration:  1699/3133  train Acc: 97.8125
+Iteration:  1799/3133  train Acc: 98.0000
+Iteration:  1899/3133  train Acc: 97.5625
+Iteration:  1999/3133  train Acc: 97.5625
+Iteration:  2099/3133  train Acc: 98.2500
+Iteration:  2199/3133  train Acc: 97.6250
+Iteration:  2299/3133  train Acc: 97.6250
+Iteration:  2399/3133  train Acc: 97.0625
+Iteration:  2499/3133  train Acc: 97.1875
+Iteration:  2599/3133  train Acc: 97.9375
+Iteration:  2699/3133  train Acc: 98.0625
+Iteration:  2799/3133  train Acc: 97.8125
+Iteration:  2899/3133  train Acc: 97.1250
+Iteration:  2999/3133  train Acc: 96.6875
+Iteration:  3099/3133  train Acc: 97.3125
+----------
+train complete in 2m 32s
+Acc: 97.7478
+----------
+Iteration:    99/895   val Acc: 76.6875
+Iteration:   199/895   val Acc: 75.2500
+Iteration:   299/895   val Acc: 75.5000
+Iteration:   399/895   val Acc: 76.3125
+Iteration:   499/895   val Acc: 73.3750
+Iteration:   599/895   val Acc: 75.0000
+Iteration:   699/895   val Acc: 75.2500
+Iteration:   799/895   val Acc: 74.2500
+----------
+val complete in 0m 40s
+Acc: 75.1816
+----------
+Epoch 30/40
+----------
+Iteration:    99/3133  train Acc: 97.3750
+Iteration:   199/3133  train Acc: 98.5625
+Iteration:   299/3133  train Acc: 98.0625
+Iteration:   399/3133  train Acc: 98.1875
+Iteration:   499/3133  train Acc: 98.3125
+Iteration:   599/3133  train Acc: 98.1875
+Iteration:   699/3133  train Acc: 97.6250
+Iteration:   799/3133  train Acc: 97.9375
+Iteration:   899/3133  train Acc: 97.3125
+Iteration:   999/3133  train Acc: 97.6250
+Iteration:  1099/3133  train Acc: 97.4375
+Iteration:  1199/3133  train Acc: 97.9375
+Iteration:  1299/3133  train Acc: 98.3750
+Iteration:  1399/3133  train Acc: 98.1875
+Iteration:  1499/3133  train Acc: 98.0625
+Iteration:  1599/3133  train Acc: 97.7500
+Iteration:  1699/3133  train Acc: 97.9375
+Iteration:  1799/3133  train Acc: 98.1875
+Iteration:  1899/3133  train Acc: 97.3750
+Iteration:  1999/3133  train Acc: 96.8750
+Iteration:  2099/3133  train Acc: 96.8750
+Iteration:  2199/3133  train Acc: 97.8125
+Iteration:  2299/3133  train Acc: 97.3125
+Iteration:  2399/3133  train Acc: 97.8750
+Iteration:  2499/3133  train Acc: 97.5625
+Iteration:  2599/3133  train Acc: 97.3125
+Iteration:  2699/3133  train Acc: 97.5625
+Iteration:  2799/3133  train Acc: 96.8750
+Iteration:  2899/3133  train Acc: 98.4375
+Iteration:  2999/3133  train Acc: 98.1250
+Iteration:  3099/3133  train Acc: 98.1250
+----------
+train complete in 2m 33s
+Acc: 97.7677
+----------
+Iteration:    99/895   val Acc: 75.1250
+Iteration:   199/895   val Acc: 73.2500
+Iteration:   299/895   val Acc: 74.8125
+Iteration:   399/895   val Acc: 73.5000
+Iteration:   499/895   val Acc: 74.0625
+Iteration:   599/895   val Acc: 73.6875
+Iteration:   699/895   val Acc: 75.7500
+Iteration:   799/895   val Acc: 74.3750
+----------
+val complete in 0m 40s
+Acc: 74.2318
+----------
+Epoch 31/40
+----------
+Iteration:    99/3133  train Acc: 98.8125
+Iteration:   199/3133  train Acc: 98.5000
+Iteration:   299/3133  train Acc: 97.6875
+Iteration:   399/3133  train Acc: 97.6250
+Iteration:   499/3133  train Acc: 97.9375
+Iteration:   599/3133  train Acc: 98.3750
+Iteration:   699/3133  train Acc: 97.6250
+Iteration:   799/3133  train Acc: 98.6250
+Iteration:   899/3133  train Acc: 98.0625
+Iteration:   999/3133  train Acc: 97.7500
+Iteration:  1099/3133  train Acc: 97.6250
+Iteration:  1199/3133  train Acc: 97.3125
+Iteration:  1299/3133  train Acc: 98.0000
+Iteration:  1399/3133  train Acc: 97.5000
+Iteration:  1499/3133  train Acc: 98.2500
+Iteration:  1599/3133  train Acc: 98.5000
+Iteration:  1699/3133  train Acc: 98.6250
+Iteration:  1799/3133  train Acc: 97.5625
+Iteration:  1899/3133  train Acc: 97.5000
+Iteration:  1999/3133  train Acc: 97.6875
+Iteration:  2099/3133  train Acc: 98.0000
+Iteration:  2199/3133  train Acc: 98.1250
+Iteration:  2299/3133  train Acc: 97.5000
+Iteration:  2399/3133  train Acc: 96.8750
+Iteration:  2499/3133  train Acc: 97.3750
+Iteration:  2599/3133  train Acc: 97.5000
+Iteration:  2699/3133  train Acc: 97.3750
+Iteration:  2799/3133  train Acc: 97.5625
+Iteration:  2899/3133  train Acc: 96.9375
+Iteration:  2999/3133  train Acc: 97.5625
+Iteration:  3099/3133  train Acc: 97.8125
+----------
+train complete in 2m 33s
+Acc: 97.7976
+----------
+Iteration:    99/895   val Acc: 74.0625
+Iteration:   199/895   val Acc: 76.1250
+Iteration:   299/895   val Acc: 74.9375
+Iteration:   399/895   val Acc: 74.8125
+Iteration:   499/895   val Acc: 74.8125
+Iteration:   599/895   val Acc: 72.2500
+Iteration:   699/895   val Acc: 74.1250
+Iteration:   799/895   val Acc: 75.4375
+----------
+val complete in 0m 40s
+Acc: 74.5321
+----------
+Epoch 32/40
+----------
+Iteration:    99/3133  train Acc: 98.3750
+Iteration:   199/3133  train Acc: 98.4375
+Iteration:   299/3133  train Acc: 98.1875
+Iteration:   399/3133  train Acc: 98.6250
+Iteration:   499/3133  train Acc: 98.2500
+Iteration:   599/3133  train Acc: 98.0000
+Iteration:   699/3133  train Acc: 98.1875
+Iteration:   799/3133  train Acc: 97.6875
+Iteration:   899/3133  train Acc: 98.1250
+Iteration:   999/3133  train Acc: 97.9375
+Iteration:  1099/3133  train Acc: 97.7500
+Iteration:  1199/3133  train Acc: 98.2500
+Iteration:  1299/3133  train Acc: 97.7500
+Iteration:  1399/3133  train Acc: 98.0625
+Iteration:  1499/3133  train Acc: 97.5625
+Iteration:  1599/3133  train Acc: 97.9375
+Iteration:  1699/3133  train Acc: 98.1250
+Iteration:  1799/3133  train Acc: 97.8125
+Iteration:  1899/3133  train Acc: 98.0000
+Iteration:  1999/3133  train Acc: 97.8125
+Iteration:  2099/3133  train Acc: 97.7500
+Iteration:  2199/3133  train Acc: 97.4375
+Iteration:  2299/3133  train Acc: 98.1250
+Iteration:  2399/3133  train Acc: 97.5625
+Iteration:  2499/3133  train Acc: 97.9375
+Iteration:  2599/3133  train Acc: 97.9375
+Iteration:  2699/3133  train Acc: 98.6250
+Iteration:  2799/3133  train Acc: 97.8125
+Iteration:  2899/3133  train Acc: 97.6875
+Iteration:  2999/3133  train Acc: 97.9375
+Iteration:  3099/3133  train Acc: 97.5625
+----------
+train complete in 2m 33s
+Acc: 97.9453
+----------
+Iteration:    99/895   val Acc: 74.5000
+Iteration:   199/895   val Acc: 73.9375
+Iteration:   299/895   val Acc: 74.0000
+Iteration:   399/895   val Acc: 74.3125
+Iteration:   499/895   val Acc: 73.9375
+Iteration:   599/895   val Acc: 74.5000
+Iteration:   699/895   val Acc: 76.0000
+Iteration:   799/895   val Acc: 73.2500
+----------
+val complete in 0m 41s
+Acc: 74.3575
+----------
+Epoch 33/40
+----------
+Iteration:    99/3133  train Acc: 98.5000
+Iteration:   199/3133  train Acc: 98.4375
+Iteration:   299/3133  train Acc: 98.9375
+Iteration:   399/3133  train Acc: 98.5625
+Iteration:   499/3133  train Acc: 98.3750
+Iteration:   599/3133  train Acc: 97.3750
+Iteration:   699/3133  train Acc: 98.4375
+Iteration:   799/3133  train Acc: 98.0625
+Iteration:   899/3133  train Acc: 97.9375
+Iteration:   999/3133  train Acc: 97.5000
+Iteration:  1099/3133  train Acc: 98.1250
+Iteration:  1199/3133  train Acc: 98.3125
+Iteration:  1299/3133  train Acc: 97.4375
+Iteration:  1399/3133  train Acc: 98.6875
+Iteration:  1499/3133  train Acc: 98.3125
+Iteration:  1599/3133  train Acc: 98.4375
+Iteration:  1699/3133  train Acc: 98.2500
+Iteration:  1799/3133  train Acc: 98.0000
+Iteration:  1899/3133  train Acc: 98.5625
+Iteration:  1999/3133  train Acc: 97.8750
+Iteration:  2099/3133  train Acc: 98.3125
+Iteration:  2199/3133  train Acc: 98.0625
+Iteration:  2299/3133  train Acc: 97.6875
+Iteration:  2399/3133  train Acc: 97.6250
+Iteration:  2499/3133  train Acc: 98.0000
+Iteration:  2599/3133  train Acc: 96.8125
+Iteration:  2699/3133  train Acc: 97.8125
+Iteration:  2799/3133  train Acc: 98.1875
+Iteration:  2899/3133  train Acc: 97.9375
+Iteration:  2999/3133  train Acc: 97.7500
+Iteration:  3099/3133  train Acc: 97.6875
+----------
+train complete in 2m 33s
+Acc: 98.0410
+----------
+Iteration:    99/895   val Acc: 73.6250
+Iteration:   199/895   val Acc: 75.1875
+Iteration:   299/895   val Acc: 74.8125
+Iteration:   399/895   val Acc: 73.1250
+Iteration:   499/895   val Acc: 74.7500
+Iteration:   599/895   val Acc: 75.6250
+Iteration:   699/895   val Acc: 75.0625
+Iteration:   799/895   val Acc: 75.3125
+----------
+val complete in 0m 41s
+Acc: 74.5531
+----------
+Epoch 34/40
+----------
+Iteration:    99/3133  train Acc: 97.8125
+Iteration:   199/3133  train Acc: 98.8750
+Iteration:   299/3133  train Acc: 99.0625
+Iteration:   399/3133  train Acc: 98.8750
+Iteration:   499/3133  train Acc: 98.3750
+Iteration:   599/3133  train Acc: 97.9375
+Iteration:   699/3133  train Acc: 98.0625
+Iteration:   799/3133  train Acc: 98.4375
+Iteration:   899/3133  train Acc: 97.4375
+Iteration:   999/3133  train Acc: 98.2500
+Iteration:  1099/3133  train Acc: 98.3750
+Iteration:  1199/3133  train Acc: 98.0625
+Iteration:  1299/3133  train Acc: 98.0625
+Iteration:  1399/3133  train Acc: 98.2500
+Iteration:  1499/3133  train Acc: 98.3125
+Iteration:  1599/3133  train Acc: 98.6250
+Iteration:  1699/3133  train Acc: 97.9375
+Iteration:  1799/3133  train Acc: 98.0000
+Iteration:  1899/3133  train Acc: 98.1250
+Iteration:  1999/3133  train Acc: 98.2500
+Iteration:  2099/3133  train Acc: 98.1250
+Iteration:  2199/3133  train Acc: 98.2500
+Iteration:  2299/3133  train Acc: 97.9375
+Iteration:  2399/3133  train Acc: 97.3125
+Iteration:  2499/3133  train Acc: 97.6250
+Iteration:  2599/3133  train Acc: 98.8750
+Iteration:  2699/3133  train Acc: 97.6875
+Iteration:  2799/3133  train Acc: 97.8750
+Iteration:  2899/3133  train Acc: 97.8750
+Iteration:  2999/3133  train Acc: 98.0625
+Iteration:  3099/3133  train Acc: 97.6250
+----------
+train complete in 2m 32s
+Acc: 98.1268
+----------
+Iteration:    99/895   val Acc: 76.0000
+Iteration:   199/895   val Acc: 76.0000
+Iteration:   299/895   val Acc: 73.5625
+Iteration:   399/895   val Acc: 75.1875
+Iteration:   499/895   val Acc: 73.1875
+Iteration:   599/895   val Acc: 73.6875
+Iteration:   699/895   val Acc: 74.1250
+Iteration:   799/895   val Acc: 73.8750
+----------
+val complete in 0m 41s
+Acc: 74.5601
+----------
+Epoch 35/40
+----------
+Iteration:    99/3133  train Acc: 97.4375
+Iteration:   199/3133  train Acc: 98.9375
+Iteration:   299/3133  train Acc: 98.6875
+Iteration:   399/3133  train Acc: 98.0625
+Iteration:   499/3133  train Acc: 98.8750
+Iteration:   599/3133  train Acc: 98.2500
+Iteration:   699/3133  train Acc: 98.3750
+Iteration:   799/3133  train Acc: 98.0625
+Iteration:   899/3133  train Acc: 98.5000
+Iteration:   999/3133  train Acc: 98.6250
+Iteration:  1099/3133  train Acc: 98.3750
+Iteration:  1199/3133  train Acc: 98.2500
+Iteration:  1299/3133  train Acc: 98.3125
+Iteration:  1399/3133  train Acc: 98.2500
+Iteration:  1499/3133  train Acc: 97.7500
+Iteration:  1599/3133  train Acc: 98.1875
+Iteration:  1699/3133  train Acc: 98.5625
+Iteration:  1799/3133  train Acc: 97.8125
+Iteration:  1899/3133  train Acc: 98.6250
+Iteration:  1999/3133  train Acc: 98.5000
+Iteration:  2099/3133  train Acc: 97.9375
+Iteration:  2199/3133  train Acc: 98.5625
+Iteration:  2299/3133  train Acc: 97.5000
+Iteration:  2399/3133  train Acc: 97.6875
+Iteration:  2499/3133  train Acc: 97.6875
+Iteration:  2599/3133  train Acc: 98.1250
+Iteration:  2699/3133  train Acc: 98.0625
+Iteration:  2799/3133  train Acc: 98.0625
+Iteration:  2899/3133  train Acc: 98.3750
+Iteration:  2999/3133  train Acc: 97.6250
+Iteration:  3099/3133  train Acc: 97.8750
+----------
+train complete in 2m 33s
+Acc: 98.1707
+----------
+Iteration:    99/895   val Acc: 74.3750
+Iteration:   199/895   val Acc: 74.4375
+Iteration:   299/895   val Acc: 74.1875
+Iteration:   399/895   val Acc: 74.6875
+Iteration:   499/895   val Acc: 75.2500
+Iteration:   599/895   val Acc: 74.8125
+Iteration:   699/895   val Acc: 74.2500
+Iteration:   799/895   val Acc: 77.0625
+----------
+val complete in 0m 40s
+Acc: 74.8743
+----------
+Epoch 36/40
+----------
+Iteration:    99/3133  train Acc: 98.3125
+Iteration:   199/3133  train Acc: 98.5000
+Iteration:   299/3133  train Acc: 98.4375
+Iteration:   399/3133  train Acc: 98.6875
+Iteration:   499/3133  train Acc: 98.2500
+Iteration:   599/3133  train Acc: 98.3125
+Iteration:   699/3133  train Acc: 98.1875
+Iteration:   799/3133  train Acc: 98.1250
+Iteration:   899/3133  train Acc: 98.1875
+Iteration:   999/3133  train Acc: 98.6250
+Iteration:  1099/3133  train Acc: 98.0625
+Iteration:  1199/3133  train Acc: 98.1250
+Iteration:  1299/3133  train Acc: 98.8125
+Iteration:  1399/3133  train Acc: 98.6875
+Iteration:  1499/3133  train Acc: 97.6250
+Iteration:  1599/3133  train Acc: 97.8750
+Iteration:  1699/3133  train Acc: 98.7500
+Iteration:  1799/3133  train Acc: 98.1250
+Iteration:  1899/3133  train Acc: 98.2500
+Iteration:  1999/3133  train Acc: 98.3750
+Iteration:  2099/3133  train Acc: 97.6875
+Iteration:  2199/3133  train Acc: 97.8125
+Iteration:  2299/3133  train Acc: 98.6250
+Iteration:  2399/3133  train Acc: 98.2500
+Iteration:  2499/3133  train Acc: 97.2500
+Iteration:  2599/3133  train Acc: 97.8125
+Iteration:  2699/3133  train Acc: 98.4375
+Iteration:  2799/3133  train Acc: 97.8125
+Iteration:  2899/3133  train Acc: 97.7500
+Iteration:  2999/3133  train Acc: 97.8750
+Iteration:  3099/3133  train Acc: 98.4375
+----------
+train complete in 2m 33s
+Acc: 98.1747
+----------
+Iteration:    99/895   val Acc: 73.9375
+Iteration:   199/895   val Acc: 74.4375
+Iteration:   299/895   val Acc: 74.0000
+Iteration:   399/895   val Acc: 73.5625
+Iteration:   499/895   val Acc: 73.7500
+Iteration:   599/895   val Acc: 75.5625
+Iteration:   699/895   val Acc: 70.6250
+Iteration:   799/895   val Acc: 74.4375
+----------
+val complete in 0m 40s
+Acc: 73.5894
+----------
+Epoch 37/40
+----------
+Iteration:    99/3133  train Acc: 98.3125
+Iteration:   199/3133  train Acc: 98.8125
+Iteration:   299/3133  train Acc: 98.7500
+Iteration:   399/3133  train Acc: 98.2500
+Iteration:   499/3133  train Acc: 98.1250
+Iteration:   599/3133  train Acc: 98.2500
+Iteration:   699/3133  train Acc: 98.1250
+Iteration:   799/3133  train Acc: 98.8750
+Iteration:   899/3133  train Acc: 98.2500
+Iteration:   999/3133  train Acc: 98.6875
+Iteration:  1099/3133  train Acc: 98.5000
+Iteration:  1199/3133  train Acc: 98.4375
+Iteration:  1299/3133  train Acc: 98.1250
+Iteration:  1399/3133  train Acc: 97.9375
+Iteration:  1499/3133  train Acc: 98.3750
+Iteration:  1599/3133  train Acc: 98.5625
+Iteration:  1699/3133  train Acc: 97.6250
+Iteration:  1799/3133  train Acc: 98.1250
+Iteration:  1899/3133  train Acc: 98.2500
+Iteration:  1999/3133  train Acc: 97.7500
+Iteration:  2099/3133  train Acc: 98.2500
+Iteration:  2199/3133  train Acc: 98.4375
+Iteration:  2299/3133  train Acc: 97.3125
+Iteration:  2399/3133  train Acc: 98.0625
+Iteration:  2499/3133  train Acc: 97.8125
+Iteration:  2599/3133  train Acc: 98.3750
+Iteration:  2699/3133  train Acc: 98.6875
+Iteration:  2799/3133  train Acc: 98.0625
+Iteration:  2899/3133  train Acc: 98.3125
+Iteration:  2999/3133  train Acc: 97.6875
+Iteration:  3099/3133  train Acc: 97.8125
+----------
+train complete in 2m 33s
+Acc: 98.2046
+----------
+Iteration:    99/895   val Acc: 73.3750
+Iteration:   199/895   val Acc: 75.1875
+Iteration:   299/895   val Acc: 74.4375
+Iteration:   399/895   val Acc: 73.3125
+Iteration:   499/895   val Acc: 74.8125
+Iteration:   599/895   val Acc: 75.4375
+Iteration:   699/895   val Acc: 75.3125
+Iteration:   799/895   val Acc: 73.0000
+----------
+val complete in 0m 42s
+Acc: 74.2039
+----------
+Epoch 38/40
+----------
+Iteration:    99/3133  train Acc: 98.4375
+Iteration:   199/3133  train Acc: 99.1875
+Iteration:   299/3133  train Acc: 99.1250
+Iteration:   399/3133  train Acc: 99.0625
+Iteration:   499/3133  train Acc: 99.0625
+Iteration:   599/3133  train Acc: 97.9375
+Iteration:   699/3133  train Acc: 98.5000
+Iteration:   799/3133  train Acc: 98.5000
+Iteration:   899/3133  train Acc: 98.5625
+Iteration:   999/3133  train Acc: 98.6250
+Iteration:  1099/3133  train Acc: 98.3125
+Iteration:  1199/3133  train Acc: 98.5625
+Iteration:  1299/3133  train Acc: 98.0625
+Iteration:  1399/3133  train Acc: 98.2500
+Iteration:  1499/3133  train Acc: 98.9375
+Iteration:  1599/3133  train Acc: 98.1875
+Iteration:  1699/3133  train Acc: 98.1875
+Iteration:  1799/3133  train Acc: 98.6250
+Iteration:  1899/3133  train Acc: 98.0625
+Iteration:  1999/3133  train Acc: 98.1250
+Iteration:  2099/3133  train Acc: 98.5000
+Iteration:  2199/3133  train Acc: 98.2500
+Iteration:  2299/3133  train Acc: 98.1875
+Iteration:  2399/3133  train Acc: 98.5000
+Iteration:  2499/3133  train Acc: 98.4375
+Iteration:  2599/3133  train Acc: 98.0625
+Iteration:  2699/3133  train Acc: 98.6875
+Iteration:  2799/3133  train Acc: 98.5000
+Iteration:  2899/3133  train Acc: 98.7500
+Iteration:  2999/3133  train Acc: 97.9375
+Iteration:  3099/3133  train Acc: 98.1875
+----------
+train complete in 2m 32s
+Acc: 98.4480
+----------
+Iteration:    99/895   val Acc: 74.3750
+Iteration:   199/895   val Acc: 75.5000
+Iteration:   299/895   val Acc: 73.6250
+Iteration:   399/895   val Acc: 75.4375
+Iteration:   499/895   val Acc: 73.6250
+Iteration:   599/895   val Acc: 75.0000
+Iteration:   699/895   val Acc: 73.6875
+Iteration:   799/895   val Acc: 74.8125
+----------
+val complete in 0m 41s
+Acc: 74.2947
+----------
+Epoch 39/40
+----------
+Iteration:    99/3133  train Acc: 98.9375
+Iteration:   199/3133  train Acc: 98.0625
+Iteration:   299/3133  train Acc: 98.1875
+Iteration:   399/3133  train Acc: 98.5000
+Iteration:   499/3133  train Acc: 98.7500
+Iteration:   599/3133  train Acc: 98.1250
+Iteration:   699/3133  train Acc: 98.5625
+Iteration:   799/3133  train Acc: 98.3750
+Iteration:   899/3133  train Acc: 99.0625
+Iteration:   999/3133  train Acc: 98.3125
+Iteration:  1099/3133  train Acc: 98.1875
+Iteration:  1199/3133  train Acc: 98.5000
+Iteration:  1299/3133  train Acc: 97.8125
+Iteration:  1399/3133  train Acc: 98.4375
+Iteration:  1499/3133  train Acc: 98.8125
+Iteration:  1599/3133  train Acc: 98.1875
+Iteration:  1699/3133  train Acc: 98.3125
+Iteration:  1799/3133  train Acc: 97.5625
+Iteration:  1899/3133  train Acc: 98.0625
+Iteration:  1999/3133  train Acc: 98.2500
+Iteration:  2099/3133  train Acc: 99.0000
+Iteration:  2199/3133  train Acc: 98.1875
+Iteration:  2299/3133  train Acc: 98.1875
+Iteration:  2399/3133  train Acc: 98.0625
+Iteration:  2499/3133  train Acc: 98.0000
+Iteration:  2599/3133  train Acc: 98.1250
+Iteration:  2699/3133  train Acc: 98.6250
+Iteration:  2799/3133  train Acc: 99.0000
+Iteration:  2899/3133  train Acc: 98.9375
+Iteration:  2999/3133  train Acc: 98.7500
+Iteration:  3099/3133  train Acc: 98.8125
+----------
+train complete in 2m 33s
+Acc: 98.3961
+----------
+Iteration:    99/895   val Acc: 75.0625
+Iteration:   199/895   val Acc: 75.9375
+Iteration:   299/895   val Acc: 75.1875
+Iteration:   399/895   val Acc: 75.9375
+Iteration:   499/895   val Acc: 72.3750
+Iteration:   599/895   val Acc: 75.5000
+Iteration:   699/895   val Acc: 73.6250
+Iteration:   799/895   val Acc: 72.8125
+----------
+val complete in 0m 41s
+Acc: 74.5601
+----------
+(summer)
+fix distribution problem...

@@ -23,7 +23,6 @@ net = model.BasicResNet()
 
 
 if args.muiltpleGPU == 1 and torch.cuda.device_count() > 1:
-
     print("Let's use", torch.cuda.device_count(), "GPUs!")
     batch_size = 4 * 32
     worker_num = 16
@@ -64,7 +63,7 @@ optimizer = optim.Adam(net.parameters(), lr=0.001, betas=(0.9, 0.99))
 
 
 def trainer(dataloader, model, criterion, optimizer, epoch_num=10, checkpoint=0):
-    recorder = open('acc_result.txt', 'w')
+    # recorder = open('acc_result.txt', 'w')
     best_model_wts = copy.deepcopy(model.state_dict())
     best_acc = 0.0
     for epoch in range(epoch_num):

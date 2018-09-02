@@ -12,7 +12,7 @@ import model
 from dataloader import URPedestrianDataset
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--muiltpleGPU', type=list, default=[0,1,2,3])
+parser.add_argument('--muiltpleGPU', type=int, default=0)
 parser.add_argument('--cuda', type=int, default=0)
 parser.add_argument('--classnum',type=int,default=0)
 args = parser.parse_args()

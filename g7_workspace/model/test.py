@@ -47,14 +47,23 @@ import torch
 # plt.show()
 # =======================================================================
 
+# import argparse
+
+# parser = argparse.ArgumentParser()
+# parser.add_argument('--integer', type=int,default=10, help='display an integer')
+# args = parser.parse_args()
+
+# print (args.integer)
+
+# import matplotlib as mpl
+# mpl.use('TkAgg')  # or whatever other backend that you want
+# import matplotlib.pyplot as plt
 import argparse
-
 parser = argparse.ArgumentParser()
-parser.add_argument('--integer', type=int,default=10, help='display an integer')
+parser.add_argument('--muiltpleGPU', type=0, default=0)
+parser.add_argument('--cuda', type=int, default=0)
+parser.add_argument('--classnum',type=int,default=0)
 args = parser.parse_args()
-
-print (args.integer)
-
-import matplotlib as mpl
-mpl.use('TkAgg')  # or whatever other backend that you want
-import matplotlib.pyplot as plt
+for arg in vars(args):
+    print(arg,getattr(args,arg))
+    # print ("Argu:{:>10}:{:<10}".format(arg,getattr(args, arg)))

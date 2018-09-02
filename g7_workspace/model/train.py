@@ -14,10 +14,10 @@ from dataloader import URPedestrianDataset
 parser = argparse.ArgumentParser()
 parser.add_argument('--muiltpleGPU', type=int, default=0)
 parser.add_argument('--cuda', type=int, default=0)
-parser.add_argument('--classnum',type=int,default=0)
+parser.add_argument('--classnum', type=int, default=0)
 args = parser.parse_args()
 for arg in vars(args):
-    print ("Argu:{:>10}:{:<10}".format(arg,getattr(args, arg)))
+    print("Argu:{:>10}:{:<10}".format(arg, getattr(args, arg)))
 # =============================================
 # Load all used net
 # =============================================
@@ -29,7 +29,7 @@ if args.muiltpleGPU == 1 and torch.cuda.device_count() > 1:
     print("Let's use", torch.cuda.device_count(), "GPUs!")
     batch_size = 4 * 32
     worker_num = 16
-    net = nn.DataParallel(net,device_ids=args.muiltpleGPU).cuda()
+    net = nn.DataParallel(net, device_ids=args.muiltpleGPU).cuda()
 else:
     device = torch.device(
         f"cuda:{args.cuda}" if torch.cuda.is_available() else "cpu")
@@ -67,7 +67,7 @@ optimizer = optim.Adam(net.parameters(), lr=0.001, betas=(0.9, 0.99))
 
 def trainer(dataloader, model, criterion, optimizer, epoch_num=10, checkpoint=0):
     print('======= Start Training =======')
-    best_model_wts = copy.deepcopy(model.state_dict()).to(device)
+    best_epoch = 0
     best_acc = 0.0
     recorder = open('acc_result.txt', 'w')
     for epoch in range(epoch_num):
@@ -135,10 +135,9 @@ def trainer(dataloader, model, criterion, optimizer, epoch_num=10, checkpoint=0)
             print('-' * 10)
             if phase == 'val' and epoch_acc > best_acc:
                 best_acc = epoch_acc
-                best_model_wts = copy.deepcopy(model.state_dict())
+                best_epoch = epoch
+    recorder.write(f'best epoch: {best_epoch}')
     recorder.close()
-    model.load_state_dict(best_model_wts)
-    return model
 
 
 # =============================================
@@ -146,9 +145,5 @@ def trainer(dataloader, model, criterion, optimizer, epoch_num=10, checkpoint=0)
 # =============================================
 
 
-model_best = trainer(loader, net, criterion, optimizer,
+trainer(loader, net, criterion, optimizer,
                      epoch_num=40, checkpoint=1)
-misc.save_checkpoint({
-    'state_dict': model_best.state_dict(),
-    'optimizer': optimizer.state_dict(),
-}, 1)

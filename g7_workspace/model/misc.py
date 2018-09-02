@@ -1,7 +1,17 @@
 import numpy as np
 import torch
 from torch.utils.data.sampler import SubsetRandomSampler
+import shutil
 
+
+
+
+
+
+def save_checkpoint(state, is_best, filename='checkpoint.pth.tar'):
+    torch.save(state, filename)
+    if is_best:
+        shutil.copyfile(filename, 'model_best.pth.tar')
 
 def split_random(command_list):
     train_ratio=0.7

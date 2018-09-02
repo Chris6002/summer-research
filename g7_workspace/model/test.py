@@ -1,10 +1,10 @@
 import torch
-from torchvision import models
-
-Resnet = models.resnet18(pretrained=True)
-# print(Resnet)
-for i,child in enumerate(Resnet.children()):
-    print(i,child)
+# from torchvision import models
+#
+# Resnet = models.resnet18(pretrained=True)
+# # print(Resnet)
+# for i,child in enumerate(Resnet.children()):
+#     print(i,child)
 # image = torch.zeros(1, 3, 224, 224)
 # print(Resnet.conv1(image).shape)
 # image = torch.zeros(1, 3, 640, 480)
@@ -26,4 +26,31 @@ for i,child in enumerate(Resnet.children()):
 
 # import misc
 # a=[0,1,2]
-# print(misc.one_hot_embedding(a,3))
+# print(misc.one_hot_embedding(a,3)).
+
+# ===============================================================
+# f=open('/home/vision/summer-research/g7_workspace/model/result.txt')
+# a,b=[],[]
+# for i,line in enumerate(f.readlines()):
+#     if line.split(':')[0]=='Acc':
+#         acc=line.split(':')[1]
+#         # print(acc)
+#         if i%2==1:
+#             a.append(float(acc.strip()))
+#         else:
+#             b.append(float(acc.strip()))
+# print(a,b)
+# import matplotlib.pyplot as plt
+# import numpy as np
+# plt.plot(b)
+# plt.ylim(0,100)
+# plt.show()
+# =======================================================================
+
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--integer', type=int,default=10, help='display an integer')
+args = parser.parse_args()
+
+print (args.integer)

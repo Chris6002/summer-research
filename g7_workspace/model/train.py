@@ -17,7 +17,7 @@ parser.add_argument('--cuda', type=int, default=0)
 parser.add_argument('--classnum',type=int,default=0)
 args = parser.parse_args()
 for arg in vars(args):
-    print ("Argu:{:>15}:{:<10}".format(arg,getattr(args, arg)))
+    print ("Argu:{:>12}:{:<10}".format(arg,getattr(args, arg)))
 # =============================================
 # Load all used net
 # =============================================

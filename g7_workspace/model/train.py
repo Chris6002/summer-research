@@ -1,36 +1,39 @@
-from os.path import dirname, abspath, join
 import argparse
-from dataloader import URPedestrianDataset
-import matplotlib.pyplot as plt
-import torch.nn.functional as F
-import numpy as np
-import misc
+import copy
 import time
+from os.path import dirname, abspath, join
+
 import torch
-import model
 import torch.nn as nn
 from torch.utils.data.sampler import SubsetRandomSampler
-import copy
-import torch.nn.functional as F
+
+import misc
+import model
+from dataloader import URPedestrianDataset
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--muiltpleGPU', type=int,default=0, help='display an integer')
-parser.add_argument('--cuda', type=int,default=0, help='display an integer')
+parser.add_argument('--muiltpleGPU', type=int, default=0)
+parser.add_argument('--cuda', type=int, default=0)
 args = parser.parse_args()
+# =============================================
+# Load all used net
+# =============================================
+
+net = model.BasicResNet()
 
 
+if args.muiltpleGPU == 1 and torch.cuda.device_count() > 1:
 
-if parser.muiltpleGPU:
+    print("Let's use", torch.cuda.device_count(), "GPUs!")
     batch_size = 4 * 32
     worker_num = 16
+    net = nn.DataParallel(net).cuda()
 else:
-    device = torch.device(f"cuda:{parser.cuda}" if torch.cuda.is_available() else "cpu")
+    device = torch.device(f"cuda:{args.cuda}" if torch.cuda.is_available() else "cpu")
+    print(f"Current using {device}")
     batch_size = 16
     worker_num = 4
-
-
-
-
+    net = net.to(device)
 # =============================================
 # Split dataset
 # ^^^^^^^^^^^^^
@@ -39,27 +42,14 @@ else:
 # =============================================
 dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')
 dataset = URPedestrianDataset(dataset_path, classnum=1)
-
 sampler = misc.split_random(dataset.command_list)
 loader = {}
-# TODO:samplify
-loader['train'] = torch.utils.data.DataLoader(dataset,
-                                              batch_size=batch_size, sampler=train_sampler, num_workers=worker_num)
-loader['val'] = torch.utils.data.DataLoader(dataset,
-                                            batch_size=batch_size, sampler=validation_sampler, num_workers=worker_num)
-print(len(loader['train']), len(loader['val']))
-# =============================================
-# Load all used net
-# =============================================
 
-net = model.BasicResNet()
-if using_muiltpleGPU == 1 and torch.cuda.device_count() > 1:
-    print("Let's use", torch.cuda.device_count(), "GPUs!")
-    # dim = 0 [30, xxx] -> [10, ...], [10, ...], [10, ...] on 3 GPUs
-    net = nn.DataParallel(net).cuda()
-else:
-    print("Current using " + str(device))
-    net = net.to(device)
+loader = {x: torch.utils.data.DataLoader(dataset,
+                                         batch_size=batch_size, sampler=sampler[x], num_workers=worker_num) for x in
+          ['train', 'val']}
+
+print('train number:{},  val number:{}'.format(len(loader['train']),len(loader['val'])))
 # =============================================
 # Define a Loss function and optimizer
 # =============================================
@@ -94,7 +84,7 @@ def trainer(dataloader, model, criterion, optimizer, epoch_num=10):
                 # if torch.cuda.device_count() <= 1:
                 #     inputs = inputs.to(device)
                 #     labels = labels.to(device)
-                if using_muiltpleGPU:
+                if args.muiltpleGPU:
                     inputs = inputs.cuda()
                     labels = labels.cuda()
                 else:

@@ -38,7 +38,7 @@ import torch
 #         if i%2==1:
 #             a.append(float(acc.strip()))
 #         else:
-#             b.append(float(acc.strip()))
+#             b.append(flo+at(acc.strip()))
 # print(a,b)
 # import matplotlib.pyplot as plt
 # import numpy as np
@@ -54,3 +54,7 @@ parser.add_argument('--integer', type=int,default=10, help='display an integer')
 args = parser.parse_args()
 
 print (args.integer)
+
+import matplotlib as mpl
+mpl.use('TkAgg')  # or whatever other backend that you want
+import matplotlib.pyplot as plt

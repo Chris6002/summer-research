@@ -17,8 +17,9 @@ class Monitor:
         self.transform = transforms.Compose([transforms.ToTensor()])
     
         self.parameter=torch.load(parameter_path)
-        self.net= model.BasicResNet()
-        self.net.load_state_dict(self.parameter['state_dict']).to(self.device)
+        net= model.BasicResNet()
+        net.load_state_dict(self.parameter['state_dict'])
+        self.net=net.to(self.device)
     def inference(self,frame):
         self.net.eval()
         inputs=self.transform(frame)
@@ -31,7 +32,7 @@ class Monitor:
    
 
 
-Monitor('../checkpoint_07.pth.tar')
+RC_car=Monitor('../checkpoint_07.pth.tar')
 image=Image.open("1_center_000001.jpg")
-print(Monitor.inference(image))
+print(RC_car.inference(image))
 

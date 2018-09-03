@@ -16,7 +16,8 @@ inputs=inputs.unsqueeze(0).to(device)
 
 parameter= torch.load('../checkpoint_07.pth.tar')
 net = model.BasicResNet()
-net.load_state_dict(parameter['state_dict']).to(device)
+net.load_state_dict(parameter['state_dict'])
+net=net.to(device)
 net.eval()
 
 
@@ -24,4 +25,4 @@ net.eval()
 with torch.set_grad_enabled(False):
     outputs = net(inputs)
     _, predicted = torch.max(outputs, 1)
-print(predicted)
+print(predicted+976)

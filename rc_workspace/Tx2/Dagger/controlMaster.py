@@ -88,6 +88,7 @@ print('Waiting for Centre')
 server4centre = Listener(('', 25002), authkey=b'peekaboo').accept()
 print('Connected to Centre')
 ch1, ch2, ch3=1476,1500,976
+steer_queue=[]
 try:
     while True:
         # ======  Get command  ====== #
@@ -119,22 +120,19 @@ try:
                     frame_index=frame_index+1
                     broadcastMsg('Save')
                     # receive from center camera
-
+                    server4centre.recv()
                     # limit value
-
+                    ch1 = limitValue(ch1, steer_range[0], steer_range[1])
                     # save in a queue
 
+                    if len(steer_queue)<10:
+                        steer_queue.append(ch1)
+                    else:
+                        steer_queue.pop(0)
+                        steer_queue.append(ch1)
                     # get average value
-
+                    ch1=sum(steer_queue)/len(steer_queue)
                     # save value 
-
-
-
-
-
-
-
-
                     ch1 = limitValue(ch1, steer_range[0], steer_range[1])
                     ch2 = limitValue(ch2, speed_range[0], speed_range[1])
                     data = {'frame': frame_index,'steering': ch1,'speed': ch2,'category': 0}

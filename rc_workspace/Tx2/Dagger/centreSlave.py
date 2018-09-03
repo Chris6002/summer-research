@@ -65,7 +65,10 @@ try:
                 out = cv2.VideoWriter(folder_path + msg[1]+'.avi', FourCC, record_FPS,
                                     resolution)
             elif msg[0] == 'Save':
-
+                # ===============================
+                output=monitor.inference(frame)
+                client.send(output)
+                # ===============================
 
                 out.write(frame)
                 if index>20:

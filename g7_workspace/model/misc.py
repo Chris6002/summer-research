@@ -14,7 +14,7 @@ def save_checkpoint(state, is_best, filename='checkpoint.pth.tar'):
         shutil.copyfile(filename, 'model_best.pth.tar')
 
 def split_random(command_list):
-    train_ratio=0.7
+    train_ratio=0.2
     valid_ratio=0.2
     id_list=[[] for i in range(3000)]
     train_idx=[]

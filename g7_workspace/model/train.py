@@ -135,8 +135,7 @@ def trainer(dataloader, model, criterion, optimizer, args, epoch_num=10, checkpo
                              optimizer, device, recorder)
         time_elapsed=time.time()-time_start
         print('-' * 10)
-        print('{} complete in {:.0f}m {:.0f}s'.format(
-            time_elapsed // 60, time_elapsed % 60))
+        print('complete in {:.0f}m {:.0f}s'.format(time_elapsed // 60, time_elapsed % 60))
         output = 'Epoch:{:3} Train Acc={:5}, Val Acc={:5}'.format(
             epoch, train_acc, valid_acc)
         print(output)

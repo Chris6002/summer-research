@@ -166,4 +166,4 @@ def trainer(dataloader, model, criterion, optimizer, args, epoch_num=10, checkpo
 
 
 trainer(loader, net, criterion, optimizer, args,
-        epoch_num=40, checkpoint=1, device=device)
+        epoch_num=50, checkpoint=1, device=device)

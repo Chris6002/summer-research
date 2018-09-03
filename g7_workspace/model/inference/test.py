@@ -7,22 +7,31 @@ import model
 
 
 
-device = torch.device(
-    "cuda:0" if torch.cuda.is_available() else "cpu")
-transform = transforms.Compose([transforms.ToTensor()])
-inputs=transform(Image.open("./1_center_000001.jpg"))
-inputs=inputs.unsqueeze(0).to(device)
-
-
-parameter= torch.load('../checkpoint_07.pth.tar')
-net = model.BasicResNet()
-net.load_state_dict(parameter['state_dict'])
-net=net.to(device)
-net.eval()
 
 
 
-with torch.set_grad_enabled(False):
-    outputs = net(inputs)
-    _, predicted = torch.max(outputs, 1)
-print(predicted+976)
+
+class Monitor:
+    def __init__(self, parameter_path):
+        self.device=torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+        self.transform = transforms.Compose([transforms.ToTensor()])
+    
+        self.parameter=torch.load(parameter_path)
+        self.net= model.BasicResNet()
+        self.net.load_state_dict(self.parameter['state_dict']).to(self.device)
+    def inference(self,frame):
+        self.net.eval()
+        inputs=self.transform(frame)
+        inputs=inputs.unsqueeze(0).to(self.device)
+        with torch.set_grad_enabled(False):
+            outputs = self.net(inputs)
+            _, predicted = torch.max(outputs, 1)
+        return predicted+976
+
+   
+
+
+Monitor('../checkpoint_07.pth.tar')
+image=Image.open("1_center_000001.jpg")
+print(Monitor.inference(image))
+

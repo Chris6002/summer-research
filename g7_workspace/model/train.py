@@ -87,7 +87,7 @@ def train(loader, model, criterion, optimizer, device, log):
         iteration_acc_20 += acc_20
         iteration_acc_50 += acc_50
         if index % 100 == 99:
-            out = 'Iteration: {:>5}/{:<5}  {}  || Acc_20: {:.4f}   Acc_50: {:.4f}'.format(
+            out = 'Iteration: {:>5}/{:<5}  {:5}  || Acc_20: {:.4f}   Acc_50: {:.4f}'.format(
                 index, size_data, 'train', iteration_acc_20 / 100, iteration_acc_50/100)
             print(out)
             log.write(out)
@@ -114,7 +114,7 @@ def validate(loader, model, criterion, optimizer, device, log):
         iteration_acc_20 += acc_20
         iteration_acc_50 += acc_50
         if index % 100 == 99:
-            out = 'Iteration: {:>5}/{:<5}  {}  || Acc_20: {:.4f}   Acc_50: {:.4f}'.format(
+            out = 'Iteration: {:>5}/{:<5}  {:5}  || Acc_20: {:.4f}   Acc_50: {:.4f}'.format(
                 index, size_data, 'val', iteration_acc_20 / 100, iteration_acc_50/100)
             print(out)
             log.write(out)
@@ -139,7 +139,7 @@ def trainer(dataloader, model, criterion, optimizer, args, epoch_num=10, checkpo
         print('-' * 10)
         print('complete in {:.0f}m {:.0f}s'.format(
             time_elapsed // 60, time_elapsed % 60))
-        output = 'Epoch:{:3} Train Acc={:5}, Val Acc={:5}'.format(
+        output = 'Epoch:{:3}    Train Acc={:.3f}, Val Acc={:3f}'.format(
             epoch, train_acc, valid_acc)
         print(output)
         recorder.write(output)

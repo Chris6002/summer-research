@@ -10,7 +10,7 @@ import model
 device = torch.device(
     "cuda:0" if torch.cuda.is_available() else "cpu")
 transform = transforms.Compose([transforms.ToTensor()])
-inputs=transform(Image.open("1_center_000001.jpg"))
+inputs=transform(Image.open("../1_center_000001.jpg"))
 inputs=inputs.unsqueeze(0).to(device)
 
 

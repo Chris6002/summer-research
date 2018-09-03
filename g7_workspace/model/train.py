@@ -8,6 +8,7 @@ import torch.nn as nn
 from torch.utils.data.sampler import SubsetRandomSampler
 
 import misc
+import shutil
 import model
 from dataloader import URPedestrianDataset
 
@@ -24,20 +25,20 @@ for arg in vars(args):
 
 net = model.BasicResNet()
 
-
+device = torch.device(
+        f"cuda:{args.cuda}" if torch.cuda.is_available() else "cpu")
 if args.muiltpleGPU == 1 and torch.cuda.device_count() > 1:
     print("Let's use", torch.cuda.device_count(), "GPUs!")
     batch_size = 4 * 32
     worker_num = 16
-    net = nn.DataParallel(net, device_ids=args.muiltpleGPU).cuda()
+    net = nn.DataParallel(net).cuda()
 else:
-    device = torch.device(
-        f"cuda:{args.cuda}" if torch.cuda.is_available() else "cpu")
     print(f"Current using {device}")
     batch_size = 8
     worker_num = 4
-    print(f"batch size: {batch_size}, worker number: {worker_num}")
     net = net.to(device)
+print(f"batch size: {batch_size}, worker number: {worker_num}")
+    
 # =============================================
 # Split dataset
 # ^^^^^^^^^^^^^
@@ -65,77 +66,95 @@ criterion = nn.CrossEntropyLoss().to(device)
 optimizer = optim.Adam(net.parameters(), lr=0.001, betas=(0.9, 0.99))
 
 
-def trainer(dataloader, model, criterion, optimizer, epoch_num=10, checkpoint=0):
+def train(loader, model, criterion, optimizer, device, log):
+    model.train()
+    size_batch, size_data = loader.batch_size, len(loader)
+    iteration_acc_20, iteration_acc_50 = 0, 0
+    for index, data in enumerate(loader):
+        inputs = data['frame'].to(device)
+        labels = misc.limit_value_tensor(
+            data['steer'] - 976, 0, 999).to(device)
+        optimizer.zero_grad()
+        with torch.set_grad_enabled(True):
+            outputs = model(inputs)
+            _, predicted = torch.max(outputs, 1)
+            loss = criterion(outputs, labels)
+            acc_50 = misc.accuracy(predicted, labels, size_batch, 20)
+            acc_20 = misc.accuracy(predicted, labels, size_batch, 50)
+            loss.backward()
+            optimizer.step()
+        running_acc_20 += acc_20
+        iteration_acc_20 += acc_20
+        iteration_acc_50 += acc_50
+        if index % 100 == 99:
+            out='Iteration: {:>5}/{:<5}  {} Acc_20: {:.4f} Acc_50: {:.4f}'.format(index,size_data, 'train', iteration_acc_20 / 100,iteration_acc_50/100)
+            print(out)
+            log.write(out)
+            iteration_acc_20,iteration_acc_50 = 0,0
+    return running_acc_20 / size_data
+
+
+def validate(loader, model, criterion, optimizer, device, log):
+    model.eval()
+    size_batch, size_data = loader.batch_size, len(loader)
+    iteration_acc_20, iteration_acc_50 = 0, 0
+    for index, data in enumerate(loader):
+        inputs = data['frame'].to(device)
+        labels = misc.limit_value_tensor(
+            data['steer'] - 976, 0, 999).to(device)
+        optimizer.zero_grad()
+        with torch.set_grad_enabled(False):
+            outputs = model(inputs)
+            _, predicted = torch.max(outputs, 1)
+            loss = criterion(outputs, labels)
+            acc_50 = misc.accuracy(predicted, labels, size_batch, 20)
+            acc_20 = misc.accuracy(predicted, labels, size_batch, 50)
+        running_acc_20 += acc_20
+        iteration_acc_20 += acc_20
+        iteration_acc_50 += acc_50
+        if index % 100 == 99:
+            out='Iteration: {:>5}/{:<5}  {} Acc_20: {:.4f} Acc_50: {:.4f}'.format(index,size_data, 'train', iteration_acc_20 / 100,iteration_acc_50/100)
+            print(out)
+            log.write(out)
+            iteration_acc_20,iteration_acc_50 = 0,0
+    return running_acc_20 / size_data
+
+
+def trainer(dataloader, model, criterion, optimizer, args, epoch_num=10, checkpoint=0, device="cuda:0"):
     print('======= Start Training =======')
     best_epoch = 0
     best_acc = 0.0
     recorder = open('acc_result.txt', 'w')
     for epoch in range(epoch_num):
-
+        time_start=time.time()
         print('Epoch {}/{}'.format(epoch, epoch_num))
         print('=' * 40)
-        for phase in ['train', 'val']:
+        train_acc = train(dataloader['train'], net,
+                          criterion, optimizer, device, recorder)
+        valid_acc = validate(dataloader['val'], net, criterion,
+                             optimizer, device, recorder)
+        time_elapsed=time.time()-time_start
+        print('-' * 10)
+        print('{} complete in {:.0f}m {:.0f}s'.format(
+            time_elapsed // 60, time_elapsed % 60))
+        output = 'Epoch:{:3} Train Acc={:5}, Val Acc={:5}'.format(
+            epoch, train_acc, valid_acc)
+        print(output)
+        recorder.write(output)
+        print('-' * 10)
 
-            # init
-            start_time = time.time()
-            size_batch = dataloader[phase].batch_size
-            size_data = len(dataloader[phase])
-            running_acc = 0
-            iteration_acc = 0
-            model.train() if phase == 'train' else model.eval()
-            # Iterate over data.
-            for index, data in enumerate(dataloader[phase]):
-
-                inputs = data['frame']
-                labels = misc.limit_value_tensor(data['steer'] - 976, 0, 999)
-                # if torch.cuda.device_count() <= 1:
-                #     inputs = inputs.to(device)
-                #     labels = labels.to(device)
-                if args.muiltpleGPU:
-                    inputs = inputs.cuda()
-                    labels = labels.cuda()
-                else:
-                    inputs = inputs.to(device)
-                    labels = labels.to(device)
-
-                # zero the parameter gradients
-                optimizer.zero_grad()
-
-                # forward
-                # track history if only in train
-                with torch.set_grad_enabled(phase == 'train'):
-                    outputs = model(inputs)
-                    _, predicted = torch.max(outputs, 1)
-                    loss = criterion(outputs, labels)
-                    acc = misc.accuracy(predicted, labels, size_batch)
-                    # backward + optimize only if in training phase
-                    if phase == 'train':
-                        loss.backward()
-                        optimizer.step()
-                running_acc += acc
-                iteration_acc += acc
-                if index % 100 == 99:
-                    print(
-                        'Iteration: {:>5}/{:<5}'.format(index, size_data), end=' ')
-                    print('{} Acc: {:.4f}'.format(phase, iteration_acc / 100))
-                    iteration_acc = 0
-            if phase == 'train' and checkpoint == 1:
-                misc.save_checkpoint({
-                    'epoch': epoch + 1,
-                    'state_dict': model.state_dict(),
-                    'optimizer': optimizer.state_dict(),
-                }, 0, filename="checkpoint_{:02}.pth.tar".format(epoch))
-            epoch_acc = running_acc / size_data
-            time_elapsed = time.time() - start_time
-            print('-' * 10)
-            print('{} complete in {:.0f}m {:.0f}s Acc:{:.4f}'.format(
-                phase, time_elapsed // 60, time_elapsed % 60, epoch_acc))
-            recorder.write('{} complete in {:.0f}m {:.0f}s Acc:{:.4f}'.format(
-                phase, time_elapsed // 60, time_elapsed % 60, epoch_acc))
-            print('-' * 10)
-            if phase == 'val' and epoch_acc > best_acc:
-                best_acc = epoch_acc
-                best_epoch = epoch
+        
+        if valid_acc > best_acc:
+            best_acc = valid_acc
+            best_epoch = epoch
+            is_best = 1
+        else:
+            is_best = 0
+        if checkpoint == 1:
+            misc.save_checkpoint({
+                'state_dict': model.state_dict(),
+                'optimizer': optimizer.state_dict(),
+            }, is_best, filename="checkpoint_{:02}.pth.tar".format(epoch))
     recorder.write(f'best epoch: {best_epoch}')
     recorder.close()
 
@@ -146,4 +165,4 @@ def trainer(dataloader, model, criterion, optimizer, epoch_num=10, checkpoint=0)
 
 
 trainer(loader, net, criterion, optimizer,
-                     epoch_num=40, checkpoint=1)
+        epoch_num=40, checkpoint=1,device=device)

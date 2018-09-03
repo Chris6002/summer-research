@@ -69,7 +69,7 @@ optimizer = optim.Adam(net.parameters(), lr=0.001, betas=(0.9, 0.99))
 def train(loader, model, criterion, optimizer, device, log):
     model.train()
     size_batch, size_data = loader.batch_size, len(loader)
-    iteration_acc_20, iteration_acc_50 = 0, 0
+    running_acc_20,iteration_acc_20, iteration_acc_50 = 0, 0,0
     for index, data in enumerate(loader):
         inputs = data['frame'].to(device)
         labels = misc.limit_value_tensor(
@@ -97,7 +97,7 @@ def train(loader, model, criterion, optimizer, device, log):
 def validate(loader, model, criterion, optimizer, device, log):
     model.eval()
     size_batch, size_data = loader.batch_size, len(loader)
-    iteration_acc_20, iteration_acc_50 = 0, 0
+    running_acc_20,iteration_acc_20, iteration_acc_50 = 0, 0,0
     for index, data in enumerate(loader):
         inputs = data['frame'].to(device)
         labels = misc.limit_value_tensor(

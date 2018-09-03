@@ -56,7 +56,7 @@ try:
     while True:
         index=index+1
         start_time = time.time()
-        msg = 'Save'
+        msg = ['Save']
         bool_retrieve = cap.grab()
         previous_frame=frame
         ret, frame = cap.retrieve()
@@ -70,8 +70,9 @@ try:
                                     resolution)
             elif msg[0] == 'Save':
                 # ===============================
+                print('hehe')
                 output=monitor.inference(frame)
-                print(output)
+                print(output.item())
                 # ===============================
                 out.write(frame)
                 if index>20:
@@ -85,6 +86,7 @@ try:
                     print('Waiting', end='   ')
                     print(str(round(1/(time.time()-start_time),1)) )
         else:
+            print('fail')
             out.write(previous_frame)
             out.write(previous_frame)
             out.write(previous_frame)

@@ -1,6 +1,6 @@
 import time
 import os
-
+import numpy as np
 
 # =====================================
 # Convenient function
@@ -73,6 +73,7 @@ ch3_pre = 1000
 flag=0
 situation=0
 frame_index=0
+buffer_length=10
 # =====================================
 # Network Configuration
 # =====================================
@@ -89,6 +90,17 @@ server4centre = Listener(('', 25002), authkey=b'peekaboo').accept()
 print('Connected to Centre')
 ch1, ch2, ch3=1476,1500,976
 steer_queue=[]
+
+
+def decay(command,diff):
+	
+	w=np.log(np.abs(diff))/len(command)
+	def func(x,w,positive):
+		return np.exp(w*x)*positive
+	buff=command
+	for i,value in enumerate(command):
+		buff[i]=value+func(i+1,w,value>=0)
+	return buff
 try:
     while True:
         # ======  Get command  ====== #
@@ -96,6 +108,7 @@ try:
             command =ser.readline().decode('utf-8').rstrip().split('x')
             try:
                 ch1, ch2, ch3 = int(command[0].strip('\x00')), int(command[1].strip('\x00')), int(command[2].strip('\x00'))
+                ch1_real=ch1
             except:
                 ch1, ch2, ch3=1476,1500,976        
             dis=ch3-ch3_pre
@@ -112,32 +125,40 @@ try:
                     broadcastMsg('Iter:' + str(iter_num))
                     f.close()
                     f = open(Command_file+ str(iter_num)+'_command.csv', 'w')
-                    fnames = ['frame', 'steering', 'speed', 'category']
+                    fnames = ['frame', 'steering', 'speed', 'category','adjust']
                     writer = csv.DictWriter(f, fieldnames=fnames)
                     writer.writeheader()
                     time.sleep(0.1)
                 if ch3_pre > 1500 and flag==1:
+                	
                     frame_index=frame_index+1
                     broadcastMsg('Save')
                     # receive from center camera
-                    server4centre.recv()
+                    ch1=server4centre.recv()
                     # limit value
                     ch1 = limitValue(ch1, steer_range[0], steer_range[1])
-                    # save in a queue
+                    # save in a queu
 
-                    if len(steer_queue)<10:
+                    if len(steer_queue)<buffer_length:
                         steer_queue.append(ch1)
                     else:
                         steer_queue.pop(0)
                         steer_queue.append(ch1)
-                    # get average value
-                    ch1=sum(steer_queue)/len(steer_queue)
-                    # save value 
-                    ch1 = limitValue(ch1, steer_range[0], steer_range[1])
-                    ch2 = limitValue(ch2, speed_range[0], speed_range[1])
-                    data = {'frame': frame_index,'steering': ch1,'speed': ch2,'category': 0}
                     
-                    writer.writerow(data)
+                    if abs(ch1_real-976)>50:
+                    	
+                    	steer_queue=decay(steer_queue,ch1_real-ch1)
+                    	ch1=ch1_real
+                    	adjust=1
+                    # get average value
+                    else:
+                    	adjust=0
+                    	ch1=sum(steer_queue)/len(steer_queue)
+		           # save value 
+	                ch1 = limitValue(ch1, steer_range[0], steer_range[1])
+	                ch2 = limitValue(ch2, speed_range[0], speed_range[1])
+	                data = {'frame': frame_index,'steering': ch1,'speed': ch2,'category': 0, 'adjust':adjust}
+		          	writer.writerow(data)
                 else:
                     broadcastMsg('Waiting')
                 start_time=time.time()

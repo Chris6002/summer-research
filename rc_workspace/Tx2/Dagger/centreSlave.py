@@ -67,7 +67,7 @@ try:
             elif msg[0] == 'Save':
                 # ===============================
                 output=monitor.inference(frame)
-                client.send(output)
+                client.send(output.item())
                 # ===============================
 
                 out.write(frame)
@@ -82,7 +82,6 @@ try:
                     print('Waiting', end='   ')
                     print(str(round(1/(time.time()-start_time),1)) )
         else:
-            out.write(previous_frame)
             out.write(previous_frame)
             out.write(previous_frame)
             out.write(previous_frame)

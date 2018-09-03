@@ -4,12 +4,13 @@ import time
 from director import Monitor
 sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages')
 import cv2
+import os
 
 # =====================================
 # Loading network
 # =====================================
 
-monitor=Monitor('./checkpoint_07.pth.tar')
+monitor=Monitor('./model_best.pth.tar')
 
 
 # =====================================
@@ -55,7 +56,7 @@ try:
     while True:
         index=index+1
         start_time = time.time()
-        msg = client.recv().split(':')
+        msg = 'Save'
         bool_retrieve = cap.grab()
         previous_frame=frame
         ret, frame = cap.retrieve()

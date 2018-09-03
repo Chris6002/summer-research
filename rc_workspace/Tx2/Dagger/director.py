@@ -32,7 +32,7 @@ class Monitor:
    
 
 
-RC_car=Monitor('../checkpoint_07.pth.tar')
-image=Image.open("1_center_000001.jpg")
-print(RC_car.inference(image))
+#RC_car=Monitor('../checkpoint_07.pth.tar')
+#image=Image.open("1_center_000001.jpg")
+#print(RC_car.inference(image))
 

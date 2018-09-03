@@ -10,11 +10,11 @@ import model
 device = torch.device(
     "cuda:0" if torch.cuda.is_available() else "cpu")
 transform = transforms.Compose([transforms.ToTensor()])
-inputs=transform(Image.open("../1_center_000001.jpg"))
+inputs=transform(Image.open("./1_center_000001.jpg"))
 inputs=inputs.unsqueeze(0).to(device)
 
 
-parameter= torch.load('./checkpoint_07.pth.tar')
+parameter= torch.load('../checkpoint_07.pth.tar')
 net = model.BasicResNet()
 net.load_state_dict(parameter['state_dict']).to(device)
 net.eval()

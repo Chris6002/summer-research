@@ -87,7 +87,7 @@ def train(loader, model, criterion, optimizer, device, log):
         iteration_acc_20 += acc_20
         iteration_acc_50 += acc_50
         if index % 100 == 99:
-            out='Iteration: {:>5}/{:<5}  {} Acc_20: {:.4f} Acc_50: {:.4f}'.format(index,size_data, 'train', iteration_acc_20 / 100,iteration_acc_50/100)
+            out='Iteration: {:>5}/{:<5}  {} Acc_20: {:.4f}   Acc_50: {:.4f}'.format(index,size_data, 'train', iteration_acc_20 / 100,iteration_acc_50/100)
             print(out)
             log.write(out)
             iteration_acc_20,iteration_acc_50 = 0,0
@@ -113,7 +113,7 @@ def validate(loader, model, criterion, optimizer, device, log):
         iteration_acc_20 += acc_20
         iteration_acc_50 += acc_50
         if index % 100 == 99:
-            out='Iteration: {:>5}/{:<5}  {} Acc_20: {:.4f} Acc_50: {:.4f}'.format(index,size_data, 'train', iteration_acc_20 / 100,iteration_acc_50/100)
+            out='Iteration: {:>5}/{:<5}  {} Acc_20: {:.4f}   Acc_50: {:.4f}'.format(index,size_data, 'val', iteration_acc_20 / 100,iteration_acc_50/100)
             print(out)
             log.write(out)
             iteration_acc_20,iteration_acc_50 = 0,0

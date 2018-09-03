@@ -51,8 +51,8 @@ def limit_value_tensor(n, minn, maxn):
     for i in n:
         buffer.append(max(min(maxn, i.item()), minn))
     return torch.LongTensor(buffer)
-def accuracy(predicted,true,batch_size):
-    correct=(abs(predicted - true) < 10).sum().item()
+def accuracy(predicted,true,batch_size,top):
+    correct=(abs(predicted - true) < top/2).sum().item()
     return round(correct/batch_size*100,2)
 def one_hot_embedding(label_list, class_num):
     """Embedding labels to one-hot form.

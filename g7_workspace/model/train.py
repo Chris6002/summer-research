@@ -26,7 +26,7 @@ for arg in vars(args):
 net = model.BasicResNet()
 
 device = torch.device(
-        f"cuda:{args.cuda}" if torch.cuda.is_available() else "cpu")
+    f"cuda:{args.cuda}" if torch.cuda.is_available() else "cpu")
 if args.muiltpleGPU == 1 and torch.cuda.device_count() > 1:
     print("Let's use", torch.cuda.device_count(), "GPUs!")
     batch_size = 4 * 32
@@ -38,7 +38,7 @@ else:
     worker_num = 4
     net = net.to(device)
 print(f"batch size: {batch_size}, worker number: {worker_num}")
-    
+
 # =============================================
 # Split dataset
 # ^^^^^^^^^^^^^
@@ -69,7 +69,7 @@ optimizer = optim.Adam(net.parameters(), lr=0.001, betas=(0.9, 0.99))
 def train(loader, model, criterion, optimizer, device, log):
     model.train()
     size_batch, size_data = loader.batch_size, len(loader)
-    running_acc_20,iteration_acc_20, iteration_acc_50 = 0, 0,0
+    running_acc_20, iteration_acc_20, iteration_acc_50 = 0, 0, 0
     for index, data in enumerate(loader):
         inputs = data['frame'].to(device)
         labels = misc.limit_value_tensor(
@@ -87,17 +87,18 @@ def train(loader, model, criterion, optimizer, device, log):
         iteration_acc_20 += acc_20
         iteration_acc_50 += acc_50
         if index % 100 == 99:
-            out='Iteration: {:>5}/{:<5}  {} Acc_20: {:.4f}   Acc_50: {:.4f}'.format(index,size_data, 'train', iteration_acc_20 / 100,iteration_acc_50/100)
+            out = 'Iteration: {:>5}/{:<5}  {}  || Acc_20: {:.4f}   Acc_50: {:.4f}'.format(
+                index, size_data, 'train', iteration_acc_20 / 100, iteration_acc_50/100)
             print(out)
             log.write(out)
-            iteration_acc_20,iteration_acc_50 = 0,0
+            iteration_acc_20, iteration_acc_50 = 0, 0
     return running_acc_20 / size_data
 
 
 def validate(loader, model, criterion, optimizer, device, log):
     model.eval()
     size_batch, size_data = loader.batch_size, len(loader)
-    running_acc_20,iteration_acc_20, iteration_acc_50 = 0, 0,0
+    running_acc_20, iteration_acc_20, iteration_acc_50 = 0, 0, 0
     for index, data in enumerate(loader):
         inputs = data['frame'].to(device)
         labels = misc.limit_value_tensor(
@@ -113,10 +114,11 @@ def validate(loader, model, criterion, optimizer, device, log):
         iteration_acc_20 += acc_20
         iteration_acc_50 += acc_50
         if index % 100 == 99:
-            out='Iteration: {:>5}/{:<5}  {} Acc_20: {:.4f}   Acc_50: {:.4f}'.format(index,size_data, 'val', iteration_acc_20 / 100,iteration_acc_50/100)
+            out = 'Iteration: {:>5}/{:<5}  {}  || Acc_20: {:.4f}   Acc_50: {:.4f}'.format(
+                index, size_data, 'val', iteration_acc_20 / 100, iteration_acc_50/100)
             print(out)
             log.write(out)
-            iteration_acc_20,iteration_acc_50 = 0,0
+            iteration_acc_20, iteration_acc_50 = 0, 0
     return running_acc_20 / size_data
 
 
@@ -126,23 +128,23 @@ def trainer(dataloader, model, criterion, optimizer, args, epoch_num=10, checkpo
     best_acc = 0.0
     recorder = open('acc_result.txt', 'w')
     for epoch in range(epoch_num):
-        time_start=time.time()
+        time_start = time.time()
         print('Epoch {}/{}'.format(epoch, epoch_num))
         print('=' * 40)
         train_acc = train(dataloader['train'], net,
                           criterion, optimizer, device, recorder)
         valid_acc = validate(dataloader['val'], net, criterion,
                              optimizer, device, recorder)
-        time_elapsed=time.time()-time_start
+        time_elapsed = time.time()-time_start
         print('-' * 10)
-        print('complete in {:.0f}m {:.0f}s'.format(time_elapsed // 60, time_elapsed % 60))
+        print('complete in {:.0f}m {:.0f}s'.format(
+            time_elapsed // 60, time_elapsed % 60))
         output = 'Epoch:{:3} Train Acc={:5}, Val Acc={:5}'.format(
             epoch, train_acc, valid_acc)
         print(output)
         recorder.write(output)
         print('-' * 10)
 
-        
         if valid_acc > best_acc:
             best_acc = valid_acc
             best_epoch = epoch
@@ -163,4 +165,5 @@ def trainer(dataloader, model, criterion, optimizer, args, epoch_num=10, checkpo
 # =============================================
 
 
-trainer(loader, net, criterion, optimizer,args,epoch_num=40, checkpoint=1,device=device)
+trainer(loader, net, criterion, optimizer, args,
+        epoch_num=40, checkpoint=1, device=device)

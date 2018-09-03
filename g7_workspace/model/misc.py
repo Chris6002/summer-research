@@ -24,8 +24,8 @@ def split_random(command_list):
     for index,id_num in enumerate(id_list):
         if len(id_num)> 0 and index>=976 and index<1976:
             sample_size=len(id_num)
-            num_train = round(sample_size * 0.7)
-            num_valid = round(sample_size * 0.2)
+            num_train = round(sample_size *train_ratio)
+            num_valid = round(sample_size * valid_ratio)
             # if num_train:
             index_list=np.random.choice(id_num,size=num_train,replace=False)
             if len(index_list)>0:

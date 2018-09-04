@@ -16,6 +16,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--muiltpleGPU', type=int, default=0)
 parser.add_argument('--cuda', type=int, default=0)
 parser.add_argument('--classnum', type=int, default=0)
+parser.add_argument('--batch_size',type=int,default=64)
 args = parser.parse_args()
 for arg in vars(args):
     print("Argu: {:>16}:{:<10}".format(arg, getattr(args, arg)))
@@ -34,8 +35,8 @@ if args.muiltpleGPU == 1 and torch.cuda.device_count() > 1:
     net = nn.DataParallel(net).cuda()
 else:
     print(f"Current using {device}")
-    batch_size = 16
-    worker_num = 8
+    batch_size = args.batch_size
+    worker_num = 16
     net = net.to(device)
 print(f"batch size: {batch_size}, worker number: {worker_num}")
 
@@ -51,10 +52,10 @@ sampler = misc.split_random(dataset.command_list)
 loader = {}
 
 loader = {x: torch.utils.data.DataLoader(dataset,
-                                         batch_size=batch_size, sampler=sampler[x], shuffle=True, num_workers=worker_num) for x in
+                                         batch_size=batch_size, sampler=sampler[x], num_workers=worker_num) for x in
           ['train', 'val']}
 
-print('train number:{},  val number:{}'.format(
+print('train batch #:{},  val batch #:{}'.format(
     len(loader['train']), len(loader['val'])))
 # =============================================
 # Define a Loss function and optimizer
@@ -73,14 +74,17 @@ def train(loader, model, criterion, optimizer, device, log):
     for index, data in enumerate(loader):
         inputs = data['frame'].to(device)
         labels = misc.limit_value_tensor(
+            data['noise_label'] - 976, 0, 999).to(device)
+        real_label=misc.limit_value_tensor(
             data['steer'] - 976, 0, 999).to(device)
+
         optimizer.zero_grad()
         with torch.set_grad_enabled(True):
             outputs = model(inputs)
             _, predicted = torch.max(outputs, 1)
             loss = criterion(outputs, labels)
-            acc_50 = misc.accuracy(predicted, labels, size_batch, 20)
-            acc_20 = misc.accuracy(predicted, labels, size_batch, 50)
+            acc_50 = misc.accuracy(predicted, real_label, size_batch, 20)
+            acc_20 = misc.accuracy(predicted, real_label, size_batch, 50)
             loss.backward()
             optimizer.step()
         running_acc_20 += acc_20
@@ -102,14 +106,16 @@ def validate(loader, model, criterion, optimizer, device, log):
     for index, data in enumerate(loader):
         inputs = data['frame'].to(device)
         labels = misc.limit_value_tensor(
+            data['noise_label'] - 976, 0, 999).to(device)
+        real_label=misc.limit_value_tensor(
             data['steer'] - 976, 0, 999).to(device)
         optimizer.zero_grad()
         with torch.set_grad_enabled(False):
             outputs = model(inputs)
             _, predicted = torch.max(outputs, 1)
             loss = criterion(outputs, labels)
-            acc_50 = misc.accuracy(predicted, labels, size_batch, 20)
-            acc_20 = misc.accuracy(predicted, labels, size_batch, 50)
+            acc_50 = misc.accuracy(predicted, real_label, size_batch, 20)
+            acc_20 = misc.accuracy(predicted, real_label, size_batch, 50)
         running_acc_20 += acc_20
         iteration_acc_20 += acc_20
         iteration_acc_50 += acc_50
@@ -155,7 +161,7 @@ def trainer(dataloader, model, criterion, optimizer, args, epoch_num=10, checkpo
             misc.save_checkpoint({
                 'state_dict': model.state_dict(),
                 'optimizer': optimizer.state_dict(),
-            }, is_best, filename="checkpoint_{:02}.pth.tar".format(epoch))
+            }, is_best, filename="checkpoint_{:02}_{:1}.pth.tar".format(epoch,args.classnum))
     recorder.write(f'best epoch: {best_epoch}')
     recorder.close()
 

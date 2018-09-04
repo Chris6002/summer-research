@@ -58,12 +58,18 @@ import torch
 # import matplotlib as mpl
 # mpl.use('TkAgg')  # or whatever other backend that you want
 # import matplotlib.pyplot as plt
-import argparse
-parser = argparse.ArgumentParser()
-parser.add_argument('--muiltpleGPU', type=0, default=0)
-parser.add_argument('--cuda', type=int, default=0)
-parser.add_argument('--classnum',type=int,default=0)
-args = parser.parse_args()
-for arg in vars(args):
-    print(arg,getattr(args,arg))
+# import argparse
+# parser = argparse.ArgumentParser()
+# parser.add_argument('--muiltpleGPU', type=0, default=0)
+# parser.add_argument('--cuda', type=int, default=0)
+# parser.add_argument('--classnum',type=int,default=0)
+# args = parser.parse_args()
+# for arg in vars(args):
+#     print(arg,getattr(args,arg))
     # print ("Argu:{:>10}:{:<10}".format(arg,getattr(args, arg)))
+
+import numpy as np
+s = np.random.normal(250,10, 1000)
+import matplotlib.pyplot as plt
+plt.hist(s,250)
+plt.show()

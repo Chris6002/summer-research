@@ -2,6 +2,7 @@ from torch.utils.data import Dataset, DataLoader
 import os
 import torchvision.transforms as transforms
 import pandas
+import numpy as np
 from PIL import Image
 
 
@@ -44,9 +45,11 @@ class URPedestrianDataset(Dataset):
         name=self.command_list.iloc[item]['name']
         frame = self.command_list.iloc[item]['frame']
         label=self.command_list.iloc[item]['steering']
+        # ===========================================================================
+        noise_label= np.random.normal(int(label) , 20, 1)
         path=os.path.join(self.frame_root, f"{name}_{frame:06d}.jpg")
         frame=Image.open(path)
-        sample={'frame':self.transform(frame),'steer':label}
+        sample={'frame':self.transform(frame),'steer':label,'noise_label':noise_label}
         return sample
 
 

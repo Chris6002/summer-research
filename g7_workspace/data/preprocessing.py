@@ -288,10 +288,9 @@ def csv_addlr(inputcsv, outputcsv, shift_angel):
             new_left['name'] = name.replace('center', 'left')
             new_right['name'] = name.replace('center', 'right')
 
-            new_left['steering'] = str(int(np.random.normal(
-                int(steering) + shift_angel, 100, 1)))
-            new_right['steering'] = str(int(np.random.normal(
-                int(steering) - shift_angel, 100, 1)))
+            new_left['steering'] = str(int(steering)+shift_angel)
+
+            new_right['steering'] = str(int(steering)-shift_angel)
             csv_writer.writerow(row)
             csv_writer.writerow(new_right)
             csv_writer.writerow(new_left)

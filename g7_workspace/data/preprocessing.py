@@ -5,6 +5,7 @@ import zipfile
 import csv
 import zipfile
 from shutil import copy
+import numpy as np
 
 
 class DataPath:
@@ -14,18 +15,20 @@ class DataPath:
         self.video_root = os.path.join(self.root, 'video')
         self.command_root = os.path.join(self.root, 'command')
         self.category = [0, 1, 2, 3]
-        self.video_list = {0: [], 1: [], 2: [], 3: [],'root':{}}
-        self.command_list = {0: [], 1: [], 2: [], 3: [],'root':{}}
+        self.video_list = {0: [], 1: [], 2: [], 3: [], 'root': {}}
+        self.command_list = {0: [], 1: [], 2: [], 3: [], 'root': {}}
         for num in self.category:
             create_folder(os.path.join(self.video_root, str(num)))
             create_folder(os.path.join(self.command_root, str(num)))
         for i in os.listdir(self.video_root):
             try:
                 classnum = int(i)
-                self.video_list['root'][classnum]=os.path.join(self.video_root,str(classnum))
-                self.command_list['root'][classnum]=os.path.join(self.command_root, str(classnum))
+                self.video_list['root'][classnum] = os.path.join(
+                    self.video_root, str(classnum))
+                self.command_list['root'][classnum] = os.path.join(
+                    self.command_root, str(classnum))
                 self.video_list[classnum] = [
-                    os.path.join(self.video_list['root'][classnum],path)
+                    os.path.join(self.video_list['root'][classnum], path)
                     for path in os.listdir(os.path.join(self.video_root, i))
                     if 'avi' in path
                 ]
@@ -40,14 +43,17 @@ class DataPath:
                     key=lambda x: int(x.split('/')[-1].split('.')[0][0]))
             except:
                 pass
+
     def update(self):
         for i in os.listdir(self.video_root):
             try:
                 classnum = int(i)
-                self.video_list['root'][classnum]=os.path.join(self.video_root,str(classnum))
-                self.command_list['root'][classnum]=os.path.join(self.command_root, str(classnum))
+                self.video_list['root'][classnum] = os.path.join(
+                    self.video_root, str(classnum))
+                self.command_list['root'][classnum] = os.path.join(
+                    self.command_root, str(classnum))
                 self.video_list[classnum] = [
-                    os.path.join(self.video_list['root'][classnum],path)
+                    os.path.join(self.video_list['root'][classnum], path)
                     for path in os.listdir(os.path.join(self.video_root, i))
                     if 'avi' in path
                 ]
@@ -115,6 +121,7 @@ def get_start_index(video_path):
         map(int, [name.split('/')[-1].split('_')[0]
                   for name in saved_file])) + 1 if saved_file else 1
 
+
 def get_sorted_frame(path):
     frame = [file for file in os.listdir(path) if 'jpg' in file]
     frame.sort(key=sort_func)
@@ -123,6 +130,8 @@ def get_sorted_frame(path):
 # ==========================================================================
 # Major function
 # ==========================================================================
+
+
 def unzip_dataset(temp_path):
     while True:
         zipfiles = [zipf for zipf in os.listdir(temp_path) if 'zip' in zipf]
@@ -195,6 +204,7 @@ def extract_frames(video, dst):
 def sync_frame(path):
     frame = [file for file in os.listdir(path) if 'jpg' in file]
     frame.sort(key=sort_func)
+
     def get_index(path):
         return path.split('_')[0] + '_' + path.split('_')[1]
     if frame:
@@ -204,49 +214,51 @@ def sync_frame(path):
         for file_name in frame:
             a.add(file_name.split('_')[0])
             b.add(file_name.split('_')[1])
-        a=sorted(a)
+        a = sorted(a)
         sync = {}
         for num in a:
             sync.clear()
             for i, camera in enumerate(b):
                 index = num + '_' + camera
                 # camera_num = index if camera == 'center' else 0
-                sync[camera] = [path for path in frame if index == get_index(path) ]
+                sync[camera] = [
+                    path for path in frame if index == get_index(path)]
 
-                print("{:>2}_{:8} frame:{:>8}".format(num,camera,len(sync[camera])))
-            if max([len(sync['center']),len(sync['left']),len(sync['right'])])!=len(sync['center']):
+                print("{:>2}_{:8} frame:{:>8}".format(
+                    num, camera, len(sync[camera])))
+            if max([len(sync['center']), len(sync['left']), len(sync['right'])]) != len(sync['center']):
                 for camera in ['left', 'right']:
                     if len(sync['center']) != len(sync[camera]):
                         dis = len(sync[camera]) - len(sync['center'])
-                        print(num,end='  ')
+                        print(num, end='  ')
                         print(f'{camera}  is more: ' + str(dis))
                         for file in sync[camera][-dis:]:
 
-                            print('Sync files: ',path + '/' + file)
+                            print('Sync files: ', path + '/' + file)
 
                             os.remove(path + '/' + file)
             else:
                 # center is more
-                for camera in ['left','right']:
+                for camera in ['left', 'right']:
                     if len(sync['center']) != len(sync[camera]):
                         dis = len(sync['center'])-len(sync[camera])
-                        print(num,end='  ')
+                        print(num, end='  ')
                         print(f'{camera}  is less: ' + str(dis))
                         for file in sync[camera][-dis:]:
-                            print('Copy files: ',path + '/' + file)
-                            old_num=file.split('.')[0].split('_')[-1]
-                            new_num="{:06}".format(int(old_num)+dis)
-                            new_name=file.replace(old_num,new_num)
-                            old_path=os.path.join(path,file)
-                            new_path=os.path.join(path,new_name)
-                            copy(old_path,new_path)
+                            print('Copy files: ', path + '/' + file)
+                            old_num = file.split('.')[0].split('_')[-1]
+                            new_num = "{:06}".format(int(old_num)+dis)
+                            new_name = file.replace(old_num, new_num)
+                            old_path = os.path.join(path, file)
+                            new_path = os.path.join(path, new_name)
+                            copy(old_path, new_path)
 
     else:
         print("No frame in {0}".format(path))
 
 
 def csv_merge(inputcsv_list, outputcsv):
-    with open(inputcsv_list[0]) as csv_file,open(outputcsv, 'w') as out_file:
+    with open(inputcsv_list[0]) as csv_file, open(outputcsv, 'w') as out_file:
         csv_reader = csv.DictReader(csv_file)
         new_header = ['name'] + csv_reader.fieldnames
         csv_writer = csv.DictWriter(out_file, new_header)
@@ -262,7 +274,6 @@ def csv_merge(inputcsv_list, outputcsv):
                     csv_writer.writerow(dict(row, name=video_name))
 
 
-
 def csv_addlr(inputcsv, outputcsv, shift_angel):
     """append left and right command by shifting"""
     with open(inputcsv) as csv_file, open(outputcsv, 'w') as out_file:
@@ -276,11 +287,15 @@ def csv_addlr(inputcsv, outputcsv, shift_angel):
             steering = row['steering']
             new_left['name'] = name.replace('center', 'left')
             new_right['name'] = name.replace('center', 'right')
-            new_left['steering'] = str(int(steering) + shift_angel)
-            new_right['steering'] = str(int(steering) - shift_angel)
+
+            new_left['steering'] = str(int(np.random.normal(
+                int(steering) + shift_angel, 100, 1)))
+            new_right['steering'] = str(int(np.random.normal(
+                int(steering) - shift_angel, 100, 1)))
             csv_writer.writerow(row)
             csv_writer.writerow(new_right)
             csv_writer.writerow(new_left)
 
-a='/home/vision/summer-research/g7_workspace/data/dataset/video/1/1_center_000013.jpg'
+
+a = '/home/vision/summer-research/g7_workspace/data/dataset/video/1/1_center_000013.jpg'
 print()

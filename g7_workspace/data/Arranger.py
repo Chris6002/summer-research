@@ -109,4 +109,4 @@ if CSV_ADDLR:
             print('Finsih Add Left&Right Class:' + str(classnum) + ' data...')
             original_file = os.path.join(dataset.command_list['root'][classnum], 'center.csv')
             changed_file = os.path.join(dataset.command_list['root'][classnum], 'all_three.csv')
-            preprocessing.csv_addlr(original_file,changed_file, 200)
+            preprocessing.csv_addlr(original_file,changed_file, 300)

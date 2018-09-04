@@ -34,8 +34,8 @@ if args.muiltpleGPU == 1 and torch.cuda.device_count() > 1:
     net = nn.DataParallel(net).cuda()
 else:
     print(f"Current using {device}")
-    batch_size = 8
-    worker_num = 4
+    batch_size = 16
+    worker_num = 8
     net = net.to(device)
 print(f"batch size: {batch_size}, worker number: {worker_num}")
 
@@ -51,7 +51,7 @@ sampler = misc.split_random(dataset.command_list)
 loader = {}
 
 loader = {x: torch.utils.data.DataLoader(dataset,
-                                         batch_size=batch_size, sampler=sampler[x], num_workers=worker_num) for x in
+                                         batch_size=batch_size, sampler=sampler[x], shuffle=True, num_workers=worker_num) for x in
           ['train', 'val']}
 
 print('train number:{},  val number:{}'.format(

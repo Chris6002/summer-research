@@ -6,22 +6,25 @@ import sys
 sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages')
 import cv2
 
-monitor = Monitor('./model_best_1.pth.tar')
+
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('--parameter', type=str)
+args = parser.parse_args()
+for arg in vars(args):
+    print("Argu: {:>16}:{:<10}".format(arg, getattr(args, arg)))
+print('Loading parameter')
+monitor=Monitor(args.parameter)
+print('Finish loading')
 
 # =====================================
 # Convenient function
 # =====================================
-
-
 def createFolder(folder_name):
     if not os.path.exists(folder_name):
         os.makedirs(folder_name)
-
-
 def limitValue(n, minn, maxn):
     return max(min(maxn, n), minn)
-
-
 # =====================================
 # SERVO & SERIES
 # =====================================
@@ -38,8 +41,6 @@ import serial
 ser = serial.Serial(port='/dev/ttyTHS2', baudrate=115200)  # open serial port
 ser.flushInput()
 ser.flushOutput()
-
-
 # =====================================
 # Init value
 # =====================================

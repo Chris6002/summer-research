@@ -70,16 +70,15 @@ try:
                                     resolution)
             elif msg[0] == 'Save':
                 # ===============================
-                print('hehe')
                 output=monitor.inference(frame)
                 print(output.item())
                 # ===============================
                 out.write(frame)
-                if index>20:
-                    index=0
-                    print('Saving', end='   ')
-                    print(iter_num, end='   ')
-                    print(str(round(1/(time.time()-start_time),1)) )
+                #if index>20:
+                #    index=0
+                #    print('Saving', end='   ')
+                #    print(iter_num, end='   ')
+                #    print(str(round(1/(time.time()-start_time),1)) )
             elif msg[0] == 'Waiting':
                 if index>20:
                     index=0
@@ -95,7 +94,7 @@ try:
             cap = cv2.VideoCapture(device)
             cap.set(3, resolution[0])
             cap.set(4, resolution[1])
-        print(time.time()-start_time)
+        #print(time.time()-start_time)
         #if (now - start_time) < frequence:time.sleep(frequence - ((now - start_time) % frequence))
         
 

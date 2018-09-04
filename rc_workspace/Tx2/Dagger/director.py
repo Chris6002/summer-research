@@ -16,7 +16,7 @@ class Monitor:
         self.device=torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.transform = transforms.Compose([transforms.ToTensor()])
     
-        self.parameter=torch.load(parameter_path)
+        self.parameter=torch.load(parameter_path, map_location=lambda storage, loc: storage)
         net= model.BasicResNet()
         net.load_state_dict(self.parameter['state_dict'])
         self.net=net.to(self.device)

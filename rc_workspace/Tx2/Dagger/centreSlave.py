@@ -8,9 +8,9 @@ import cv2
 # =====================================
 # Loading network
 # =====================================
-
-monitor=Monitor('./checkpoint_07.pth.tar')
-
+print('Loading network')
+monitor=Monitor('/home/nvidia/summer-research/rc_workspace/Tx2/Dagger/model_best.pth.tar')
+print('Finish loading network')
 
 # =====================================
 # Global setting

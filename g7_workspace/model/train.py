@@ -134,6 +134,7 @@ def trainer(dataloader, model, criterion, optimizer, args, epoch_num=10, checkpo
     best_acc = 0.0
     recorder = open('acc_result.txt', 'w')
     for epoch in range(epoch_num):
+        
         time_start = time.time()
         print('Epoch {}/{}'.format(epoch, epoch_num))
         print('=' * 40)
@@ -161,7 +162,7 @@ def trainer(dataloader, model, criterion, optimizer, args, epoch_num=10, checkpo
             misc.save_checkpoint({
                 'state_dict': model.state_dict(),
                 'optimizer': optimizer.state_dict(),
-            }, is_best, filename="checkpoint_{:02}_{:1}.pth.tar".format(epoch,args.classnum))
+            }, is_best, num=args.classnum,filename="checkpoint_{:02}_{:1}.pth.tar".format(epoch,args.classnum))
     recorder.write(f'best epoch: {best_epoch}')
     recorder.close()
 

@@ -4,10 +4,10 @@ from torch.utils.data.sampler import SubsetRandomSampler
 import shutil
 
 
-def save_checkpoint(state, is_best, filename='checkpoint.pth.tar'):
+def save_checkpoint(state, is_best, num,filename='checkpoint.pth.tar'):
     torch.save(state, filename)
     if is_best:
-        shutil.copyfile(filename, 'model_best.pth.tar')
+        shutil.copyfile(filename, f'model_best_{num}.pth.tar')
 
 
 def split_random(command_list):

@@ -56,7 +56,11 @@ basic policy + refine
 3. berkely rc car -- how to train in real time
 
 
-
+# Dagger process
+1. run by itself
+2. if adjust back change 40 commands
+3. train with dagger data
+4. measure time without intervention
 
 
 

@@ -74,7 +74,7 @@ Command_file = '/media/nvidia/Files/Dagger/'
 createFolder(Command_file)
 import csv
 f = open(Command_file + '0_command.csv', 'w')
-fnames = ['frame', 'steering', 'speed', 'category', 'adjust']
+fnames = ['frame', 'steering', 'speed', 'category', 'stage']
 writer = csv.DictWriter(f, fieldnames=fnames)
 writer.writeheader()
 out = cv2.VideoWriter(Command_file + '0.avi', FourCC, 10,
@@ -126,17 +126,10 @@ try:
                         print('Auto Now')
             bool_retrieve = cap.grab()
             ret, frame = cap.retrieve()
-            frame_index += 1
-            if ch3 > 1500 and adjust_flag==0:
-                if time.time()-start_time>0.1:
-                    print('save')
-                    #out.write(frame)
-                    #frame_index+=1
-                    #data = {'frame': frame_index,'steering': ch1,'speed': ch2,'category': 0, 'stage':adjust_flag}
-                    #writer.writerow(data)
-                    start_time=time.time() 
+            
+
             if bool_retrieve:
-                if adjust_flag:
+                if adjust_flag==0:
                     ch1 = monitor.inference(frame).item()
 
                 else:
@@ -146,7 +139,15 @@ try:
                 cap = cv2.VideoCapture(device)
                 cap.set(3, resolution[0])
                 cap.set(4, resolution[1])
-
+            if ch3 > 1900:
+                if time.time()-start_time>0.1:
+                    print('save')
+                    
+                    out.write(frame)
+                    frame_index+=1
+                    data = {'frame': frame_index,'steering': ch1,'speed': ch2,'category': 0, 'stage':adjust_flag}
+                    writer.writerow(data)
+                    start_time=time.time() 
         except UnicodeDecodeError:
             ch1, ch2, ch3 = 1476, 1500, 976
             print('hehe')

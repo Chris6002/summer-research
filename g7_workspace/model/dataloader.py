@@ -18,7 +18,7 @@ class URPedestrianDataset(Dataset):
         self.command_root = command_folder
         self.frame_list = self._get_sorted_framelist(video_folder)
         if os.path.exists(os.path.join(command_folder, 'all_three.csv')):
-            self.command_list = pandas.read_csv(os.path.join(command_folder, 'all_three.csv'))
+            self.command_list = pandas.read_csv(os.path.join(command_folder, 'test.csv'))
         self.transform = transforms.Compose([transforms.ToTensor()])
     def _get_sorted_framelist(self, path):
         def sort_func(e):

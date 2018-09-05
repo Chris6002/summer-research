@@ -9,10 +9,17 @@ parser.add_argument('--path', type=str )
 
 args = parser.parse_args()
 
+from PIL import Image
+
+
+# rotated_image.save(saved_location)
+# rotated_image.show()
+
 
 transform = transforms.Compose([transforms.ToTensor()])
 frame=Image.open(args.path)
+# rotated_image = frame.transpose(Image.FLIP_LEFT_RIGHT)
 # frame=transform(frame)
-monitor=Monitor('./model_best.pth.tar')
+monitor=Monitor('./0_225_50.pth.tar')
 output=monitor.inference(frame)
 print(output.item())

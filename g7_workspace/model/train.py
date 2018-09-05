@@ -134,7 +134,7 @@ def trainer(dataloader, model, criterion, optimizer, args, epoch_num=10, checkpo
     best_acc = 0.0
     recorder = open('acc_result.txt', 'w')
     for epoch in range(epoch_num):
-        
+
         time_start = time.time()
         print('Epoch {}/{}'.format(epoch, epoch_num))
         print('=' * 40)

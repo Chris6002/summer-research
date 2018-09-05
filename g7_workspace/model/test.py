@@ -67,9 +67,19 @@ import torch
 # for arg in vars(args):
 #     print(arg,getattr(args,arg))
     # print ("Argu:{:>10}:{:<10}".format(arg,getattr(args, arg)))
+# ==============================================================================
+# import numpy as np
+# s = np.random.normal(250,10, 1000)
+# import matplotlib.pyplot as plt
+# plt.hist(s,250)
+# plt.show()
 
-import numpy as np
-s = np.random.normal(250,10, 1000)
-import matplotlib.pyplot as plt
-plt.hist(s,250)
-plt.show()
+from PIL import Image
+
+
+image_path='/home/vision/summer-research/g7_workspace/data/dataset/video/0/1_left_000001.jpg'
+image_obj = Image.open(image_path)
+image_obj.show()
+rotated_image = image_obj.transpose(Image.FLIP_LEFT_RIGHT)
+#rotated_image.save(saved_location)
+rotated_image.show()

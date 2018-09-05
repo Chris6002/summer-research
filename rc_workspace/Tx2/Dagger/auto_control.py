@@ -94,13 +94,13 @@ bool_retrieve = cap.grab()
 ret, frame = cap.retrieve()
 print('camera done')
 start_time=time.time()
-timw_without_intervention=time.time()
+time_without_intervention=time.time()
 try:
     while True:
         # ======  Get command  ====== #
         try:
-        	
-        	
+            
+            
             command =ser.readline().decode('utf-8').rstrip().split('x')
             try:
                 ch1, ch2, ch3,ch4 = int(command[0].strip('\x00')), int(command[1].strip('\x00')), int(command[2].strip('\x00')),int(command[3].strip('\x00'))
@@ -114,13 +114,15 @@ try:
             if abs(dis4) >500 :
                 adjust_flag=0 if adjust_flag==1 else 1
                 if adjust_flag:
-                    duration=time.time()-timw_without_intervention
+                    duration=time.time()-time_without_intervention
+                    print(duration)
                     data = {'end_frame': 1, 'time':round(duration,3)}
                     time_writer.writerow(data)
                     print('Manual Now')
                 else:
                     time_without_intervention=time.time()
-                	print('Auto Now')
+                    print(time_without_intervention)
+                    print('Auto Now')
             bool_retrieve = cap.grab()
             ret, frame = cap.retrieve()
             
@@ -138,13 +140,13 @@ try:
                 cap.set(3, resolution[0])
                 cap.set(4, resolution[1])
             if ch3>1500 and adjust_flag==0:
-            	if time.time()-start_time>0.1:
-		            print('save')
-		            out.write(frame)
-		            frame_index+=1
-		            data = {'frame': frame_index,'steering': ch1,'speed': ch2,'category': 0, 'stage':adjust_flag}
-		            writer.writerow(data)
-		            start_time=time.time() 
+                if time.time()-start_time>0.1:
+                    print('save')
+                    out.write(frame)
+                    frame_index+=1
+                    data = {'frame': frame_index,'steering': ch1,'speed': ch2,'category': 0, 'stage':adjust_flag}
+                    writer.writerow(data)
+                    start_time=time.time() 
             
         except UnicodeDecodeError:
             ch1, ch2, ch3=1476,1500,976
@@ -163,4 +165,5 @@ finally:
     servo.setTarget(1, 1500 * 4)  #set servo to move to centre position
     servo.close()
     ser.close()
+    time_file.close()
     print('finished')

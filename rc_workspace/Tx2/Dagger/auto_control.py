@@ -56,6 +56,7 @@ ch3_pre = 1000
 ch4_pre = 1960
 flag=0
 situation=0
+# 0=auto 1=manually
 adjust_flag=1
 frame_index=0
 buffer_length=10
@@ -73,7 +74,7 @@ Command_file='/media/nvidia/Files/audo_test/'
 createFolder(Command_file)
 import csv
 f = open(Command_file+ '0_command.csv', 'w')
-fnames = ['frame', 'steering', 'speed', 'category','adjust']
+fnames = ['frame', 'steering', 'speed', 'category','stage']
 writer = csv.DictWriter(f, fieldnames=fnames)
 writer.writeheader()
 out = cv2.VideoWriter(Command_file + '0.avi', FourCC, 10,
@@ -86,11 +87,14 @@ cap.set(3, resolution[0])
 cap.set(4, resolution[1])
 bool_retrieve = cap.grab()
 ret, frame = cap.retrieve()
-
+print('camera done')
+start_time=time.time()
 try:
     while True:
         # ======  Get command  ====== #
         try:
+        	
+        	
             command =ser.readline().decode('utf-8').rstrip().split('x')
             try:
                 ch1, ch2, ch3,ch4 = int(command[0].strip('\x00')), int(command[1].strip('\x00')), int(command[2].strip('\x00')),int(command[3].strip('\x00'))
@@ -103,27 +107,35 @@ try:
             elif dis<-500 and situation==1:situation,flag=0,0
             if abs(dis4) >500 :
                 adjust_flag=0 if adjust_flag==1 else 1
-                print('adjust return')
+                if adjust_flag:
+                	print('Manual Now')
+                else:
+                	print('Auto Now')
             
             bool_retrieve = cap.grab()
             ret, frame = cap.retrieve()
-            frame_index+=1
-            if ch3>1500:
-                print('save')
-                out.write(frame)
-                data = {'frame': frame_index,'steering': ch1,'speed': ch2,'category': 0, 'adjust':adjust_flag}
-                writer.writerow(data)    
+            
+  
             if bool_retrieve:
-                if adjust_flag:
+                if adjust_flag==0:
                     ch1=monitor.inference(frame).item()
-                    print(ch1)
+                    #print(ch1)
                 else:
-                    ch1=ch1_real        
+                    ch1=ch1_real 
+       
             else:
                 cap.release()
                 cap = cv2.VideoCapture(device)
                 cap.set(3, resolution[0])
                 cap.set(4, resolution[1])
+            if ch3>1500 and adjust_flag==0:
+            	if time.time()-start_time>0.1:
+		            print('save')
+		            out.write(frame)
+		            frame_index+=1
+		            data = {'frame': frame_index,'steering': ch1,'speed': ch2,'category': 0, 'stage':adjust_flag}
+		            writer.writerow(data)
+		            start_time=time.time() 
             
         except UnicodeDecodeError:
             ch1, ch2, ch3=1476,1500,976

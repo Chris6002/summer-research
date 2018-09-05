@@ -23,8 +23,7 @@ with open(old_path) as in_file, open(new_path,'w') as out_file:
 frames_folder=os.path.join(dir_path,'dataset/video/0')
 frames_list=[os.path.join(frames_folder,name) for name in os.listdir(frames_folder) if '.jpg' in name]
 
-for index,path in enumerate(frames_list):
-    print(index)
+for index,path in enumerate(frames_list[:10]):
     camera=os.path.basename(path).split('_')[1]
     camerafilp=camera+'filp'
     new_path=path.replace(camera,camerafilp)

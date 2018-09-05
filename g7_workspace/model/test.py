@@ -58,15 +58,14 @@ import torch
 # import matplotlib as mpl
 # mpl.use('TkAgg')  # or whatever other backend that you want
 # import matplotlib.pyplot as plt
-# import argparse
-# parser = argparse.ArgumentParser()
-# parser.add_argument('--muiltpleGPU', type=0, default=0)
-# parser.add_argument('--cuda', type=int, default=0)
-# parser.add_argument('--classnum',type=int,default=0)
-# args = parser.parse_args()
-# for arg in vars(args):
-#     print(arg,getattr(args,arg))
-    # print ("Argu:{:>10}:{:<10}".format(arg,getattr(args, arg)))
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('--muiltpleGPU', nargs='+',type=int, default=[1,2,3])
+parser.add_argument('--cuda', type=int, default=0)
+parser.add_argument('--classnum',type=int,default=0)
+args = parser.parse_args()
+for arg in vars(args):
+    print ("Argu:{:>15}:{}".format(arg,getattr(args, arg)))
 # ==============================================================================
 # import numpy as np
 # s = np.random.normal(250,10, 1000)
@@ -74,12 +73,12 @@ import torch
 # plt.hist(s,250)
 # plt.show()
 
-from PIL import Image
-
-
-image_path='/home/vision/summer-research/g7_workspace/data/dataset/video/0/1_left_000001.jpg'
-image_obj = Image.open(image_path)
-image_obj.show()
-rotated_image = image_obj.transpose(Image.FLIP_LEFT_RIGHT)
-#rotated_image.save(saved_location)
-rotated_image.show()
+# from PIL import Image
+#
+#
+# image_path='/home/vision/summer-research/g7_workspace/data/dataset/video/0/1_left_000001.jpg'
+# image_obj = Image.open(image_path)
+# image_obj.show()
+# rotated_image = image_obj.transpose(Image.FLIP_LEFT_RIGHT)
+# #rotated_image.save(saved_location)
+# rotated_image.show()

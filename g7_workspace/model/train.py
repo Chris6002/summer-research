@@ -11,33 +11,46 @@ import misc
 import shutil
 import model
 from dataloader import URPedestrianDataset
+#  $ python train.py --muiltGPU 0 1  --classnum 0 --batch_size 128
+#  $ python train.py --single 0  --classnum 0 --batch_size 128
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--muiltpleGPU', type=int, default=0)
-parser.add_argument('--cuda', type=int, default=0)
+parser.add_argument('--muiltGPU',  nargs='+',type=int, default=[0])
+parser.add_argument('--singleGPU', type=int, default=0)
 parser.add_argument('--classnum', type=int, default=0)
 parser.add_argument('--batch_size',type=int,default=64)
+parser.add_argument('--worker_num',type=int,default=16)
 args = parser.parse_args()
 for arg in vars(args):
-    print("Argu: {:>16}:{:<10}".format(arg, getattr(args, arg)))
+    print("{:>13}:{}".format(arg, getattr(args, arg)))
 # =============================================
 # Load all used net
 # =============================================
 
 net = model.BasicResNet()
 
-device = torch.device(
-    f"cuda:{args.cuda}" if torch.cuda.is_available() else "cpu")
-if args.muiltpleGPU == 1 and torch.cuda.device_count() > 1:
-    print("Let's use", torch.cuda.device_count(), "GPUs!")
-    batch_size = 4 * 32
-    worker_num = 16
-    net = nn.DataParallel(net).cuda()
+
+
+
+if len(args.muiltGPU) > 1 and torch.cuda.device_count() > 1:
+    device = torch.device(
+        f"cuda:{args.muiltGPU[0]}" if torch.cuda.is_available() else "cpu")
+    print("Let's use", len(args.muiltGPU), "GPUs!")
+    batch_size = args.batch_size*len(args.muiltGPU)
+    worker_num = args.work_num
+    net = nn.DataParallel(net,device_ids=args.muiltGPU).to(device)
+    criterion = nn.CrossEntropyLoss().to(device)
+
+    # criterion=nn.DataParallel(nn.CrossEntropyLoss(),device_ids=args.muiltGPU).to(device)
 else:
+    device = torch.device(
+        f"cuda:{args.singleGPU}" if torch.cuda.is_available() else "cpu")
     print(f"Current using {device}")
     batch_size = args.batch_size
     worker_num = 16
     net = net.to(device)
+    criterion = nn.CrossEntropyLoss().to(device)
+
 print(f"batch size: {batch_size}, worker number: {worker_num}")
 
 # =============================================
@@ -61,9 +74,8 @@ print('train batch #:{},  val batch #:{}'.format(
 # Define a Loss function and optimizer
 # =============================================
 
-import torch.optim as optim
 
-criterion = nn.CrossEntropyLoss().to(device)
+import torch.optim as optim
 optimizer = optim.Adam(net.parameters(), lr=0.001, betas=(0.9, 0.99))
 
 
@@ -72,6 +84,7 @@ def train(loader, model, criterion, optimizer, device, log):
     size_batch, size_data = loader.batch_size, len(loader)
     running_acc_20, iteration_acc_20, iteration_acc_50 = 0, 0, 0
     for index, data in enumerate(loader):
+
         inputs = data['frame'].to(device)
         labels = misc.limit_value_tensor(
             data['noise_label'] - 976, 0, 999).to(device)

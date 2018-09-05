@@ -99,7 +99,7 @@ try:
                     '\x00')), int(command[2].strip('\x00')), int(command[3].strip('\x00'))
                 ch1_real = ch1
             except:
-                ch1, ch2, ch3, ch4 = 1476, 1500, 1200, 1960
+                ch1, ch2, ch3, ch4 = 1476, 1500, 976, 1960
                 ch1_real = ch1
             dis = ch3-ch3_pre
             dis4 = ch4-ch4_pre
@@ -111,15 +111,15 @@ try:
                 situation = 1
             elif dis < -500 and situation == 1:
                 situation, flag = 0, 0
-            if abs(dis4) > 500:
-                adjust_flag = 0 if adjust_flag == 1 else 1
-            if adjust_flag==0:
-                detech1=0 if abs(dis1) > 30 else 1
-                detech1=1 if adjust_flag==0 else 1  
-            if adjust_flag:
-            	print('Manual Now')
-            else:
-            	print('Auto Now')
+            if abs(dis4) >500 :
+                adjust_flag=0 if adjust_flag==1 else 1
+                if adjust_flag==0:
+                    if abs(ch1-1476)>20:
+                        adjust_flag=1
+                if adjust_flag:
+                	print('Manual Now')
+                else:
+                	print('Auto Now')
             bool_retrieve = cap.grab()
             ret, frame = cap.retrieve()
             frame_index += 1

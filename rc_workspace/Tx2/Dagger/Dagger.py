@@ -104,33 +104,37 @@ try:
             dis = ch3-ch3_pre
             dis4 = ch4-ch4_pre
             
-            if detech1:
-            	dis1 = ch1_real-ch1_pre
-            	print(dis1)
+
             if dis > 500 and situation == 0:
                 situation = 1
             elif dis < -500 and situation == 1:
                 situation, flag = 0, 0
+              
             if abs(dis4) >500 :
                 adjust_flag=0 if adjust_flag==1 else 1
-                if adjust_flag==0:
-                    if abs(ch1-1476)>20:
-                        adjust_flag=1
+
                 if adjust_flag:
-                	print('Manual Now')
+                    print('Manual Now')
                 else:
-                	print('Auto Now')
+                    print('Auto Now')
+            if adjust_flag==0:
+                if abs(ch1_real-1500)>50:
+                    adjust_flag=1
+                    if adjust_flag:
+                        print('Manual Now')
+                    else:
+                        print('Auto Now')
             bool_retrieve = cap.grab()
             ret, frame = cap.retrieve()
             frame_index += 1
             if ch3 > 1500 and adjust_flag==0:
-            	if time.time()-start_time>0.1:
-		            print('save')
-		            #out.write(frame)
-		            #frame_index+=1
-		            #data = {'frame': frame_index,'steering': ch1,'speed': ch2,'category': 0, 'stage':adjust_flag}
-		            #writer.writerow(data)
-		            start_time=time.time() 
+                if time.time()-start_time>0.1:
+                    print('save')
+                    #out.write(frame)
+                    #frame_index+=1
+                    #data = {'frame': frame_index,'steering': ch1,'speed': ch2,'category': 0, 'stage':adjust_flag}
+                    #writer.writerow(data)
+                    start_time=time.time() 
             if bool_retrieve:
                 if adjust_flag:
                     ch1 = monitor.inference(frame).item()

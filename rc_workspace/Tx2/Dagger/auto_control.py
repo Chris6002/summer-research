@@ -74,9 +74,14 @@ Command_file='/media/nvidia/Files/audo_test/'
 createFolder(Command_file)
 import csv
 f = open(Command_file+ '0_command.csv', 'w')
+time_file=open(Command_file+ 'time.csv', 'w')
 fnames = ['frame', 'steering', 'speed', 'category','stage']
+time_fnames=['end_frame','time']
+time_writer=csv.DictWriter(time_file,fieldnames=time_fnames)
 writer = csv.DictWriter(f, fieldnames=fnames)
+time_writer.writeheader()
 writer.writeheader()
+
 out = cv2.VideoWriter(Command_file + '0.avi', FourCC, 10,
                       resolution)
 # =====================================
@@ -89,6 +94,7 @@ bool_retrieve = cap.grab()
 ret, frame = cap.retrieve()
 print('camera done')
 start_time=time.time()
+timw_without_intervention=time.time()
 try:
     while True:
         # ======  Get command  ====== #
@@ -108,10 +114,13 @@ try:
             if abs(dis4) >500 :
                 adjust_flag=0 if adjust_flag==1 else 1
                 if adjust_flag:
-                	print('Manual Now')
+                    duration=time.time()-timw_without_intervention
+                    data = {'end_frame': 1, 'time':round(duration,3)}
+                    time_writer.writerow(data)
+                    print('Manual Now')
                 else:
+                    time_without_intervention=time.time()
                 	print('Auto Now')
-            
             bool_retrieve = cap.grab()
             ret, frame = cap.retrieve()
             

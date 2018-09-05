@@ -58,14 +58,14 @@ import torch
 # import matplotlib as mpl
 # mpl.use('TkAgg')  # or whatever other backend that you want
 # import matplotlib.pyplot as plt
-import argparse
-parser = argparse.ArgumentParser()
-parser.add_argument('--muiltpleGPU', nargs='+',type=int, default=[1,2,3])
-parser.add_argument('--cuda', type=int, default=0)
-parser.add_argument('--classnum',type=int,default=0)
-args = parser.parse_args()
-for arg in vars(args):
-    print ("Argu:{:>15}:{}".format(arg,getattr(args, arg)))
+# import argparse
+# parser = argparse.ArgumentParser()
+# parser.add_argument('--muiltpleGPU', nargs='+',type=int, default=[1,2,3])
+# parser.add_argument('--cuda', type=int, default=0)
+# parser.add_argument('--classnum',type=int,default=0)
+# args = parser.parse_args()
+# for arg in vars(args):
+#     print ("Argu:{:>15}:{}".format(arg,getattr(args, arg)))
 # ==============================================================================
 # import numpy as np
 # s = np.random.normal(250,10, 1000)
@@ -82,3 +82,17 @@ for arg in vars(args):
 # rotated_image = image_obj.transpose(Image.FLIP_LEFT_RIGHT)
 # #rotated_image.save(saved_location)
 # rotated_image.show()
+import csv
+import time
+f=open('time.csv','w')
+fnames = ['end_frame',  'time']
+csv_writer=csv.DictWriter(f,fieldnames=fnames)
+csv_writer.writeheader()
+
+start_time=time.time()
+
+time.sleep(1)
+dur=round(time.time()-start_time,3)
+data = {'end_frame': 1, 'time':dur}
+csv_writer.writerow(data)
+f.close()

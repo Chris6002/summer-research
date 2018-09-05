@@ -20,24 +20,28 @@ parser.add_argument('--singleGPU', type=int, default=0)
 parser.add_argument('--classnum', type=int, default=0)
 parser.add_argument('--batch_size',type=int,default=64)
 parser.add_argument('--worker_num',type=int,default=16)
+parser.add_argument('--resume',type=str,default='None')
 args = parser.parse_args()
 for arg in vars(args):
     print("{:>13}:{}".format(arg, getattr(args, arg)))
 # =============================================
 # Load all used net
 # =============================================
-
 net = model.BasicResNet()
-
-
-
+if args.resume != 'None':
+    parameter=torch.load(args.resume,map_location=lambda storage, loc: storage)
+    net.load_state_dict(parameter['state_dict'])
+    if 'epoch' in parameter:
+        print('starting at epoch: ',parameter['epoch'])
+    else:
+        print('starting from unknown')
 
 if len(args.muiltGPU) > 1 and torch.cuda.device_count() > 1:
     device = torch.device(
         f"cuda:{args.muiltGPU[0]}" if torch.cuda.is_available() else "cpu")
     print("Let's use", len(args.muiltGPU), "GPUs!")
     batch_size = args.batch_size*len(args.muiltGPU)
-    worker_num = args.work_num
+    worker_num = args.worker_num
     net = nn.DataParallel(net,device_ids=args.muiltGPU).to(device)
     criterion = nn.CrossEntropyLoss().to(device)
 
@@ -173,6 +177,7 @@ def trainer(dataloader, model, criterion, optimizer, args, epoch_num=10, checkpo
             is_best = 0
         if checkpoint == 1:
             misc.save_checkpoint({
+                'epoch':epoch+1,
                 'state_dict': model.state_dict(),
                 'optimizer': optimizer.state_dict(),
             }, is_best, num=args.classnum,filename="checkpoint_{:02}_{:1}.pth.tar".format(epoch,args.classnum))

@@ -18,7 +18,3 @@ with open(old_path) as in_file, open(new_path,'w') as out_file:
     for index,row in enumerate(csv_reader):
         if 'right' not in row['name']:
             csv_writer.writerow(row)
-            new_row=row.copy()
-            new_row['name']=row['name']+'filp'
-            new_row['steering'] = str(2*1476-int(row['steering']))
-            csv_writer.writerow(new_row)

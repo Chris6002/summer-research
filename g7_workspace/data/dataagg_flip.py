@@ -31,9 +31,11 @@ frames_list=[os.path.join(frames_folder,name) for name in os.listdir(frames_fold
 
 for index,path in enumerate(frames_list[:10]):
     camera=os.path.basename(path).split('_')[1]
-    camerafilp=camera+'filp'
-    new_path=path.replace(camera,camerafilp)
-    # print(new_path)
-    frame = Image.open(path)
-    frame = frame.transpose(Image.FLIP_LEFT_RIGHT)
-    frame.save(new_path)
+    print(index)
+    if camera != 'right':
+        camerafilp=camera+'filp'
+        new_path=path.replace(camera,camerafilp)
+        # print(new_path)
+        frame = Image.open(path)
+        frame = frame.transpose(Image.FLIP_LEFT_RIGHT)
+        frame.save(new_path)

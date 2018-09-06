@@ -35,6 +35,9 @@
    
 2. python3 Arranger.py
 
+3. python3 flip_onlyleft.py
+4. python3 dataagg_flip.py
+
 ## train process
 ```
 $ python train.py --muiltGPU 0 1  --classnum 0 --batch_size 128

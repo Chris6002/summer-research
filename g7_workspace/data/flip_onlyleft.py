@@ -3,12 +3,11 @@ import os
 from PIL import Image
 import argparse
 parser = argparse.ArgumentParser()
-parser.add_argument('--oldpath',  type=str)
-parser.add_argument('--newpath', type=str)
+
 args = parser.parse_args()
 dir_path = os.path.dirname(os.path.realpath(__file__))
-old_path=os.path.join(dir_path,args.oldpath)
-new_path=os.path.join(dir_path,args.newpath)
+old_path=os.path.join(dir_path,"dataset/command/0/all_three.csv")
+new_path=os.path.join(dir_path,"dataset/command/0/leftonly.csv")
 print(dir_path)
 
 with open(old_path) as in_file, open(new_path,'w') as out_file:

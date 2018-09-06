@@ -11,7 +11,7 @@ def save_checkpoint(state, is_best, num,filename='checkpoint.pth.tar'):
 
 
 def split_random(command_list):
-    train_ratio = 0.6
+    train_ratio = 0.7
     valid_ratio = 0.2
     id_list = [[] for i in range(3000)]
     train_idx = []
@@ -29,7 +29,7 @@ def split_random(command_list):
             if len(index_list) > 0:
                 for i in index_list:
                     train_idx.append(i)
-            # if num_valid > 0:
+            #  numif_valid > 0:
 
             if len(list(set(id_num)-set(train_idx))) > 0:
                 index_list = np.random.choice(

@@ -82,17 +82,34 @@ import torch
 # rotated_image = image_obj.transpose(Image.FLIP_LEFT_RIGHT)
 # #rotated_image.save(saved_location)
 # rotated_image.show()
-import csv
-import time
-f=open('time.csv','w')
-fnames = ['end_frame',  'time']
-csv_writer=csv.DictWriter(f,fieldnames=fnames)
-csv_writer.writeheader()
-
-start_time=time.time()
-
-time.sleep(1)
-dur=round(time.time()-start_time,3)
-data = {'end_frame': 1, 'time':dur}
-csv_writer.writerow(data)
-f.close()
+# import csv
+# import time
+# f=open('time.csv','w')
+# fnames = ['end_frame',  'time']
+# csv_writer=csv.DictWriter(f,fieldnames=fnames)
+# csv_writer.writeheader()
+#
+# start_time=time.time()
+#
+# time.sleep(1)
+# dur=round(time.time()-start_time,3)
+# data = {'end_frame': 1, 'time':dur}
+# csv_writer.writerow(data)
+# f.close()
+import numpy as np
+def decay(diff,len,index,options):
+    if options=='ex':
+        sign=-1 if diff<0 else 1
+        w=np.log(abs(int(diff)))/len
+        return sign*np.exp(w*(index+1))
+    elif options=='sigmoid':
+        sign = -1 if diff < 0 else 1
+        w=np.exp(abs(int(diff)))/len
+        return np.log(w*(index+1))*sign
+    elif options=='linear':
+        sign = -1 if diff < 0 else 1
+        w=abs(int(diff))/len
+        return w*(index+1)*sign
+len=50
+for i in range(len):
+    print(decay(-100,len,i,options='linear'))

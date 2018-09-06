@@ -74,6 +74,8 @@ loader = {x: torch.utils.data.DataLoader(dataset,
 
 print('train batch #:{},  val batch #:{}'.format(
     len(loader['train']), len(loader['val'])))
+print('train #:{},  val #:{}'.format(
+    len(loader['train'])*batch_size, len(loader['val'])*batch_size))
 # =============================================
 # Define a Loss function and optimizer
 # =============================================

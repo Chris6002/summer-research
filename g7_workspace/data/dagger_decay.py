@@ -17,7 +17,7 @@ def decay(diff,len,index,options):
         return w*(index+1)*sign
 
 with open(inputcsv) as csv_file, open(outputcsv, 'w') as out_file:
-    csv_reader = csv.DictReader(csv_file) 
+    csv_reader = csv.DictReader(csv_file)
     csv_writer = csv.DictWriter(out_file, csv_reader.fieldnames)
     csv_writer.writeheader()
     command_queue=[]

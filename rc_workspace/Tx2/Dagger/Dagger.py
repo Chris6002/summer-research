@@ -77,7 +77,7 @@ FourCC = cv2.VideoWriter_fourcc('X', 'V', 'I', 'D')
 Command_file = '/media/nvidia/Files/Dagger/'
 createFolder(Command_file)
 import csv
-now=time.strftime("%d/%m_%H_%M_%S")
+now=time.strftime("%d_%m_%H_%M_%S")
 # Dagger command file:
 f = open(Command_file + 'Dagger_'+str(args.iter)+'_command'+now+'.csv', 'w')
 fnames = ['name','frame', 'steering', 'speed', 'category', 'stage']
@@ -191,7 +191,7 @@ try:
                         print('Dagger save')
                         out.write(frame)
                         frame_index += 1
-                        data = {'name':args.iter,frame': frame_index, 'steering': ch1,
+                        data = {'name':args.iter,'frame': frame_index, 'steering': ch1,
                                 'speed': ch2, 'category': 0, 'stage': adjust_flag}
                         writer.writerow(data)
                         start_time = time.time()

@@ -128,18 +128,22 @@ try:
                 adjust_flag = 0 if adjust_flag == 1 else 1
 
                 if adjust_flag:
-                    print()
-                    time_without_intervention = time.time()-time_auto_start
-                    print('Manual Now verify auto ends: ',time_without_intervention)
-                    if save:
-                        print('verify save')
-                        data = {'end_frame': 1, 'time': round(time_without_intervention, 3)}
-                        time_writer.writerow(data)
+                    if args.verify==1:
+                        time_without_intervention = time.time()-time_auto_start
+                        print('Manual Now verify auto ends: ',time_without_intervention)
+                        if save:
+                            print('verify save')
+                            data = {'end_frame': 1, 'time': round(time_without_intervention, 3)}
+                            time_writer.writerow(data)
+                    elif args.Dagger==1:
+                        print('Manual Now Dagger auto ends: ',time_without_intervention)
                 else:
-                    print()
+                    print('auto start',end=' ')
                     if args.verify == 1:
-                        print('Auto Now verify auto start')
+                        print('verify')
                         time_auto_start = time.time()
+                    if args.Dagger==1:
+                        print('Dagger')
             if adjust_flag == 0:
                 if abs(ch1_real-1500) > 50:
                     adjust_flag = 1
@@ -154,8 +158,15 @@ try:
                                 print('verify save')
                                 data = {'end_frame': 1, 'time': round(time_without_intervention, 3)}
                                 time_writer.writerow(data)
+                        elif args.Dagger==1:
+                            print('Manual Now Dagger auto ends: ',time_without_intervention)
                     else:
-                        print('Auto Now')
+                        print('auto start',end=' ')
+                        if args.verify == 1:
+                            print('verify')
+                            time_auto_start = time.time()
+                        if args.Dagger==1:
+                            print('Dagger')
             bool_retrieve = cap.grab()
             ret, frame = cap.retrieve()
 

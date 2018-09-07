@@ -80,7 +80,7 @@ import csv
 now=time.strftime("%d_%m_%H_%M_%S")
 # Dagger command file:
 f = open(Command_file + 'Dagger_'+str(args.iter)+'_command'+now+'.csv', 'w')
-fnames = ['name','frame', 'steering', 'speed', 'category', 'stage']
+fnames = ['name','frame', 'steering', 'speed', 'category', 'stage','useful']
 writer = csv.DictWriter(f, fieldnames=fnames)
 writer.writeheader()
 # verify time file:
@@ -183,7 +183,7 @@ try:
                 cap = cv2.VideoCapture(device)
                 cap.set(3, resolution[0])
                 cap.set(4, resolution[1])
-            if situation==1:
+            if situation==1 and ch3>1900 :
                 save=1
                 if time.time()-start_time > 0.1:
 
@@ -192,7 +192,7 @@ try:
                         out.write(frame)
                         frame_index += 1
                         data = {'name':args.iter,'frame': frame_index, 'steering': ch1,
-                                'speed': ch2, 'category': 0, 'stage': adjust_flag}
+                                'speed': ch2, 'category': 0, 'stage': adjust_flag,'useful':adjust_flag}
                         writer.writerow(data)
                         start_time = time.time()
             else: save=0

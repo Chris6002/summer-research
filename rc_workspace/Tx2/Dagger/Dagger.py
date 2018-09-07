@@ -10,11 +10,13 @@ import cv2
 import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('--parameter', type=str)
+parser.add_argument('--verify', type=int, default=0)
+parser.add_argument('--Dagger', type=int, default=0)
 args = parser.parse_args()
 for arg in vars(args):
     print("Argu: {:>16}:{:<10}".format(arg, getattr(args, arg)))
 print('Loading parameter')
-monitor=Monitor(args.parameter)
+monitor = Monitor(args.parameter)
 print('Finish loading')
 
 # =====================================
@@ -55,7 +57,7 @@ ch3_pre = 1000
 ch4_pre = 1960
 ch1_pre = 1476
 flag = 0
-detech1=1
+detech1 = 1
 situation = 0
 adjust_flag = 1
 frame_index = 0
@@ -73,10 +75,17 @@ FourCC = cv2.VideoWriter_fourcc('X', 'V', 'I', 'D')
 Command_file = '/media/nvidia/Files/Dagger/'
 createFolder(Command_file)
 import csv
+# Dagger command file:
 f = open(Command_file + '0_command.csv', 'w')
 fnames = ['frame', 'steering', 'speed', 'category', 'stage']
 writer = csv.DictWriter(f, fieldnames=fnames)
 writer.writeheader()
+# verify time file:
+time_file = open(Command_file + 'time.csv', 'w')
+time_fnames = ['end_frame', 'time']
+time_writer = csv.DictWriter(time_file, fieldnames=time_fnames)
+
+
 out = cv2.VideoWriter(Command_file + '0.avi', FourCC, 10,
                       resolution)
 # =====================================
@@ -88,7 +97,9 @@ cap.set(4, resolution[1])
 bool_retrieve = cap.grab()
 ret, frame = cap.retrieve()
 print('camera done')
-start_time=time.time()
+start_time = time.time()
+time_without_intervention = 0
+time_auto_start = 0
 try:
     while True:
         # ======  Get command  ====== #
@@ -103,33 +114,39 @@ try:
                 ch1_real = ch1
             dis = ch3-ch3_pre
             dis4 = ch4-ch4_pre
-            
 
             if dis > 500 and situation == 0:
                 situation = 1
             elif dis < -500 and situation == 1:
                 situation, flag = 0, 0
-              
-            if abs(dis4) >500 :
-                adjust_flag=0 if adjust_flag==1 else 1
+
+            if abs(dis4) > 500:
+                adjust_flag = 0 if adjust_flag == 1 else 1
 
                 if adjust_flag:
                     print('Manual Now')
                 else:
                     print('Auto Now')
-            if adjust_flag==0:
-                if abs(ch1_real-1500)>50:
-                    adjust_flag=1
+                    if args.verify == 1:
+                        print('verify auto start')
+                        time_auto_start = time.time()
+            if adjust_flag == 0:
+                if abs(ch1_real-1500) > 50:
+                    adjust_flag = 1
                     if adjust_flag:
                         print('Manual Now')
+                        if args.verify == 1:
+
+                            time_without_intervention = time.time()-time_auto_start
+                            print('verify auto ends: ',
+                                  time_without_intervention)
                     else:
                         print('Auto Now')
             bool_retrieve = cap.grab()
             ret, frame = cap.retrieve()
-            
 
             if bool_retrieve:
-                if adjust_flag==0:
+                if adjust_flag == 0:
                     ch1 = monitor.inference(frame).item()
 
                 else:
@@ -140,14 +157,21 @@ try:
                 cap.set(3, resolution[0])
                 cap.set(4, resolution[1])
             if ch3 > 1900:
-                if time.time()-start_time>0.1:
-                    print('save')
-                    
-                    out.write(frame)
-                    frame_index+=1
-                    data = {'frame': frame_index,'steering': ch1,'speed': ch2,'category': 0, 'stage':adjust_flag}
-                    writer.writerow(data)
-                    start_time=time.time() 
+                if time.time()-start_time > 0.1:
+
+                    if args.Dagger == 1:
+                        print('Dagger save')
+                        out.write(frame)
+                        frame_index += 1
+                        data = {'frame': frame_index, 'steering': ch1,
+                                'speed': ch2, 'category': 0, 'stage': adjust_flag}
+                        writer.writerow(data)
+                        start_time = time.time()
+                    elif args.verify == 1:
+                        print('Verify save')
+                        data = {'end_frame': 1, 'time': round(
+                            time_without_intervention, 3)}
+                        time_writer.writerow(data)
         except UnicodeDecodeError:
             ch1, ch2, ch3 = 1476, 1500, 976
             print('hehe')
@@ -166,4 +190,6 @@ finally:
     servo.setTarget(1, 1500 * 4)  # set servo to move to centre position
     servo.close()
     ser.close()
+    f.close()
+    time_file.close()
     print('finished')

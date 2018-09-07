@@ -12,6 +12,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--parameter', type=str)
 parser.add_argument('--verify', type=int, default=0)
 parser.add_argument('--Dagger', type=int, default=0)
+parser.add_argument('--iter', type=int)
 args = parser.parse_args()
 for arg in vars(args):
     print("Argu: {:>16}:{:<10}".format(arg, getattr(args, arg)))
@@ -76,18 +77,19 @@ FourCC = cv2.VideoWriter_fourcc('X', 'V', 'I', 'D')
 Command_file = '/media/nvidia/Files/Dagger/'
 createFolder(Command_file)
 import csv
+now=time.strftime("%d/%m_%H_%M_%S")
 # Dagger command file:
-f = open(Command_file + '0_command.csv', 'w')
-fnames = ['frame', 'steering', 'speed', 'category', 'stage']
+f = open(Command_file + 'Dagger_'+str(args.iter)+'_command'+now+'.csv', 'w')
+fnames = ['name','frame', 'steering', 'speed', 'category', 'stage']
 writer = csv.DictWriter(f, fieldnames=fnames)
 writer.writeheader()
 # verify time file:
-time_file = open(Command_file + 'time.csv', 'w')
+time_file = open(Command_file + 'Time_'+str(args.iter)+now+'.csv', 'w')
 time_fnames = ['end_frame', 'time']
 time_writer = csv.DictWriter(time_file, fieldnames=time_fnames)
 
 
-out = cv2.VideoWriter(Command_file + '0.avi', FourCC, 10,
+out = cv2.VideoWriter(Command_file + 'Dagger_'+str(args.iter)+now+'.avi', FourCC, 10,
                       resolution)
 # =====================================
 # Camera setup
@@ -189,7 +191,7 @@ try:
                         print('Dagger save')
                         out.write(frame)
                         frame_index += 1
-                        data = {'frame': frame_index, 'steering': ch1,
+                        data = {'name':args.iter,frame': frame_index, 'steering': ch1,
                                 'speed': ch2, 'category': 0, 'stage': adjust_flag}
                         writer.writerow(data)
                         start_time = time.time()

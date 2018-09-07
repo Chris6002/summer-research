@@ -34,6 +34,7 @@ with open(inputcsv) as csv_file, open(outputcsv, 'w') as out_file:
                 diff=int(command_queue[-1]["steering"])-int(command_queue[-2]["steering"])
                 for index,command in enumerate(command_queue[:-1]):
                     print(command['steering'])
+                    command['useful']=1
                     command['steering']=str(int(command['steering'])+int(decay(diff,len(command_queue),index+1,options='linear')))
 
             #   for i in command_queue:

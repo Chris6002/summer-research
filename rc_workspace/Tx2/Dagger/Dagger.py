@@ -183,7 +183,7 @@ try:
                 cap = cv2.VideoCapture(device)
                 cap.set(3, resolution[0])
                 cap.set(4, resolution[1])
-            if ch3 > 1900:
+            if situation==1:
                 save=1
                 if time.time()-start_time > 0.1:
 

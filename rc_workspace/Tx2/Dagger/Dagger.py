@@ -79,18 +79,21 @@ createFolder(Command_file)
 import csv
 now=time.strftime("%d_%m_%H_%M_%S")
 # Dagger command file:
-f = open(Command_file + 'Dagger_'+str(args.iter)+'_command'+now+'.csv', 'w')
-fnames = ['name','frame', 'steering', 'speed', 'category', 'stage','useful']
-writer = csv.DictWriter(f, fieldnames=fnames)
-writer.writeheader()
+if args.Dagger == 1:
+	f = open(Command_file + 'Dagger_'+str(args.iter)+'_command'+'.csv', 'w')
+	fnames = ['name','frame', 'steering', 'speed', 'category', 'stage','useful']
+	writer = csv.DictWriter(f, fieldnames=fnames)
+	writer.writeheader()
+	out = cv2.VideoWriter(Command_file + 'Dagger_'+str(args.iter)+'.avi', FourCC, 10,
+		                  resolution)
 # verify time file:
-time_file = open(Command_file + 'Time_'+str(args.iter)+now+'.csv', 'w')
-time_fnames = ['end_frame', 'time']
-time_writer = csv.DictWriter(time_file, fieldnames=time_fnames)
+if args.verify == 1:
+	time_file = open(Command_file + 'Time_'+str(args.iter)+'.csv', 'w')
+	time_fnames = ['end_frame', 'time']
+	time_writer = csv.DictWriter(time_file, fieldnames=time_fnames)
 
 
-out = cv2.VideoWriter(Command_file + 'Dagger_'+str(args.iter)+now+'.avi', FourCC, 10,
-                      resolution)
+
 # =====================================
 # Camera setup
 # =====================================

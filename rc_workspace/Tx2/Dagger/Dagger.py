@@ -64,6 +64,7 @@ frame_index = 0
 buffer_length = 10
 adjust = 0
 count = 0
+save=0
 frame_index = 0
 ch1, ch2, ch3 = 1476, 1500, 976
 steer_queue = []
@@ -104,13 +105,16 @@ try:
     while True:
         # ======  Get command  ====== #
         try:
+            
             command = ser.readline().decode('utf-8').rstrip().split('x')
             try:
                 ch1, ch2, ch3, ch4 = int(command[0].strip('\x00')), int(command[1].strip(
                     '\x00')), int(command[2].strip('\x00')), int(command[3].strip('\x00'))
                 ch1_real = ch1
+                #print(ch1,ch2,ch3,ch4)
             except:
                 ch1, ch2, ch3, ch4 = 1476, 1500, 976, 1960
+                
                 ch1_real = ch1
             dis = ch3-ch3_pre
             dis4 = ch4-ch4_pre
@@ -124,11 +128,17 @@ try:
                 adjust_flag = 0 if adjust_flag == 1 else 1
 
                 if adjust_flag:
-                    print('Manual Now')
+                    print()
+                    time_without_intervention = time.time()-time_auto_start
+                    print('Manual Now verify auto ends: ',time_without_intervention)
+                    if save:
+                        print('verify save')
+                        data = {'end_frame': 1, 'time': round(time_without_intervention, 3)}
+                        time_writer.writerow(data)
                 else:
-                    print('Auto Now')
+                    print()
                     if args.verify == 1:
-                        print('verify auto start')
+                        print('Auto Now verify auto start')
                         time_auto_start = time.time()
             if adjust_flag == 0:
                 if abs(ch1_real-1500) > 50:
@@ -140,6 +150,10 @@ try:
                             time_without_intervention = time.time()-time_auto_start
                             print('verify auto ends: ',
                                   time_without_intervention)
+                            if save:
+                                print('verify save')
+                                data = {'end_frame': 1, 'time': round(time_without_intervention, 3)}
+                                time_writer.writerow(data)
                     else:
                         print('Auto Now')
             bool_retrieve = cap.grab()
@@ -157,6 +171,7 @@ try:
                 cap.set(3, resolution[0])
                 cap.set(4, resolution[1])
             if ch3 > 1900:
+                save=1
                 if time.time()-start_time > 0.1:
 
                     if args.Dagger == 1:
@@ -167,11 +182,9 @@ try:
                                 'speed': ch2, 'category': 0, 'stage': adjust_flag}
                         writer.writerow(data)
                         start_time = time.time()
-                    elif args.verify == 1:
-                        print('Verify save')
-                        data = {'end_frame': 1, 'time': round(
-                            time_without_intervention, 3)}
-                        time_writer.writerow(data)
+            else: save=0
+
+
         except UnicodeDecodeError:
             ch1, ch2, ch3 = 1476, 1500, 976
             print('hehe')

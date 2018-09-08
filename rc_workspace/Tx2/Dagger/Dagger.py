@@ -194,6 +194,8 @@ try:
                         print('Dagger save')
                         out.write(frame)
                         frame_index += 1
+                        ch1 = limitValue(ch1, steer_range[0], steer_range[1])
+                        ch2 = limitValue(ch2, speed_range[0], speed_range[1])
                         data = {'name':args.iter,'frame': frame_index, 'steering': ch1,
                                 'speed': ch2, 'category': 0, 'stage': adjust_flag,'useful':adjust_flag}
                         writer.writerow(data)

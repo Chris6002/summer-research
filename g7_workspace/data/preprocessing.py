@@ -77,6 +77,8 @@ def current_folder(path):
     return os.path.dirname(os.path.realpath(path))
 def get_filelist(folder,extension):
     return [os.path.join(folder,f) for f in os.listdir(folder) if extension in f]
+def get_folderlist(folder,remove):
+    return [os.path.join(folder,f) for f in os.listdir(folder) if remove not in f]
 def read_dir(dirPath):
     if dirPath[-1] == '/':
         print('文件夹路径末尾不能加/')

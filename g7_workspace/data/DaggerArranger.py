@@ -4,6 +4,11 @@ import os
 import zipfile
 import preprocessing
 from PIL import Image
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('--video',  type=str)
+parser.add_argument('--command', type=str)
+args = parser.parse_args()
 
 current_folder=preprocessing.current_folder(__file__)
 Dagger_folder=os.path.join(current_folder,'dagger')
@@ -14,7 +19,7 @@ print('Unzip dataset')
 print('==========================')
 preprocessing.unzip_dataset(temp)
 
-useful_frame=[]
+useful_frame=[[[]for i in range(10)] for i in range(4)]
 
 print('==========================')
 print('Extract all frames')
@@ -24,7 +29,7 @@ for video in video_list:
     class_num=os.path.basename(video).split('_')[0]
     iter_num=os.path.basename(video).split('.')[0].split('_')[-1]
     print("{:10} size(MB): {:>8.2f}".format(os.path.basename(video), os.path.getsize(video) / 1000000))
-    preprocessing.extract_frames(video,os.path.join(Dagger_folder,f"{class_num}/video/{iter_num}"))
+    # preprocessing.extract_frames(video,os.path.join(Dagger_folder,f"{class_num}/video/{iter_num}"))
 print('==========================')
 print('Decay command')
 print('==========================')
@@ -73,7 +78,7 @@ for command_file in command_list:
                 saving = command_queue.pop(0)
                 if saving['useful']==1:
                     if abs(int(saving['steering'])-1480)>80:
-                        useful_frame.append(int(saving['frame']))
+                        useful_frame[int(class_num)][int(iter_num)-1].append(int(saving['frame']))
                         csv_writer.writerow(saving)
                         new_saving=saving.copy()
                         new_saving['name']=new_saving['name']+'_flip'
@@ -85,26 +90,31 @@ for command_file in command_list:
 print('==========================')
 print('Filp Image')
 print('==========================')
-print('useful frame: ',len(useful_frame))
+# print('useful frame: ',len(useful_frame))
 class_folderlist=preprocessing.get_folderlist(Dagger_folder,'temp')
 index=0
 for class_folder in class_folderlist:
+    class_num=int(class_folder.split('/')[-1])
     frame_folder=os.path.join(class_folder,'video')
-    frame_list=preprocessing.get_filelist(frame_folder,'jpg')
-    for frame in frame_list:
-        frame_num=int(os.path.basename(frame).split('.')[0].split('_')[-1])
-        iternum=os.path.basename(frame).split('_')[0]
-        framename=os.path.basename(frame).split('_')[-1]
+    if os.path.exists(frame_folder):
+        frame_list=preprocessing.get_filelist(frame_folder,'jpg')
+        for frame in frame_list:
+            frame_num=int(os.path.basename(frame).split('.')[0].split('_')[-1])
+            iternum=os.path.basename(frame).split('_')[0]
+            framename=os.path.basename(frame).split('_')[-1]
+            # print(f"useful frame for {class_num}_{iter_num}:{len(useful_frame[class_num][int(iter_num)-1])}")
+            if frame_num in useful_frame[class_num][int(iter_num)-1] and 'flip' not in frame:
 
-        if frame_num in useful_frame and 'flip' not in frame:
-            index+=1
-            # print(index)
-            iterflip=iternum+'_flip_'
-            newframe=os.path.join(os.path.dirname(frame),iterflip+framename)
-            image=Image.open(frame)
-            image=image.transpose(Image.FLIP_LEFT_RIGHT)
-            image.save(newframe)
-print('flip number: ',index)
+                index+=1
+                # print(index)
+                iterflip=iternum+'_flip_'
+                newframe=os.path.join(os.path.dirname(frame),iterflip+framename)
+                image=Image.open(frame).transpose(Image.FLIP_LEFT_RIGHT).save(newframe)
+        print(f'useful frame for classnum:{class_num} iternum:{iter_num}:', index)
+    else:
+        print(frame_folder,' not exists')
+
+
     # frame_list=preprocessing()
 
 # inputcsv='0_command.csv'

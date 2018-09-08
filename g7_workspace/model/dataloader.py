@@ -33,7 +33,7 @@ class URPedestrianDataset(Dataset):
             command_folder = os.path.join(self.dataset_root, f'{classnum}/command')
             self.frame_root = video_folder
             self.command_root = command_folder
-            self.command_list = pandas.read_csv(os.path.join(command_folder, '1.csv'))
+            self.command_list = pandas.read_csv(os.path.join(command_folder, '2.csv'))
 
     def _get_sorted_framelist(self, path):
         def sort_func(e):

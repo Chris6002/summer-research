@@ -29,7 +29,7 @@ for video in video_list:
     class_num=os.path.basename(video).split('_')[0]
     iter_num=os.path.basename(video).split('.')[0].split('_')[-1]
     print("{:10} size(MB): {:>8.2f}".format(os.path.basename(video), os.path.getsize(video) / 1000000))
-    # preprocessing.extract_frames(video,os.path.join(Dagger_folder,f"{class_num}/video/{iter_num}"))
+    preprocessing.extract_frames(video,os.path.join(Dagger_folder,f"{class_num}/video/{iter_num}"))
 print('==========================')
 print('Decay command')
 print('==========================')
@@ -78,7 +78,7 @@ for command_file in command_list:
                 saving = command_queue.pop(0)
                 if saving['useful']==1:
                     if abs(int(saving['steering'])-1480)>80:
-                        useful_frame[int(class_num)][int(iter_num)-1].append(int(saving['frame']))
+                        useful_frame[int(class_num)][int(iter_num)].append(int(saving['frame']))
                         csv_writer.writerow(saving)
                         new_saving=saving.copy()
                         new_saving['name']=new_saving['name']+'_flip'
@@ -92,8 +92,9 @@ print('Filp Image')
 print('==========================')
 # print('useful frame: ',len(useful_frame))
 class_folderlist=preprocessing.get_folderlist(Dagger_folder,'temp')
-index=0
+
 for class_folder in class_folderlist:
+    index=0
     class_num=int(class_folder.split('/')[-1])
     frame_folder=os.path.join(class_folder,'video')
     if os.path.exists(frame_folder):
@@ -103,7 +104,7 @@ for class_folder in class_folderlist:
             iternum=os.path.basename(frame).split('_')[0]
             framename=os.path.basename(frame).split('_')[-1]
             # print(f"useful frame for {class_num}_{iter_num}:{len(useful_frame[class_num][int(iter_num)-1])}")
-            if frame_num in useful_frame[class_num][int(iter_num)-1] and 'flip' not in frame:
+            if frame_num in useful_frame[class_num][int(iter_num)] and 'flip' not in frame:
 
                 index+=1
                 # print(index)

@@ -17,7 +17,6 @@ def split_random(command_list):
     train_idx = []
     valid_idx = []
     for index, steer in enumerate(command_list['steering']):
-        print(steer)
         id_list[int(steer)].append(index)
     for index, id_num in enumerate(id_list):
         if len(id_num) > 0 and index >= 976 and index < 1976:

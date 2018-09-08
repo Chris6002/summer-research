@@ -66,7 +66,7 @@ print(f"batch size: {batch_size}, worker number: {worker_num}")
 # dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')
 dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dagger')
 dataset = URPedestrianDataset(dataset_path, classnum=args.classnum,dagger=1)
-print(dataset.command_list)
+
 sampler = misc.split_random(dataset.command_list)
 loader = {}
 

@@ -72,12 +72,13 @@ for command_file in command_list:
                             decay(diff, len(command_queue), index + 1, options='linear')))
                 saving = command_queue.pop(0)
                 if saving['useful']==1:
-                    useful_frame.append(int(saving['frame']))
-                    csv_writer.writerow(saving)
-                    new_saving=saving.copy()
-                    new_saving['name']=new_saving['name']+'_flip'
-                    new_saving['steering']=str(2*1480-int(new_saving['steering']))
-                    csv_writer.writerow(new_saving)
+                    if abs(int(saving['steering'])-1480)>80:
+                        useful_frame.append(int(saving['frame']))
+                        csv_writer.writerow(saving)
+                        new_saving=saving.copy()
+                        new_saving['name']=new_saving['name']+'_flip'
+                        new_saving['steering']=str(2*1480-int(new_saving['steering']))
+                        csv_writer.writerow(new_saving)
         if len(command_queue)>0:
             csv_writer.writerow(saving)
     print(output_file)

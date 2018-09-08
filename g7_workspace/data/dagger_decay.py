@@ -2,19 +2,7 @@ import csv
 import numpy as np
 inputcsv='0_command.csv'
 outputcsv='test_decay.csv'
-def decay(diff,len,index,options):
-    if options=='ex':
-        sign=-1 if diff<0 else 1
-        w=np.log(abs(int(diff)))/len
-        return sign*np.exp(w*(index+1))
-    elif options=='sigmoid':
-        sign = -1 if diff < 0 else 1
-        w=np.exp(abs(int(diff)))/len
-        return np.log(w*(index+1))*sign
-    elif options=='linear':
-        sign = -1 if diff < 0 else 1
-        w=abs(int(diff))/len
-        return w*(index+1)*sign
+
 
 with open(inputcsv) as csv_file, open(outputcsv, 'w') as out_file:
     csv_reader = csv.DictReader(csv_file)

@@ -1,6 +1,7 @@
 __pycache__/
 .DS_Store
 .idea/
+g7_workspace/data/dagger/
 
 g7_workspace/data/raw_data
 g7_workspace/data/dataset

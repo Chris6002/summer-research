@@ -73,8 +73,10 @@ class DataPath:
 # ==========================================================================
 # Misc short function
 # ==========================================================================
-
-
+def current_folder(path):
+    return os.path.dirname(os.path.realpath(path))
+def get_filelist(folder,extension):
+    return [os.path.join(folder,f) for f in os.listdir(folder) if extension in f]
 def read_dir(dirPath):
     if dirPath[-1] == '/':
         print('文件夹路径末尾不能加/')
@@ -197,6 +199,7 @@ def extract_frames(video, dst):
             "2",  # quality for JPEG
             '{0}_%06d.jpg'.format(dst)
         ]
+        # print('{0}_%06d.jpg'.format(dst))
         subprocess.call(
             video_to_frames_command, stdout=ffmpeg_log, stderr=ffmpeg_log)
 

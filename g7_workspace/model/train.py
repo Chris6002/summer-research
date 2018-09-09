@@ -63,10 +63,12 @@ print(f"batch size: {batch_size}, worker number: {worker_num}")
 # Contiguous split
 # train_idx, validation_idx = indices[split:], indices[:split]
 # =============================================
-# dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')
-dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dagger')
-dataset = URPedestrianDataset(dataset_path, classnum=args.classnum,dagger=1)
-
+dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')
+dataset = URPedestrianDataset(dataset_path, csv_name='test.csv',classnum=args.classnum,dagger=0)
+#################### DAGGER ==========================================
+# dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dagger')
+# dataset = URPedestrianDataset(dataset_path, csvname='1.csv' classnum=args.classnum,dagger=1)
+#============================================================================
 sampler = misc.split_random(dataset.command_list)
 loader = {}
 

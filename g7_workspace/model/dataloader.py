@@ -8,7 +8,7 @@ from PIL import Image
 
 
 class URPedestrianDataset(Dataset):
-    def __init__(self, dataset_dir, classnum=0,dagger=1):
+    def __init__(self, dataset_dir,csv_name, classnum=0,dagger=1):
         self.transform = transforms.Compose([transforms.ToTensor()])
         self.dataset_root = dataset_dir
         # / home / vision / summer - research / g7_workspace / data / dataset
@@ -25,15 +25,14 @@ class URPedestrianDataset(Dataset):
             self.frame_root = video_folder
             self.command_root = command_folder
             self.frame_list = self._get_sorted_framelist(video_folder)
-            if os.path.exists(os.path.join(command_folder, 'all_three.csv')):
-                print(os.path.join(command_folder, 'all_three.csv'))
+            self.command_list = pandas.read_csv(os.path.join(command_folder, csv_name))
 
         else:
             video_folder=os.path.join(self.dataset_root, f'{classnum}/video')
             command_folder = os.path.join(self.dataset_root, f'{classnum}/command')
             self.frame_root = video_folder
             self.command_root = command_folder
-            self.command_list = pandas.read_csv(os.path.join(command_folder, '2.csv'))
+            self.command_list = pandas.read_csv(os.path.join(command_folder, csv_name))
 
     def _get_sorted_framelist(self, path):
         def sort_func(e):

@@ -13,7 +13,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 old_path=os.path.join(dir_path,oldpath)
 new_path=os.path.join(dir_path,newpath)
 print(dir_path)
-change_image=0
+change_image=1
 with open(old_path) as in_file, open(new_path,'w') as out_file:
     csv_reader = csv.DictReader(in_file)
     new_header = csv_reader.fieldnames

@@ -143,7 +143,7 @@ try:
                     elif args.Dagger==1:
                         print('Manual Now Dagger auto ends: ',time_without_intervention)
                 else:
-                    print('auto start',end=' ')
+                    print('auto start: ',end=' ')
                     if args.verify == 1:
                         print('verify')
                         time_auto_start = time.time()
@@ -153,7 +153,7 @@ try:
                 if abs(ch1_real-1500) > 50:
                     adjust_flag = 1
                     if adjust_flag:
-                        print('Manual Now')
+                        print('Manual Now',end=' ')
                         if args.verify == 1:
 
                             time_without_intervention = time.time()-time_auto_start
@@ -204,7 +204,7 @@ try:
 
 
         except UnicodeDecodeError:
-            ch1, ch2, ch3 = 1476, 1500, 976
+            ch1, ch2, ch3,ch4 = 1476, 1500, 976,1960
             print('hehe')
 
         # ======  Send command  ====== #

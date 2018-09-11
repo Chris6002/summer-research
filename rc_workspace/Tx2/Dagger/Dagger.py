@@ -120,7 +120,7 @@ try:
                 #print(ch1,ch2,ch3,ch4)
             except:
                 ch1, ch2, ch3, ch4 = 1476, 1500, 976, 1960
-                
+                ch2_real=ch2
                 ch1_real = ch1
             dis = ch3-ch3_pre
             dis4 = ch4-ch4_pre
@@ -178,10 +178,17 @@ try:
 
             if bool_retrieve:
                 if adjust_flag == 0:
-                    ch1 = monitor.inference(frame).item()
+                    if args.classnum != 3:
+                        ch1 = monitor.inference(frame).item()
+                    else:
+                        ch2out=monitor.inference(frame).item()
+                        ch2 = 1650 if ch2>1600 else 1200
 
                 else:
-                    ch1 = ch1_real
+                    if args.classnum != 3:
+                        ch1 = ch1_real
+                    else:
+                        ch2 = ch2_real
             else:
                 cap.release()
                 cap = cv2.VideoCapture(device)

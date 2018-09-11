@@ -4,6 +4,9 @@ __pycache__/
 g7_workspace/data/dagger/
 
 g7_workspace/data/raw_data
+rc_workspace/Tx2/Dagger/parameter/
+
+
 g7_workspace/data/dataset
 g7_workspace/model/baseline/erfnet_pytorch/cityscapes/
 .vscode/

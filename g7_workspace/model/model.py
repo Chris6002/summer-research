@@ -44,3 +44,24 @@ class BasicResNet(nn.Module):
         # x = F.log_softmax(x,dim=1)
 
         return x
+
+class BasicResNetClass(nn.Module):
+    def __init__(self):
+        super(BasicResNetClass, self).__init__()
+        self.conv1 = nn.Conv2d(3, 64, (15, 20), stride=(4, 5), padding=(4, 6), dilation=(3, 5))
+        Resnet = torchvision.models.resnet18(pretrained=True)
+        for index,child in enumerate(Resnet.children()):
+            if index < 6:
+                print("child ", index, " was frozen")
+                for param in child.parameters():
+                    param.requires_grad = False
+            else:
+                print("child ", index, " was not frozen")
+        Resnet.conv1 = self.conv1
+        self.Resnet_feature = Resnet
+
+    def forward(self, x):
+        x = self.Resnet_feature(x).double()
+        x = nn.Linear(1000, 4)
+
+        return x

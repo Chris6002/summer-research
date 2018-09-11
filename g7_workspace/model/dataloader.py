@@ -67,4 +67,42 @@ class URPedestrianDataset(Dataset):
         return sample
 
 
+class Classifier(Dataset):
+    def __init__(self, dataset_dir):
+        self.transform = transforms.Compose([transforms.ToTensor()])
+        self.dataset_root = dataset_dir
+        # / home / vision / summer - research / g7_workspace / data / dataset
+        # / home / vision / summer - research / g7_workspace / data / dagger
+        files=self.getListOfFiles(self.dataset_root)
+        self.frames=[f for f in files if '.jpg' in f]
+        self.test='hehe'
+
+    def getListOfFiles(self,dirName):
+        # create a list of file and sub directories
+        # names in the given directory
+        listOfFile = os.listdir(dirName)
+        allFiles = list()
+        # Iterate over all the entries
+        for entry in listOfFile:
+            # Create full path
+            fullPath = os.path.join(dirName, entry)
+            # If entry is a directory then get the list of files in this directory
+            if os.path.isdir(fullPath):
+                allFiles = allFiles + self.getListOfFiles(fullPath)
+            else:
+                allFiles.append(fullPath)
+
+        return allFiles
+    def __len__(self):
+        return len(self.frames)
+
+    def __getitem__(self, item):
+        path=self.frames[item]
+        frame=Image.open(path)
+        label=path.split('/')[-2]
+        return {'frame':self.transform(frame),'classnum':label}
+
+
+
+
 

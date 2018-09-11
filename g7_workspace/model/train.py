@@ -10,7 +10,7 @@ from torch.utils.data.sampler import SubsetRandomSampler
 import misc
 import shutil
 import model
-from dataloader import URPedestrianDataset
+from dataloader import URPedestrianDataset,Classifier
 #  $ python train.py --muiltGPU 0 1  --classnum 0 --batch_size 128
 #  $ python train.py --single 0  --classnum 0 --batch_size 128
 
@@ -21,13 +21,14 @@ parser.add_argument('--classnum', type=int, default=0)
 parser.add_argument('--batch_size',type=int,default=64)
 parser.add_argument('--worker_num',type=int,default=16)
 parser.add_argument('--resume',type=str,default='None')
+
 args = parser.parse_args()
 for arg in vars(args):
     print("{:>13}:{}".format(arg, getattr(args, arg)))
 # =============================================
 # Load all used net
 # =============================================
-net = model.BasicResNet()
+net = model.BasicResNetc()
 if args.resume != 'None':
     parameter=torch.load(args.resume,map_location=lambda storage, loc: storage)
     net.load_state_dict(parameter['state_dict'])
@@ -63,12 +64,16 @@ print(f"batch size: {batch_size}, worker number: {worker_num}")
 # Contiguous split
 # train_idx, validation_idx = indices[split:], indices[:split]
 # =============================================
-dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')
-dataset = URPedestrianDataset(dataset_path, csv_name='test.csv',classnum=args.classnum,dagger=0)
+# if args.dagger
+# dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')
+# dataset = URPedestrianDataset(dataset_path, csv_name='test.csv',classnum=args.classnum,dagger=0)
 #################### DAGGER ==========================================
 # dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dagger')
-# dataset = URPedestrianDataset(dataset_path, csvname='1.csv' classnum=args.classnum,dagger=1)
+# dataset = URPedestrianDataset(dataset_path, csv_name='1.csv' ,classnum=args.classnum,dagger=1)
+
 #============================================================================
+dataset_path = join(dirname(dirname(abspath(__file__))), 'data/dataset')
+dataset=Classifier(dataset_path)
 sampler = misc.split_random(dataset.command_list)
 loader = {}
 

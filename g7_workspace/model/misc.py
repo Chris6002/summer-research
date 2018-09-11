@@ -6,12 +6,13 @@ import shutil
 
 def save_checkpoint(state, is_best, num,filename='checkpoint.pth.tar'):
     torch.save(state, filename)
+    file=filename.split('_')[1]
     if is_best:
-        shutil.copyfile(filename, f'model_best_{num}.pth.tar')
+        shutil.copyfile(filename, f'{file}_model_best_{num}.pth.tar')
 
 
-def split_random(command_list):
-    train_ratio = 0.7
+def split_random(command_list,train_ratio):
+    # train_ratio = 0.8
     valid_ratio = 0.2
     id_list = [[] for i in range(3000)]
     train_idx = []
@@ -36,6 +37,21 @@ def split_random(command_list):
                     list(set(id_num)-set(train_idx)), size=num_valid, replace=False)
                 for i in index_list:
                     valid_idx.append(i)
+    train_sampler = SubsetRandomSampler(train_idx)
+    validation_sampler = SubsetRandomSampler(valid_idx)
+    sampler = {}
+    sampler['train'] = train_sampler
+    sampler['val'] = validation_sampler
+    return sampler
+
+
+def split_random_class(command_list,train_ratio):
+    # train_ratio = 0.8
+    valid_ratio = 0.2
+    datasize=len(command_list)
+    train_idx=np.random.choice(range(datasize),size=int(datasize*train_ratio),replace=False)
+    valid_idx=np.random.choice(range(datasize),size=int(datasize*0.2),replace=False)
+
     train_sampler = SubsetRandomSampler(train_idx)
     validation_sampler = SubsetRandomSampler(valid_idx)
     sampler = {}

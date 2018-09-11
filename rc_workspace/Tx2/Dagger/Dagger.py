@@ -12,6 +12,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--parameter', type=str)
 parser.add_argument('--verify', type=int, default=0)
 parser.add_argument('--Dagger', type=int, default=0)
+parser.add_argument('--classnum', type=int)
 parser.add_argument('--iter', type=int)
 args = parser.parse_args()
 for arg in vars(args):
@@ -80,15 +81,15 @@ import csv
 now=time.strftime("%d_%m_%H_%M_%S")
 # Dagger command file:
 if args.Dagger == 1:
-	f = open(Command_file + 'Dagger_'+str(args.iter)+'_command'+'.csv', 'w')
+	f = open(Command_file + str(args.classnum)+'_Dagger_'+str(args.iter)+'_command'+'.csv', 'w')
 	fnames = ['name','frame', 'steering', 'speed', 'category', 'stage','useful']
 	writer = csv.DictWriter(f, fieldnames=fnames)
 	writer.writeheader()
-	out = cv2.VideoWriter(Command_file + 'Dagger_'+str(args.iter)+'.avi', FourCC, 10,
+	out = cv2.VideoWriter(Command_file + str(args.classnum)+'_Dagger_'+str(args.iter)+'.avi', FourCC, 10,
 		                  resolution)
 # verify time file:
 if args.verify == 1:
-	time_file = open(Command_file + 'Time_'+str(args.iter)+'.csv', 'w')
+	time_file = open(Command_file + str(args.classnum)+'_Time_'+str(args.iter)+'.csv', 'w')
 	time_fnames = ['end_frame', 'time']
 	time_writer = csv.DictWriter(time_file, fieldnames=time_fnames)
 

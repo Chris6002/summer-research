@@ -44,7 +44,7 @@ while(True):
     #cv2.imwrite('/media/nvidia/Files/1_'+str(i)+'.png',depth_image)
     #cv2.imwrite('/media/nvidia/Files/2_'+str(i)+'.png',frame2)
     images=np.hstack((frame1, frame3,frame2))
-    cv2.imwrite('/media/nvidia/Files/1_'+str(i)+'.png',images)
+    #cv2.imwrite('/media/nvidia/Files/1_'+str(i)+'.png',images)
     cv2.imshow('frame3',images)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break

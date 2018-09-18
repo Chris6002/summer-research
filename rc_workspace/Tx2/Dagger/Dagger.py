@@ -200,7 +200,7 @@ try:
                 cap.set(4, resolution[1])
             if situation==1 and ch3>1900 :
                 save=1
-                if pre_save==0:
+                if pre_save==0  and args.verify==1:
 
                     print('New Street')
                     data = {'end_frame': 'x', 'time': 'x'}
@@ -219,10 +219,11 @@ try:
                         start_time = time.time()
             else:
                 save=0
-                time_file.close()
-                time_file = open(Command_file + str(args.classnum)+'_Time_'+str(args.iter)+'.csv', 'a')
-                time_fnames = ['end_frame', 'time']
-                time_writer = csv.DictWriter(time_file, fieldnames=time_fnames)
+                if args.verify==1:
+                    time_file.close()
+                    time_file = open(Command_file + str(args.classnum)+'_Time_'+str(args.iter)+'.csv', 'a')
+                    time_fnames = ['end_frame', 'time']
+                    time_writer = csv.DictWriter(time_file, fieldnames=time_fnames)
             pre_save=save
 
         except UnicodeDecodeError:
